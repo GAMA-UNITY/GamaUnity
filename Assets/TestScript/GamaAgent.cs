@@ -20,10 +20,11 @@ public class GamaAgent : MonoBehaviour
         set
         {
             m_strength = value;
-            Debug.Log("------ > Value changed");
-            string msg = GamaListenReplay.BuildToListenReplay("strength", strength);
+            Debug.Log("intVar ------ > Value changed");
+            string msg = GamaListenReplay.BuildToListenReplay("intVar", strength);
+            Debug.Log("Message content ----- > " + msg);
             GamaManager.connector.Publish("setexp", msg);
-            Debug.Log("------ > " + msg);
+            Debug.Log("message sent to topic setexp ");
         }
     }
     public int m_strength = 0;

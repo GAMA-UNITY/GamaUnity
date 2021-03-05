@@ -27,6 +27,29 @@ namespace ummisco.gama.unity.messages
 
             return xmlDoc.stringWriter.ToString();
         }
+        /*
+        public static string BuildToListenReplay(string attributeName, float attributeValue)
+        {
+            XmlDoc xmlDoc = new XmlDoc();
+
+            xmlDoc.AddXmlElement(attributeName, attributeValue.ToString());
+
+            xmlDoc.doc.WriteTo(xmlDoc.xmlTextWriter);
+
+            return xmlDoc.stringWriter.ToString();
+        }
+        */
+        
+        public static string BuildToListenReplay(string attributeName, object attributeValue)
+        {
+            XmlDoc xmlDoc = new XmlDoc();
+
+            xmlDoc.AddXmlElement(attributeName, attributeValue.ToString());
+
+            xmlDoc.doc.WriteTo(xmlDoc.xmlTextWriter);
+
+            return xmlDoc.stringWriter.ToString();
+        }
 
         public static string BuildIntToListenReplay(string attributeName, int attributeValue)
         {

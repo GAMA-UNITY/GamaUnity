@@ -4,78 +4,79 @@ using System;
 using System.Collections;
 using ummisco.gama.unity.utils.converter;
 
-[RequireComponent(typeof (MeshFilter))]
-[RequireComponent(typeof (MeshRenderer))]
-public class CubeGenerator : MonoBehaviour {
+[RequireComponent(typeof(MeshFilter))]
+[RequireComponent(typeof(MeshRenderer))]
+public class CubeGenerator : MonoBehaviour
+{
 
-    public int intVar;
-    public string stringVar;
-    public float floatVar;
-    public bool boolVar;
+	public int intVar ;
+	public string stringVar;
+	public float floatVar;
+	public bool boolVar;
 
-
-    private Rigidbody rb;
+	private Rigidbody rb;
 	public float inverseMoveTime;
 	public float moveTime = 10000.1f;
 
-    public List<Vector3> listVertices;
-    public List<UIVertex> pList = new List<UIVertex>();
-    public Material pMat;
+	public List<Vector3> listVertices;
+	public List<UIVertex> pList = new List<UIVertex>();
+	public Material pMat;
 
-    public MapBuilder mapBuilder ; 
-
-
+	public MapBuilder mapBuilder;
 
 
-    Boolean isMove;
-
-	void Start () {
-
-    }
-
-    [Obsolete]
-    private void SetPolygonShape(string objectName)
-    {
-
-        GameObject ob = GameObject.Find(objectName);
-
-        ob.AddComponent<MeshFilter>();
-        ob.AddComponent<MeshRenderer>();
-        //ob.AddComponent<Rigidbody>();
-        //ob.AddComponent<BoxCollider>();
-
-        Color objectColor = ConvertType.StringToColor("red");
-        Renderer rend = ob.GetComponent<Renderer>();
-        rend.material.color = objectColor;
 
 
-        Vector3[] vertices = {
-            new Vector3 (0, 0, 0),
-            new Vector3 (20, 0, 0),
-            new Vector3 (30, 10f, 0),
-            new Vector3 (10, 40, 0),
-            new Vector3 (5, 30, 0)
-        };
+	Boolean isMove;
 
-        int[] triangles = {
-            0, 4, 1, //face front
+	void Start()
+	{
+
+	}
+
+	[Obsolete]
+	private void SetPolygonShape(string objectName)
+	{
+
+		GameObject ob = GameObject.Find(objectName);
+
+		ob.AddComponent<MeshFilter>();
+		ob.AddComponent<MeshRenderer>();
+		//ob.AddComponent<Rigidbody>();
+		//ob.AddComponent<BoxCollider>();
+
+		Color objectColor = ConvertType.StringToColor("red");
+		Renderer rend = ob.GetComponent<Renderer>();
+		rend.material.color = objectColor;
+
+
+		Vector3[] vertices = {
+			new Vector3 (0, 0, 0),
+			new Vector3 (20, 0, 0),
+			new Vector3 (30, 10f, 0),
+			new Vector3 (10, 40, 0),
+			new Vector3 (5, 30, 0)
+		};
+
+		int[] triangles = {
+			0, 4, 1, //face front
 			4, 3, 2,
-            4, 2, 1			
-        };
+			4, 2, 1
+		};
 
 
 
-        Mesh mesh = new Mesh();//= ob.GetComponent<MeshFilter>().mesh;
-        mesh.Clear();
-        mesh.name = "TestMesh";
-        mesh.vertices = vertices;
-        mesh.triangles = triangles;
- 
-        mesh.RecalculateNormals();
+		Mesh mesh = new Mesh();//= ob.GetComponent<MeshFilter>().mesh;
+		mesh.Clear();
+		mesh.name = "TestMesh";
+		mesh.vertices = vertices;
+		mesh.triangles = triangles;
+
+		mesh.RecalculateNormals();
 
 
-       ob.GetComponent<MeshFilter>().mesh = mesh;
-        /*
+		ob.GetComponent<MeshFilter>().mesh = mesh;
+		/*
         CanvasRenderer CanvRend = ob.GetComponent<CanvasRenderer>();
         CanvRend.SetMesh(mesh);
         CanvRend.Clear();
@@ -101,22 +102,22 @@ public class CubeGenerator : MonoBehaviour {
      
         */
 
-    }
+	}
 
 
-    private GameObject CreateCube (string objectName) {
+	private GameObject CreateCube(string objectName)
+	{
 
-        GameObject ob = new GameObject()
-        {
-            name = objectName
-        };
+		GameObject ob = new GameObject() {
+			name = objectName
+		};
 
-        ob.AddComponent<MeshFilter>();
+		ob.AddComponent<MeshFilter>();
 		ob.AddComponent<MeshRenderer>();
 		//ob.AddComponent<Rigidbody>();
 		//ob.AddComponent<BoxCollider>();
 
-		Color objectColor = ConvertType.StringToColor ("red");
+		Color objectColor = ConvertType.StringToColor("red");
 		Renderer rend = ob.GetComponent<Renderer>();
 		rend.material.color = objectColor;
 
@@ -147,63 +148,63 @@ public class CubeGenerator : MonoBehaviour {
 			0, 1, 6
 		};
 
-		Vector3 pos = new Vector3 (2, 0.5f, 4);
+		Vector3 pos = new Vector3(2, 0.5f, 4);
 
 		ob.transform.position = pos;
 
-		Mesh mesh = ob.GetComponent<MeshFilter> ().mesh;
-		mesh.Clear ();
+		Mesh mesh = ob.GetComponent<MeshFilter>().mesh;
+		mesh.Clear();
 		mesh.vertices = vertices;
 		mesh.triangles = triangles;
 		//mesh.Optimize ();
-		mesh.RecalculateNormals ();
-        
+		mesh.RecalculateNormals();
+
 		ob.GetComponent<MeshFilter>().mesh = mesh;
-        return ob;
+		return ob;
 	}
-       
-	void FixedUpdate ()
+
+	void FixedUpdate()
 	{
-		float moveHorizontal = Input.GetAxis ("Horizontal");
-		float moveVertical = Input.GetAxis ("Vertical");
-        		
-	//	rb.AddForce (movement * 20);
-	//	rb.MovePosition (movement);
-	//	transform.position = new Vector3 (moveHorizontal, 0.0f, moveVertical+1);
+		float moveHorizontal = Input.GetAxis("Horizontal");
+		float moveVertical = Input.GetAxis("Vertical");
+
+		//	rb.AddForce (movement * 20);
+		//	rb.MovePosition (movement);
+		//	transform.position = new Vector3 (moveHorizontal, 0.0f, moveVertical+1);
 
 		if (isMove) {
 			//transform.position = new Vector3 (moveHorizontal+3, 0.0f, moveVertical+4);
-			MoveToPosition (moveHorizontal+20,  0.0f, moveVertical+18, 10);
+			MoveToPosition(moveHorizontal + 20, 0.0f, moveVertical + 18, 10);
 			isMove = false;
 		}
 	}
-      
+
 	public void OnMoveEvent()
 	{
 		Debug.Log("OnMove called.");
 	}
 
-    public void MoveToPosition (float xDir, float yDir, float zDir, int speed)
+	public void MoveToPosition(float xDir, float yDir, float zDir, int speed)
 	{
 
 		//Store start position to move from, based on objects current transform position.
 		Vector3 start = gameObject.transform.position;
 
 		// Calculate end position based on the direction parameters passed in when calling Move.
-		Vector3 end = start + new Vector3 (xDir, yDir, zDir);
+		Vector3 end = start + new Vector3(xDir, yDir, zDir);
 
 		//rb.AddForce (movement * speed);
 
-		StartCoroutine (SmoothMovement (end, speed));
+		StartCoroutine(SmoothMovement(end, speed));
 	}
 
 	//Co-routine for moving units from one space to next, takes a parameter end to specify where to move to.
-	protected IEnumerator SmoothMovement (Vector3 end, int speed)
+	protected IEnumerator SmoothMovement(Vector3 end, int speed)
 	{
 		//Calculate the remaining distance to move based on the square magnitude of the difference between current position and end parameter. 
 		//Square magnitude is used instead of magnitude because it's computationally cheaper.
 		float sqrRemainingDistance = (transform.position - end).sqrMagnitude;
-        
+
 		inverseMoveTime = 100f;
 
 		//While that distance is greater than a very small amount (Epsilon, almost zero):
@@ -211,11 +212,11 @@ public class CubeGenerator : MonoBehaviour {
 		while (sqrRemainingDistance > 0.1f) {
 			//Find a new position proportionally closer to the end, based on the moveTime
 			//Vector3 newPostion = Vector3.MoveTowards (rb.position, end, inverseMoveTime * Time.deltaTime);
-			Vector3 newPostion = Vector3.MoveTowards (rb.position, end, speed * Time.deltaTime);
+			Vector3 newPostion = Vector3.MoveTowards(rb.position, end, speed * Time.deltaTime);
 
 
 			//Call MovePosition on attached Rigidbody2D and move it to the calculated position.
-			rb.MovePosition (newPostion);
+			rb.MovePosition(newPostion);
 
 			Debug.DrawLine(transform.position, newPostion, Color.yellow, 0.2f, true);
 

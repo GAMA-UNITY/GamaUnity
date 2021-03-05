@@ -148,7 +148,7 @@ namespace ummisco.gama.unity.Scene
 					string serialisedObject = new XStream().ToXml(receivedMsg);
 					GamaExposeMessage deserialisedObject = (GamaExposeMessage) new XStream().FromXml(serialisedObject);
 					*/
-                    //Debug.Log("The topic is : " + e.Topic);
+                    Debug.Log("It concerns an exposed variable on :  " + e.Topic);
                     GamaExposeMessage exposeMessage = new GamaExposeMessage(receivedMsg);
 
                     sceneManager.SetAttribute(agentsTopicDic[e.Topic], exposeMessage.attributesList);
