@@ -22,6 +22,14 @@ public class ExposeVariables : MonoBehaviour
     public int intVar = 0;
 
     [SerializeField]
+    public void setIntVar(int value) {
+        intVar = value;
+        string msg = GamaListenReplay.BuildToListenReplay("intVar", intVar);
+        GamaManager.connector.Publish("setexp", msg);
+    }
+
+
+    [SerializeField]
     public string stringVar {
         get { return m_stringVar; }
         set {
@@ -66,7 +74,7 @@ public class ExposeVariables : MonoBehaviour
     void OnGUI()
     {
         if (GUI.Button(new Rect(50, 350, 250, 20), "Send From ExposeVariables script")) {
-            intVar += 2;
+            setIntVar(intVar += 2);
         }
     }
 

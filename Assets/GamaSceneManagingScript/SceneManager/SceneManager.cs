@@ -253,9 +253,11 @@ namespace ummisco.gama.unity.Scene
 			MonoBehaviour[] scripts = targetGameObject.GetComponents<MonoBehaviour>();
 			foreach (MonoBehaviour mb in scripts) {
 				if (mb != null) {
+					Debug.Log(" ===============================================>>  Fields of component :   " + mb.GetType());
 					FieldInfo[] fieldInfoSet = targetGameObject.GetComponent(mb.GetType()).GetType().GetFields();
 					foreach (KeyValuePair<string, string> pair in data) {
 						foreach (FieldInfo fi in fieldInfoSet) {
+							Debug.Log(" ------------------------->>  Field name is :   " + fi.Name);
 							if (fi.Name.Equals(pair.Key.ToString())) {
 								UnityEngine.Component ob = (UnityEngine.Component)targetGameObject.GetComponent(mb.GetType());
 								if (fi.FieldType.Equals(typeof(UnityEngine.UI.Text))) {
@@ -266,7 +268,7 @@ namespace ummisco.gama.unity.Scene
 											txt.text = "Score : ";
 										}
 									}
-									FieldInfo[] fieldInfoSet2 = fi.FieldType.GetFields();
+									//FieldInfo[] fieldInfoSet2 = fi.FieldType.GetFields();
 								} else {
 									//TODO: need to complete this list
 									switch (fi.FieldType.ToString()) {
@@ -296,6 +298,7 @@ namespace ummisco.gama.unity.Scene
 											break;
 									}
 								}
+								break;	
 							}
 						}
 					}
