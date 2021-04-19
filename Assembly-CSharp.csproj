@@ -195,6 +195,7 @@
     <Compile Include="Assets/LoadMapFrom.cs" />
     <Compile Include="Assets/LoadMapFromShape.cs" />
     <Compile Include="Assets/LoadScene.cs" />
+    <Compile Include="Assets/MainCamera.cs" />
     <Compile Include="Assets/MainScene.cs" />
     <Compile Include="Assets/MiniMapCameraContainer.cs" />
     <Compile Include="Assets/Modal/BringToFront.cs" />
@@ -205,6 +206,7 @@
     <Compile Include="Assets/Modal/ResponseModalWindow.cs" />
     <Compile Include="Assets/Modal/TestModalWindow.cs" />
     <Compile Include="Assets/PinchableScrollRectEmptyMap.cs" />
+    <Compile Include="Assets/SentryCode.cs" />
     <Compile Include="Assets/TestScript/GamaAgent.cs" />
     <Compile Include="Assets/TestScript/PlaceUIElementAtWorldPosition.cs" />
     <Compile Include="Assets/UIElementDragger.cs" />
@@ -835,6 +837,10 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="Sentry.csproj">
+      <Project>{C0A1ABA8-5626-9398-ACA9-A91443A7CD72}</Project>
+      <Name>Sentry</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="GenerateTargetFrameworkMonikerAttribute" />

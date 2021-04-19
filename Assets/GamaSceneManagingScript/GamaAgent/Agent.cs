@@ -13,25 +13,25 @@ namespace ummisco.gama.unity.GamaAgent
     {
         private string _geometry;
 
-        public string AgentName { set; get; }
-        public GamaCoordinateSequence AgentCoordinate { set; get; }
-        public GamaColor Color { set; get; }
-        public Vector3 Rotation { set; get; }
-        public Vector3 Location { set; get; }
-        public Vector3 InitialLocation { set; get; }
-        public Vector3 Scale { set; get; }
-        public bool IsRotate { set; get; }
-        public bool IsOnInputMove { set; get; }
-        public Rigidbody Rb { set; get; }
-        public float Speed { set; get; }
-        public string Species { set; get; }
-        public int Index { set; get; }
-        public string Nature { get; set; }
-        public string Geometry { get; set; }
-        public List<AgentAttribute> Attributes { set; get; }
-        public string Type { set; get; }
-        public float Height { get; set; }
-        public bool IsDrawed { get; set; }
+        public string AgentName;
+        public GamaCoordinateSequence AgentCoordinate;
+        public GamaColor Color;
+        public Vector3 Rotation;
+        public Vector3 Location;
+        public Vector3 InitialLocation;
+        public Vector3 Scale;
+        public bool IsRotate;
+        public bool IsOnInputMove;
+        public Rigidbody Rb;
+        public float Speed;
+        public string Species;
+        public int Index;
+        public string Nature;
+        public string Geometry;
+        public List<AgentAttribute> Attributes;
+        public string Type;
+        public float Height;
+        public bool IsDrawed;
 
 
         public Agent(string agentName)
@@ -74,7 +74,7 @@ namespace ummisco.gama.unity.GamaAgent
                 case IGeometry.POLYGON:
                     return "buildings";
                 case IGeometry.LINESTRING:
-                    return "rouds";
+                    return "raouds";
                 case IGeometry.POINT:
                     return "objects";
                 case IGeometry.WATER:
@@ -94,7 +94,7 @@ namespace ummisco.gama.unity.GamaAgent
                 case IGeometry.POLYGON:
                     return "Buildings";
                 case IGeometry.LINESTRING:
-                    return "Rouds";
+                    return "Raouds";
                 case IGeometry.POINT:
                     return "Objects";
                 case IGeometry.WATER:

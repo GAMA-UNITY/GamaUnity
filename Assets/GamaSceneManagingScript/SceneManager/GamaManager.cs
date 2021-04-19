@@ -170,34 +170,34 @@ namespace ummisco.gama.unity.Scene
                                 case IUILittoSim.LAND_USE:
                                     agent.Height = 10;
                                     //agentCreator.GetComponent<AgentCreator>().CreateAgent(agent, Land_Use_Transform, matRed, IUILittoSim.LAND_USE_ID, true, ILittoSimConcept.LAND_USE_TAG, -60);
-                                    agentCreator.GetComponent<AgentCreator>().CreateGenericPolygonAgent(agent, true, ILittoSimConcept.LAND_USE_TAG, 0);//-60);
+                                    agentCreator.GetComponent<AgentCreator>().CreateGenericPolygonAgent(agent, true, IUILittoSim.LAND_USE, 0, false);//-60);
 
                                     break;
                                 case IUILittoSim.COASTAL_DEFENSE:
                                     agent.Height = 10;
                                     //agentCreator.GetComponent<AgentCreator>().CreateAgent(agent, Land_Use_Transform, matYellow, IUILittoSim.COASTAL_DEFENSE_ID, true, ILittoSimConcept.COASTAL_DEFENSE_TAG, -80);
-                                    agentCreator.GetComponent<AgentCreator>().CreateGenericPolygonAgent(agent, true, ILittoSimConcept.COASTAL_DEFENSE_TAG, -80);
+                                    agentCreator.GetComponent<AgentCreator>().CreateGenericPolygonAgent(agent, true, IUILittoSim.COASTAL_DEFENSE, -80);
                                     break;
                                 case IUILittoSim.DISTRICT:
                                     agent.Height = 10;
                                     //agentCreator.GetComponent<AgentCreator>().CreateAgent(agent, Land_Use_Transform, matBlue, IUILittoSim.DISTRICT_ID, true, ILittoSimConcept.DISTRICT_TAG, -40);
-                                    agentCreator.GetComponent<AgentCreator>().CreateGenericPolygonAgent(agent, true, ILittoSimConcept.DISTRICT_TAG, -40);
+                                    agentCreator.GetComponent<AgentCreator>().CreateGenericPolygonAgent(agent, true, IUILittoSim.DISTRICT, -40);
                                     break;
                                 case IUILittoSim.FLOOD_RISK_AREA:
                                     agent.Height = 10;
                                     //agentCreator.GetComponent<AgentCreator>().CreateAgent(agent, Land_Use_Transform, matRed, IUILittoSim.FLOOD_RISK_AREA_ID, true, ILittoSimConcept.FLOOD_RISK_AREA_TAG, -100);
-                                    agentCreator.GetComponent<AgentCreator>().CreateGenericPolygonAgent(agent, true, ILittoSimConcept.FLOOD_RISK_AREA_TAG, -100);
+                                    agentCreator.GetComponent<AgentCreator>().CreateGenericPolygonAgent(agent, true, IUILittoSim.FLOOD_RISK_AREA, -100);
                                     break;
                                 case IUILittoSim.PROTECTED_AREA:
                                     agent.Height = 10;
                                     //agentCreator.GetComponent<AgentCreator>().CreateAgent(agent, Land_Use_Transform, matGreenLighter, IUILittoSim.PROTECTED_AREA_ID, true, ILittoSimConcept.PROTECTED_AREA_TAG, -100);
-                                    agentCreator.GetComponent<AgentCreator>().CreateGenericPolygonAgent(agent, true, ILittoSimConcept.PROTECTED_AREA_TAG, -100);
+                                    agentCreator.GetComponent<AgentCreator>().CreateGenericPolygonAgent(agent, true, IUILittoSim.PROTECTED_AREA, -100);
                                     break;
                                 case IUILittoSim.ROAD:
                                     agent.Height = 0;
                                     //agentCreator.GetComponent<AgentCreator>().CreateAgent(agent, Land_Use_Transform, mat, IUILittoSim.ROAD_ID, false);
                                     //agentCreator.GetComponent<AgentCreator>().CreateLineAgent(agent, Land_Use_Transform, matWhite, IUILittoSim.ROAD_ID, false, 10f, ILittoSimConcept.ROAD_TAG, -151);
-                                    agentCreator.GetComponent<AgentCreator>().CreateGenericLineAgent(agent, 10f, "Road", -151);
+                                    agentCreator.GetComponent<AgentCreator>().CreateGenericLineAgent(agent, 10f, IUILittoSim.ROAD, -151);
                                     break;
                                 default:
                                     targetGameObject = GameObject.Find(unityAgent.receivers);

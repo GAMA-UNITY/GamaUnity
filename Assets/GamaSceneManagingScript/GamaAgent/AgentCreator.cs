@@ -91,12 +91,40 @@ public class AgentCreator : MonoBehaviour
 
     public GameObject CreateGenericPolygonAgent(Agent agent, bool elevate, string tagName, float zAxis, bool groupBySpecies)
     {
+        /*
         GameObject newObject = new GameObject()
         {
             name = agent.AgentName
         };
+        */
+        GameObject newObject = new GameObject(agent.AgentName, typeof(RectTransform));
+
         
+
         SetAgentTag(newObject, tagName);
+        switch (agent.Species) {
+            case IUILittoSim.LAND_USE:
+                newObject.AddComponent<Land_Use>();
+                break;
+            case IUILittoSim.COASTAL_DEFENSE:
+                newObject.AddComponent<Coastal_Defense>();
+                break;
+            case IUILittoSim.DISTRICT:
+                newObject.AddComponent<District>();
+                break;
+            case IUILittoSim.FLOOD_RISK_AREA:
+                newObject.AddComponent<Flood_Risk_Area>();
+                break;
+            case IUILittoSim.PROTECTED_AREA:
+                newObject.AddComponent<Protected_Area>();
+                break;
+            case IUILittoSim.ROAD:
+                newObject.AddComponent<Road>();
+                break;
+            default:
+               
+                break;
+        }
         newObject.AddComponent<Agent>();
         newObject.GetComponent<Agent>().SetAttributes(agent);
         newObject.GetComponent<Agent>().InitAgent(SceneManager.worldEnveloppeRT, elevate, zAxis);
@@ -105,12 +133,14 @@ public class AgentCreator : MonoBehaviour
         {
             SetObjectSpecies(newObject, agent.Species);
         }
-      
-        AddAgentToContexte(agent.Species, newObject);
-        if (agent.Species.Equals("Land_Use")){
-            newObject.AddComponent<Land_Use>();
-        }
 
+        RectTransform rt = newObject.GetComponent<RectTransform>();
+
+        rt.anchorMin = new Vector2(0, 1);
+        rt.anchorMax = new Vector2(0, 1);
+        rt.pivot = new Vector2(0.5f, 0.5f);
+
+        AddAgentToContexte(agent.Species, newObject);
         return newObject;
     }
 

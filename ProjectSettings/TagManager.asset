@@ -10,6 +10,8 @@ TagManager:
   - Coastal_Defense_Common_Button
   - Land_Use
   - Point
+  - Building
+  - Road
   layers:
   - Default
   - TransparentFX

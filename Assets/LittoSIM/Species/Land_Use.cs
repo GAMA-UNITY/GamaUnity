@@ -27,7 +27,9 @@ namespace ummisco.gama.unity.littosim
         public bool focus_on_me = false;
         public int meshElevation = 30;
 
-        public Vector3 localScale = new Vector3(0.2f, 0.2f, 0.2f);
+        
+
+public Vector3 localScale = new Vector3(0.2f, 0.2f, 0.2f);
 
 
         private CanvasGroup cg;
@@ -41,10 +43,9 @@ namespace ummisco.gama.unity.littosim
         void Start()
         {
             cg = GameObject.Find("Canvas_Tips").GetComponent<CanvasGroup>();
-            canvas = GameObject.Find("Canvas_Tips").GetComponent<Canvas>();
+            //canvas = GameObject.Find("Canvas_Tips").GetComponent<Canvas>();
+            canvas = GameObject.Find("WorldEnveloppe").GetComponent<Canvas>();
             tips = GameObject.Find("Tips");
-
-            
         }
 
         public void UAInit(UnityAgent unityAgent)
@@ -64,7 +65,6 @@ namespace ummisco.gama.unity.littosim
 
         void OnMouseDown()
         {
-
             Debug.Log("This on mouse down -> " + gameObject.name);
             Material myMat = Resources.Load("Materials/NewNaturelle", typeof(Material)) as Material;
             GetComponent<MeshRenderer>().material = myMat;
@@ -74,7 +74,14 @@ namespace ummisco.gama.unity.littosim
         {
             Debug.Log(" From Land_Use.cs Land_use : " + gameObject.name + " OnMouseOver Method. ");
             Vector3 vect = worldToUISpace(canvas, Input.mousePosition);
-            vect.z = -4f;
+
+            vect = gameObject.GetComponent<RectTransform>().transform.position;
+
+            vect = Camera.main.ScreenToWorldPoint(Input.mousePosition); 
+            vect.z = vect.z - 100f;
+
+            
+
             tips.GetComponent<RectTransform>().transform.position = vect;
             
             SetInfo();
@@ -82,8 +89,7 @@ namespace ummisco.gama.unity.littosim
             cg.alpha = 1;
 
             gameObject.GetComponent<Renderer>().material.shader = Shader.Find("Self-Illumin/Outlined Diffuse");
-
-                     
+   
             //VertsColor2();
         }
 
@@ -96,7 +102,7 @@ namespace ummisco.gama.unity.littosim
 
             return parentCanvas.transform.TransformPoint(movePos);
         }
-
+        /*
         void OnMouseExit()
         {
             ResetSetInfo();
@@ -106,6 +112,7 @@ namespace ummisco.gama.unity.littosim
 
             gameObject.GetComponent<Renderer>().material.shader = Shader.Find("Diffuse");
         }
+        */
 
         void SetInfo()
         {
@@ -127,15 +134,10 @@ namespace ummisco.gama.unity.littosim
             GameObject.Find("attribute_6").GetComponent<Text>().text = "Mean alt: ";
         }
 
-        public Vector3 GetNewPosition()
-        {
-            return new Vector3(-2218, -963f, 100f);
-        }
-
         public void OnPointerEnter(PointerEventData eventData)
         {
             Debug.Log(" ------------------------------>>  Exit");
-          //  throw new System.NotImplementedException();
+            //  throw new System.NotImplementedException();
         }
 
         public void OnPointerExit(PointerEventData eventData)
@@ -160,7 +162,7 @@ namespace ummisco.gama.unity.littosim
                 verticesModified[i] = vertices[triangles[i]];
                 trianglesModified[i] = i;
                 // Every third vertex randomly chooses new color
-              //  if (i % 3 == 0)
+                // if (i % 3 == 0)
                 {
                     currentColor = new Color(
                         Random.Range(0.0f, 1.0f),
