@@ -90,6 +90,7 @@ namespace ummisco.gama.unity.Scene
         [Obsolete]
         void Start()
         {
+          
             sceneManager = GameObject.Find(IMQTTConnector.SCENE_MANAGER).GetComponent<SceneManager>();
 
             connector = CreateConnector(MQTTConnector.SERVER_URL, MQTTConnector.SERVER_PORT, MQTTConnector.DEFAULT_USER, MQTTConnector.DEFAULT_PASSWORD);
