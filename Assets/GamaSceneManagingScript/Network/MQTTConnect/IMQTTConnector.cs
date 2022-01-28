@@ -40,6 +40,8 @@ namespace ummisco.gama.unity.Network
         public const string POSITION_TOPIC = "position";
         public const string MOVE_TOPIC = "move";
 
+        public const string SERIALIZATION_TOPIC = "serialization";
+        public const string SERIALIZATION_JAVA_TOPIC = "serialization_java";
 
         // Topics to Create/ Detroy GameObjects
         public const string CREATE_TOPIC = "create";

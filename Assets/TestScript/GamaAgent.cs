@@ -12,6 +12,7 @@ public class GamaAgent : MonoBehaviour
     public string stringVar = "";
     public float floatVar = 0.0f;
     public bool boolVar = false;
+    public string topic = "receiver";
 
     [SerializeField]
     public int strength
@@ -23,8 +24,8 @@ public class GamaAgent : MonoBehaviour
             Debug.Log("intVar ------ > Value changed");
             string msg = GamaListenReplay.BuildToListenReplay("intVar", strength);
             Debug.Log("Message content ----- > " + msg);
-            GamaManager.connector.Publish("setexp", msg);
-            Debug.Log("message sent to topic setexp ");
+            GamaManager.connector.Publish(topic, msg);
+            Debug.Log("message sent to topic : " + topic);
         }
     }
     public int m_strength = 0;

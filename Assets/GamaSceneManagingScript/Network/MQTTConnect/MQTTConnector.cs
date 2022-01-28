@@ -30,7 +30,7 @@ namespace ummisco.gama.unity.Network {
 
         public void Connect(string serverUrl, int serverPort, string userId, string password) {
 
-            clientId = Guid.NewGuid().ToString() + DateTime.Now.ToFileTime();
+            clientId = "Unity_"+Guid.NewGuid().ToString() + DateTime.Now.ToFileTime();
             client = new MqttClient(serverUrl, serverPort, false, null);
 
             client.MqttMsgPublishReceived += client_MqttMsgPublishReceived;
@@ -38,18 +38,23 @@ namespace ummisco.gama.unity.Network {
             client.Connect(clientId, userId, password);
             //client.Connect(clientId);
 
-            Debug.Log("Connected to : " + SERVER_URL + "  " + SERVER_PORT + "  " + DEFAULT_USER + "   " + DEFAULT_PASSWORD);
+            Debug.Log("Connected to : " + serverUrl + "  " + serverPort + "  " + userId + "   " + password);
             //client.Connect(clientId);
 
-            Debug.Log(" Is sent: " + client.Publish("test", System.Text.Encoding.UTF8.GetBytes("Test 1 sur Test"), MqttMsgBase.QOS_LEVEL_EXACTLY_ONCE, true));
+            Debug.Log(" Is sent: " + client.Publish("test", System.Text.Encoding.UTF8.GetBytes("Test 1 sur Test"), MqttMsgBase.QOS_LEVEL_AT_MOST_ONCE, true));
         }
 
         public void Subscribe(string topic) {
-            client.Subscribe(new string[] { topic }, new byte[] { MqttMsgBase.QOS_LEVEL_EXACTLY_ONCE });
+            //client.Subscribe(new string[] { topic }, new byte[] { MqttMsgBase.QOS_LEVEL_EXACTLY_ONCE });
+            client.Subscribe(new string[] { topic }, new byte[] { MqttMsgBase.QOS_LEVEL_AT_MOST_ONCE });
         }
 
         public void Publish(string topic, string message) {
-            client.Publish(topic, System.Text.Encoding.UTF8.GetBytes(message), MqttMsgBase.QOS_LEVEL_EXACTLY_ONCE, true);
+            client.Publish(topic, System.Text.Encoding.UTF8.GetBytes(message), MqttMsgBase.QOS_LEVEL_AT_MOST_ONCE, true);
+        }
+
+        public void Publish(string topic, string message, byte qos, Boolean bo) {
+            client.Publish(topic, System.Text.Encoding.UTF8.GetBytes(message), MqttMsgBase.QOS_LEVEL_AT_MOST_ONCE, true);
         }
 
         void client_MqttMsgPublishReceived(object sender, MqttMsgPublishEventArgs e) {
@@ -65,7 +70,6 @@ namespace ummisco.gama.unity.Network {
             else {
                 return null;
             }
-
         }
 
         public bool HasNextMessage() {
@@ -94,6 +98,8 @@ namespace ummisco.gama.unity.Network {
                 IMQTTConnector.NOTIFICATION_TOPIC,
                 IMQTTConnector.CREATE_TOPIC,
                 IMQTTConnector.DESTROY_TOPIC,
+                IMQTTConnector.SERIALIZATION_TOPIC,
+                IMQTTConnector.SERIALIZATION_JAVA_TOPIC,
                 "listdata"
             };
             return topicsList;
@@ -102,16 +108,14 @@ namespace ummisco.gama.unity.Network {
 
         public void InitTopics() {
             List<string> topicsList = GetTopicsInList();
-
             foreach(string topic in topicsList) {
                 Subscribe(topic);
+                Debug.Log(" Subscribed to topic : "+topic);
             }
         }
-
 
         public void SendAttributeUpdate(string attributeName, object attributeValue, string MqttTopic) {
 
         }
-
     }
 }

@@ -1,8 +1,9 @@
 ﻿using System.IO;
 using System.Xml.Serialization;
 using System.Xml;
-
-
+using System.Text;
+using UnityEngine;
+using AssemblyCSharp.Assets.GamaSceneManagingScript.Utils.Serializer;
 
 namespace ummisco.gama.unity.messages
 {
@@ -120,7 +121,7 @@ namespace ummisco.gama.unity.messages
             {
 
                 serializer.Serialize(writer, msgResponseData);
-
+             
                 return writer.ToString();
             }
         }
@@ -129,23 +130,55 @@ namespace ummisco.gama.unity.messages
         {
 
             XmlSerializer serializer = new XmlSerializer(msgResponseData.GetType());
-            var settings = new XmlWriterSettings
-            {
+           
+            var settings = new XmlWriterSettings {
+                Indent = true,
+                OmitXmlDeclaration = true
+            };
+          
+               // -------------
+               // Create two different encodings.
+               Encoding ascii = Encoding.ASCII;
+               Encoding unicode = Encoding.Unicode;
+               Encoding utf8code = Encoding.UTF8;
+            
+
+
+           // using (var stream = new StringWriter())
+            using (var stream = new StringWriterWithEncoding(ascii))
+            using (var writer = XmlWriter.Create(stream, settings)) {
+                serializer.Serialize(writer, msgResponseData);
+                Debug.Log("The Text to Publish is --> " + stream.ToString());
+                string txtToPublish = "sender" +
+                "receiver" +
+                "";
+                return txtToPublish+stream.ToString();
+            }
+        }
+
+        public static string SerializationPlainXml2(object msgResponseData)
+        {
+
+            var settings = new XmlWriterSettings {
                 Indent = true,
                 OmitXmlDeclaration = true
             };
 
-            using (var stream = new StringWriter())
-            using (var writer = XmlWriter.Create(stream, settings))
-            {
-                //using (StringWriter writer = new StringWriter ()) 
-                // removes namespace
-                var xmlns = new XmlSerializerNamespaces();
-                xmlns.Add(string.Empty, string.Empty);
-
-                serializer.Serialize(writer, msgResponseData, xmlns);
-                return stream.ToString();
+            XmlSerializer ser = new XmlSerializer(msgResponseData.GetType());
+            Debug.Log("The type is: " + msgResponseData.GetType());
+            string result = string.Empty;
+            using (MemoryStream memStm = new MemoryStream())
+                //
+            //using (var writer = XmlWriter.Create(memStm, settings))
+                {
+                ser.Serialize(memStm, msgResponseData);
+                //ser.Serialize(writer, msgResponseData);
+                memStm.Position = 0;
+                result = new StreamReader(memStm).ReadToEnd();
+                //result = memStm.ToString();
             }
+            return result;
+
         }
     }
 }

@@ -13,6 +13,7 @@ using ummisco.gama.unity.files;
 using ummisco.gama.unity.Network;
 using ummisco.gama.unity.littosim.ActionPrefab;
 using UnityEngine.UI;
+using wox.serial;
 
 namespace ummisco.gama.unity.Scene
 {
@@ -64,6 +65,7 @@ namespace ummisco.gama.unity.Scene
             MainCamera = GameObject.Find("MainCamera");
 
             // Create the Topic's manager GameObjects
+            new GameObject(IMQTTConnector.COLOR_TOPIC_MANAGER).AddComponent<SerializeTopic>();
             new GameObject(IMQTTConnector.COLOR_TOPIC_MANAGER).AddComponent<ColorTopic>();
             new GameObject(IMQTTConnector.POSITION_TOPIC_MANAGER).AddComponent<PositionTopic>();
             new GameObject(IMQTTConnector.SET_TOPIC_MANAGER).AddComponent<SetTopic>();
@@ -87,13 +89,14 @@ namespace ummisco.gama.unity.Scene
         }
 
         // Use this for initialization
-        [Obsolete]
+       [Obsolete]
         void Start()
         {
-          
+
             sceneManager = GameObject.Find(IMQTTConnector.SCENE_MANAGER).GetComponent<SceneManager>();
 
             connector = CreateConnector(MQTTConnector.SERVER_URL, MQTTConnector.SERVER_PORT, MQTTConnector.DEFAULT_USER, MQTTConnector.DEFAULT_PASSWORD);
+            //connector = CreateConnector("vmpams.ird.fr", 1935, MQTTConnector.DEFAULT_USER, MQTTConnector.DEFAULT_PASSWORD);
             connector.Subscribe("littosim");
 
             agentCreator = GameObject.Find("AgentCreator");
@@ -104,7 +107,6 @@ namespace ummisco.gama.unity.Scene
                 txt3.text = "  -> CONNECTED From Gama Manager Start " + System.DateTime.Now;
                 txt3.text = "  -> MESSAGE SENT From Gama Manager Start " + System.DateTime.Now;
             }
-
         }
 
         public MQTTConnector CreateConnector(string serverUrl, int serverPort, string userId, string password)
@@ -119,12 +121,14 @@ namespace ummisco.gama.unity.Scene
         void FixedUpdate()
         {
             HandleMessage();
+            
+
         }
 
 
         public void HandleMessage()
         {
-
+            
             while (connector.HasNextMessage())
             {
                 MqttMsgPublishEventArgs e = connector.GetNextMessage();
@@ -431,9 +435,27 @@ namespace ummisco.gama.unity.Scene
 
                             //------------------------------------------------------------------------------
                             break;
+                        case IMQTTConnector.SERIALIZATION_TOPIC:
+                            Debug.Log("-> Topic to deal with is : " + IMQTTConnector.SERIALIZATION_TOPIC);
+                            Debug.Log("Load object from " + receivedMsg);
+                            
+
+                            Debug.Log("New received message -> " + receivedMsg);
+                            Student resultedObject = (Student)WoxSerializer.deserializeFromString(receivedMsg);
+                            Debug.Log("--> Result is : " + resultedObject.printStudent());
+                            break;
+                        case IMQTTConnector.SERIALIZATION_JAVA_TOPIC:
+                            Debug.Log("-> Topic to deal with is : " + IMQTTConnector.SERIALIZATION_JAVA_TOPIC);
+                            Debug.Log("Load object from " + receivedMsg);
+
+                            Debug.Log("New received message -> " + receivedMsg);
+                            Student studentJava = (Student)WoxSerializer.deserializeFromJavaString(receivedMsg);
+                            Debug.Log("--> Result is : " + studentJava.printStudent());
+                            break;
                         default:
                             //------------------------------------------------------------------------------
-                            Debug.Log("-> Topic to deal with is : " + IMQTTConnector.DEFAULT_TOPIC);
+                            Debug.Log("--> Topic to deal with is : " + IMQTTConnector.DEFAULT_TOPIC);
+                            
                             //------------------------------------------------------------------------------
                             break;
                     }
