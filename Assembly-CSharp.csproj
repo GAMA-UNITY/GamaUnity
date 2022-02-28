@@ -247,6 +247,8 @@
     <Compile Include="Assets/MaterialUI/Scripts/Toaster.cs" />
     <Compile Include="Assets/MaterialUI/Scripts/ToggleConfig.cs" />
     <Compile Include="Assets/MaterialUI/Scripts/ToggleTextChanger.cs" />
+    <Compile Include="Assets/MaterialUI/Scripts/UIManager/ActionsScript/ButtonAction.cs" />
+    <Compile Include="Assets/MaterialUI/Scripts/UIManager/UICreator.cs" />
     <Compile Include="Assets/MaterialUI/Scripts/UIManager/UIPrefabsManager.cs" />
     <Compile Include="Assets/MiniMapCameraContainer.cs" />
     <Compile Include="Assets/Modal/BringToFront.cs" />

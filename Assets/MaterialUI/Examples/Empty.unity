@@ -216,6 +216,80 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &769974763
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 769974764}
+  - component: {fileID: 769974766}
+  - component: {fileID: 769974765}
+  m_Layer: 5
+  m_Name: Panel
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &769974764
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 769974763}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0.99999, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1217785375}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 1280, y: 720}
+  m_Pivot: {x: 0, y: 1}
+--- !u!114 &769974765
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 769974763}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.392}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
+  m_Type: 1
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &769974766
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 769974763}
+  m_CullTransparentMesh: 0
 --- !u!1 &1144792651
 GameObject:
   m_ObjectHideFlags: 0
@@ -399,7 +473,8 @@ RectTransform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0, y: 0, z: 0}
-  m_Children: []
+  m_Children:
+  - {fileID: 769974764}
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -420,3 +495,63 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b4a9b845a11994a15a9a1c6805ba5e61, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cmp: 0
+  MainPanel: {fileID: 769974763}
+  MainCanvas: {fileID: 1217785370}
+  App_Bar: {fileID: 100336, guid: 9c10e21455498c0419eba1c845efbb08, type: 3}
+  Background: {fileID: 126996, guid: 34dcb286f4c996e4189711b586de8601, type: 3}
+  Button_Flat: {fileID: 100004, guid: 8d89d3beae5faa14eb19142ecd9a0536, type: 3}
+  Button_Raised: {fileID: 100012, guid: 48c8ef175bc579f4da6cc19d9028cd29, type: 3}
+  Canvas: {fileID: 130442, guid: 2094752fa4eead543b3280da582709fa, type: 3}
+  Checkbox: {fileID: 100010, guid: fbf9353657b302e4b97a770759ea1945, type: 3}
+  DialogBox_Normal: {fileID: 137372, guid: a0adefcd62a142d4a87edf325df66d85, type: 3}
+  DialogBox_Scroll: {fileID: 148932, guid: 834dad9bcb6d00e40affa42d5cba4658, type: 3}
+  DialogBox_Simple: {fileID: 130662, guid: b418960cab60ab1458465d8642b50a85, type: 3}
+  Divider_Dark: {fileID: 132128, guid: b72eac2f7b2219346ac30be5ae66f0dc, type: 3}
+  Divider_Light: {fileID: 161248, guid: 2deb83447e6d3c94fac5facf2349531a, type: 3}
+  EventSystem: {fileID: 120638, guid: 0ac4495fc3d1ef8459892a27bcb188a8, type: 3}
+  Nav_Drawer: {fileID: 173644, guid: e07df7de26af1e34e9de5271838ce87b, type: 3}
+  Panel: {fileID: 100006, guid: 85baebbd8370c014fbb08a13ccd0bbb3, type: 3}
+  RadioGroup: {fileID: 100000, guid: 97481fc23f965024184f6836759cf38e, type: 3}
+  Round_Button_Flat: {fileID: 100004, guid: d539db9b707b2cd43b5a15a1ba1f51a5, type: 3}
+  Round_Button_Raised: {fileID: 100012, guid: 63615b8cc575fc3419a99b345e5bbe37, type: 3}
+  Round_Button_Small_Flat: {fileID: 100004, guid: 464e62fa7a357b3439299ca4b2489ff4,
+    type: 3}
+  Round_Button_Small_Raised: {fileID: 100012, guid: bf0183771947bcf47a756d9c5010c05e,
+    type: 3}
+  Screen_: {fileID: 190814, guid: 19ca40639dab830499801709a0118519, type: 3}
+  ScreenManager: {fileID: 193884, guid: 14c87dfbe9c5f3843b2a5fbf41112baf, type: 3}
+  SelectionBox_Flat: {fileID: 191938, guid: d672379d642a68d4685e518f98283732, type: 3}
+  SelectionBox: {fileID: 100024, guid: eb5c0a0e51ede2442a8b2855d96cbdce, type: 3}
+  Slider: {fileID: 100012, guid: 14b5e61782a7e544e9724fe03ca203be, type: 3}
+  Slider_label: {fileID: 148666, guid: 8492a2772e675484990813c6105f140b, type: 3}
+  Slider_label_value: {fileID: 168490, guid: 2568cecc5cdc76b42b0e1c1e4505c45c, type: 3}
+  SpinnyArrow_Button: {fileID: 109360, guid: d1cce7bd1a784f04a8e4aab162b41e1f, type: 3}
+  Switch: {fileID: 100006, guid: 4109eba3720a9ff409db0c1ce13edd99, type: 3}
+  Text: {fileID: 121134, guid: 336bc615b7c7ee84b985143c58808bd9, type: 3}
+  TextInput: {fileID: 100002, guid: 84e6a53f37e667a4080d9e91dd4fa1e4, type: 3}
+  List_Item_Double_Avatar: {fileID: 163566, guid: 22a5250d8af8c98459c76dd443be0f85,
+    type: 3}
+  List_Item_Double_Icon_Avatar: {fileID: 139710, guid: 2ebf74b1a3ec00840a964f761022ec66,
+    type: 3}
+  List_Item_Double_Icon: {fileID: 132994, guid: bd4ef27b9ed3d18478f7db97aab2db26,
+    type: 3}
+  List_Item_Double: {fileID: 121610, guid: e637d340790a240439dad695be4c628d, type: 3}
+  List_Item_Single_Avatar: {fileID: 166066, guid: d81724b22d1d259479d922cedd81a5ba,
+    type: 3}
+  List_Item_Single_Icon_Avatar: {fileID: 188164, guid: c2aebb5b3bae1d946b605076dedb858f,
+    type: 3}
+  List_Item_Single_Icon: {fileID: 136800, guid: 2e064dd89a9d24845bf1bda5c682f2e5,
+    type: 3}
+  List_Item_Single: {fileID: 154554, guid: 49abdebc51f552043a866cc1a5cb1f43, type: 3}
+  List_Item_Triple_Avatar: {fileID: 167492, guid: 63d5bb8833caba441926f499fb4af5d9,
+    type: 3}
+  List_Item_Triple_Icon_Avatar: {fileID: 188164, guid: c2aebb5b3bae1d946b605076dedb858f,
+    type: 3}
+  List_Item_Triple_Icon: {fileID: 161550, guid: f4b82f36964197c43bea8b52164ad82c,
+    type: 3}
+  List_Item_Triple: {fileID: 143892, guid: 641fe53a54b932a4b9a00d01944f6459, type: 3}
+  ListView: {fileID: 103896, guid: 2810c7edce9db7a44a87b4cac3a7f6f1, type: 3}
+  Subheader: {fileID: 183682, guid: 64f011d2aeb478345bd3b82a33df705d, type: 3}
+  UnderShadow: {fileID: 187334, guid: 5920f15dcabde524fb13876af8205d27, type: 3}
+  rectVector2: {x: 0.5, y: 0.5}
