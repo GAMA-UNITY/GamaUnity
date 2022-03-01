@@ -206,6 +206,8 @@ namespace MaterialUI
 				if (valueText)
 					valueText.text = tempText;
 			}
+
+			Debug.Log(" Ici mettre le code pour envoyer à Gama -->  " + slider.value.ToString());
 		}
 
         public void OnPointerDown (PointerEventData data)

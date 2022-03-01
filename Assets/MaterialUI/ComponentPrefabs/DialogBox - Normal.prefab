@@ -341,6 +341,7 @@ GameObject:
   - component: {fileID: 11454760}
   - component: {fileID: 11454762}
   - component: {fileID: 11463284}
+  - component: {fileID: 7249070452503512411}
   m_Layer: 5
   m_Name: DialogLayer
   m_TagString: MaterialButtonLayer
@@ -462,6 +463,35 @@ MonoBehaviour:
   sprite1x: {fileID: 21300000, guid: bdb3c2fa2edce14428c2588d923d9431, type: 3}
   sprite2x: {fileID: 21300000, guid: f8e0ae8fe4abe4e44bb4a9a89648eea4, type: 3}
   sprite4x: {fileID: 21300000, guid: ea5374f26645a6843a8727fbebe2cdb0, type: 3}
+--- !u!114 &7249070452503512411
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 137376}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2460c0e917c9f485e85e14938a8ffd3d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  parent: {fileID: 137372}
+  dialogTitleObject: {fileID: 154764}
+  dialogContentObject: {fileID: 154766}
+  buttonYes: {fileID: 164170}
+  buttonNo: {fileID: 164172}
+  dialogBoxId: 
+  position: {x: 0, y: 0, z: 0}
+  height: 0
+  width: 0
+  title: Dialog Box Title
+  text: 'Dialog Box body text. Dialog Box body text 1. Dialog Box body text 2. Dialog
+    Box body text 3. Dialog Box body text 4. '
+  buttonYesText: Yes
+  buttonNoText: No
+  actionCode: 0
+  size: 1
+  state: 1
 --- !u!1 &154764
 GameObject:
   m_ObjectHideFlags: 0
@@ -754,8 +784,9 @@ GameObject:
   - component: {fileID: 11464158}
   - component: {fileID: 11464162}
   - component: {fileID: 11464128}
+  - component: {fileID: 781048477082523674}
   m_Layer: 5
-  m_Name: Button Layer
+  m_Name: ButtonYesLayer
   m_TagString: MaterialButtonLayer
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -862,12 +893,12 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 11414586}
-        m_TargetAssemblyTypeName: 
-        m_MethodName: Close
-        m_Mode: 1
+        m_TargetAssemblyTypeName: MaterialUI.DialogBoxConfig, Assembly-CSharp
+        m_MethodName: CloseByYes
+        m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_ObjectArgument: {fileID: 137372}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -912,6 +943,19 @@ MonoBehaviour:
   toggleMask: 1
   dontRippleOnScroll: 0
   scrollDelayCheckTime: 0.05
+--- !u!114 &781048477082523674
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 164168}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 55754365246164bd692e06ebfec60dd3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  parent: {fileID: 137372}
 --- !u!1 &164170
 GameObject:
   m_ObjectHideFlags: 0
@@ -924,7 +968,7 @@ GameObject:
   - component: {fileID: 22264172}
   - component: {fileID: 11464164}
   m_Layer: 5
-  m_Name: Button Text
+  m_Name: ButtonYesText
   m_TagString: MaterialText
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1002,7 +1046,7 @@ GameObject:
   - component: {fileID: 22264174}
   - component: {fileID: 11464166}
   m_Layer: 5
-  m_Name: Button Text
+  m_Name: ButtonNoText
   m_TagString: MaterialText
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1082,8 +1126,9 @@ GameObject:
   - component: {fileID: 11464172}
   - component: {fileID: 11464168}
   - component: {fileID: 11464130}
+  - component: {fileID: 8581785381227902737}
   m_Layer: 5
-  m_Name: Button Layer
+  m_Name: ButtonNoLayer
   m_TagString: MaterialButtonLayer
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1190,12 +1235,12 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 11414586}
-        m_TargetAssemblyTypeName: 
-        m_MethodName: Close
-        m_Mode: 1
+        m_TargetAssemblyTypeName: MaterialUI.DialogBoxConfig, Assembly-CSharp
+        m_MethodName: CloseByNo
+        m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_ObjectArgument: {fileID: 137372}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -1240,6 +1285,19 @@ MonoBehaviour:
   toggleMask: 1
   dontRippleOnScroll: 0
   scrollDelayCheckTime: 0.05
+--- !u!114 &8581785381227902737
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 164174}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 55754365246164bd692e06ebfec60dd3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  parent: {fileID: 137372}
 --- !u!1 &164176
 GameObject:
   m_ObjectHideFlags: 0

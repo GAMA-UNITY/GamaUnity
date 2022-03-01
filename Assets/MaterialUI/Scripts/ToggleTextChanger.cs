@@ -16,6 +16,7 @@ public class ToggleTextChanger : MonoBehaviour
 {
 	private Text thisText;
 
+	public int actionCode;
 	public string onText;
 	public string offText;
 
@@ -24,8 +25,22 @@ public class ToggleTextChanger : MonoBehaviour
 		thisText = gameObject.GetComponent<Text>();
 	}
 
+
 	public void ToggleText(bool isToggledOn)
 	{
-		thisText.text = isToggledOn ? onText : offText;
+		if (isToggledOn) {
+			thisText.text = onText;
+			Debug.Log("You have clicked the checkbox ! Toggle is On. The action code is : " + actionCode);
+		} else {
+			thisText.text = offText;
+			Debug.Log("You have clicked the checkbox ! Toggle is Off. The action code is : " + actionCode);
+		}
+		
+	}
+
+	public void SetText(string _text_on, string _text_off)
+	{
+		this.onText = _text_on;
+		this.offText = _text_off;
 	}
 }

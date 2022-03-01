@@ -67,34 +67,17 @@ namespace MaterialUI
 
 			//UIList.Add("App_Bar", App_Bar);
 			//UIList.Add("Background", Background);
-			UIList.Add("Button_Flat", Button_Flat);
-			UIList.Add("Button_Raised", Button_Raised);
 			//UIList.Add("Canvas", Canvas);
-			UIList.Add("Checkbox", Checkbox);
-			UIList.Add("DialogBox_Normal", DialogBox_Normal);
 			//UIList.Add("DialogBox_Scroll", DialogBox_Scroll);
 			//UIList.Add("DialogBox_Simple", DialogBox_Simple);
-			UIList.Add("Divider_Dark", Divider_Dark);
 			//UIList.Add("Divider_Light", Divider_Light);
 			//UIList.Add("EventSystem", EventSystem);
 			//UIList.Add("Nav_Drawer", Nav_Drawer);
 			//UIList.Add("Panel", Panel);
-			UIList.Add("RadioGroup", RadioGroup);
 			//UIList.Add("Round_Button_Flat", Round_Button_Flat);
-			UIList.Add("Round_Button_Raised", Round_Button_Raised);
 			//UIList.Add("Round_Button_Small_Flat", Round_Button_Small_Flat);
-			UIList.Add("Round_Button_Small_Raised", Round_Button_Small_Raised);
 			//UIList.Add("Screen_", Screen_);
 			//UIList.Add("ScreenManager", ScreenManager);
-			UIList.Add("SelectionBox_Flat", SelectionBox_Flat);
-			UIList.Add("SelectionBox", SelectionBox);
-			UIList.Add("Slider", Slider);
-			UIList.Add("Slider_label", Slider_label);
-			UIList.Add("Slider_label_value", Slider_label_value);
-			UIList.Add("SpinnyArrow_Button", SpinnyArrow_Button);
-			UIList.Add("Switch", Switch);
-			UIList.Add("Text", Text);
-			UIList.Add("TextInput", TextInput);
 			//UIList.Add("List_Item_Double_Avatar", List_Item_Double_Avatar);
 			//UIList.Add("List_Item_Double_Icon_Avatar", List_Item_Double_Icon_Avatar);
 			//UIList.Add("List_Item_Double_Icon", List_Item_Double_Icon);
@@ -111,9 +94,29 @@ namespace MaterialUI
 			//UIList.Add("Subheader", Subheader);
 			//UIList.Add("UnderShadow", UnderShadow);
 
+
+			UIList.Add("Button_Flat", Button_Flat);
+			UIList.Add("Button_Raised", Button_Raised);
+			UIList.Add("Checkbox", Checkbox);
+			UIList.Add("DialogBox_Normal", DialogBox_Normal);
+			UIList.Add("Divider_Dark", Divider_Dark);
+			UIList.Add("RadioGroup", RadioGroup);
+			UIList.Add("Round_Button_Raised", Round_Button_Raised);
+			UIList.Add("Round_Button_Small_Raised", Round_Button_Small_Raised);
+			UIList.Add("SelectionBox_Flat", SelectionBox_Flat);
+			UIList.Add("SelectionBox", SelectionBox);
+			UIList.Add("Slider", Slider);
+			UIList.Add("Slider_label", Slider_label);
+			UIList.Add("Slider_label_value", Slider_label_value);
+			UIList.Add("SpinnyArrow_Button", SpinnyArrow_Button);
+			UIList.Add("Switch", Switch);
+			UIList.Add("Text", Text);
+			UIList.Add("TextInput", TextInput);
+			/*
 			foreach (KeyValuePair<string, GameObject> kvp in UIList) {
 				Debug.Log("Key = " + kvp.Key + " Value = " + kvp.Value.name);
 			}
+			*/
 		}
 
 		// Update is called once per frame
@@ -126,14 +129,12 @@ namespace MaterialUI
 		{
 			_mRect.anchorMin = new Vector2(0f, 1f);
 			_mRect.anchorMax = new Vector2(0f, 1f);
-			//_mRect.pivot = new Vector2(0.5f, 0.5f);
 			_mRect.pivot = new Vector2(0f, 1f);
 
 			//_mRect.anchoredPosition = _parent.position;
 			_mRect.anchorMin = new Vector2(0, 1);
 			_mRect.anchorMax = new Vector2(0, 1);
 			_mRect.pivot = new Vector2(0.5f, 0.5f);
-			//_mRect.sizeDelta = _parent.rect.size;
 			//_mRect.transform.SetParent(_parent);
 	
 		}
@@ -150,17 +151,21 @@ namespace MaterialUI
 		{
 			if (GUI.Button(new Rect(10, 20, 180, 20), "Button_Raised")) {
 				Debug.Log(" -  Button Raised - ");
-				Create_Button_Raised("Button_Raised", MainPanel, "button1", new Vector3(264, -38, 0), 10f, 10f, "Button", 12, 1);
+				Create_Button_Raised("Button_Raised", MainPanel, "button1", new Vector3(264, -38, 0), 10f, 10f, "Button Test", 12, 1, 1);
 			}		
 
 			if (GUI.Button(new Rect(10, 50, 180, 20), "Checkbox")) {
 				Debug.Log(" - Checkbox  - ");
-				Create_Checkbox("Checkbox", MainPanel, new Vector3(337, -66, 0));
+				Create_Checkbox("Checkbox", MainPanel, "checkbox1", new Vector3(337, -	66, 0), 10f, 10f, "CheckBox On__", "CheckBox Off___", 12, 1, 1);
 			}
 
 			if (GUI.Button(new Rect(10, 80, 180, 20), "DialogBox_Normal")) {
 				Debug.Log(" -  DialogBox_Normal - ");
-				Create_DialogBox_Normal("DialogBox_Normal", MainPanel, new Vector3(917, 0, 0));
+				Vector3 position = new Vector3(917, 0, 0);
+				GameObject obj = Create_DialogBox_Normal("DialogBox_Normal", MainPanel, "dialogbox1", new Vector3(917, 0, 0), 10f, 10f, "_Dialog Title_", "_Dialog content: The is the dialog box content area. Your informative text, or questions, should be put here", "_YES_", "_NO_", 12, 1, 1);
+				RectTransform m_RectTransform = obj.GetComponent<RectTransform>();
+				SetRecTransformDefault(m_RectTransform);
+				m_RectTransform.anchoredPosition = position;
 			}
 
 			if (GUI.Button(new Rect(10, 120, 180, 20), "Divider_Dark")) {
@@ -205,7 +210,7 @@ namespace MaterialUI
 
 			if (GUI.Button(new Rect(10, 360, 180, 20), "Slider_label_value")) {
 				Debug.Log(" - Slider_label_value  - ");
-				Create_Slider_label_value("Slider_label_value", MainPanel, new Vector3(588, -362, 0));
+				Create_Slider_label_value("Slider_label_value", MainPanel, "slider1", new Vector3(588, -362, 0), 10f, 10f, "My Slider label", 12, 1, 1);
 			}
 
 			if (GUI.Button(new Rect(10, 390, 180, 20), "SpinnyArrow_Button")) {
@@ -301,7 +306,8 @@ namespace MaterialUI
 			try {
 				GameObject objToInstantiate = UIList[prefabName];
 				obj = Instantiate(objToInstantiate, new Vector3(0, 0, 0), Quaternion.identity);
-				obj.transform.SetParent(parent.transform);
+				if (parent != null)
+					obj.transform.SetParent(parent.transform);
 				RectTransform m_RectTransform = obj.GetComponent<RectTransform>();
 				SetRecTransformDefault(m_RectTransform);
 				m_RectTransform.anchoredPosition = position;
@@ -330,36 +336,49 @@ namespace MaterialUI
 			}
 		}
 
-		GameObject Create_Button_Raised(string prefabName, GameObject parent, string buttonId, Vector3 position, float height, float length, string text, int actionCode, int state)
+		GameObject Create_Button_Raised(string prefabName, GameObject parent, string buttonId, Vector3 position, float height, float length, string text, int actionCode, float size, int state)
 		{
 			GameObject obj;
 			try {
 				obj = CreateDafault(prefabName, parent, position);
+				obj.name = "parent_" + buttonId;
 				GameObject child = obj.transform.GetChild(1).gameObject;
-				child.GetComponent<ButtonAction>().SetButton(buttonId, position, height, length, text, actionCode, state);
+				child.GetComponent<ButtonAction>().SetButton(obj, buttonId, position, height, length, text, actionCode, size, state) ;
 				return obj;
 			} catch {
 				return null;
 			}
-		}	
-			
-
-		GameObject Create_Checkbox(string prefabName, GameObject parent, Vector3 position)
+		}
+				
+		GameObject Create_Checkbox(string prefabName, GameObject parent, string checkBoxId, Vector3 position, float height, float length, string text_on, string text_off, int actionCode, float size, int state)
 		{
 			GameObject obj;
 			try {
 				obj = CreateDafault(prefabName, parent, position);
+				obj.name = "parent_" + checkBoxId;
+				GameObject toggleChild = obj.transform.GetChild(0).gameObject;
+				GameObject textChild = obj.transform.GetChild(1).gameObject;
+				textChild.GetComponent<ToggleTextChanger>().SetText(text_on, text_off);
+				toggleChild.GetComponent<CheckBoxAction>().SetCheckBox(obj, textChild, checkBoxId, position, height, length, text_on, text_off, actionCode, size, state);
 				return obj;
 			} catch {
 				return null;
 			}
 		}
 
-		GameObject Create_DialogBox_Normal(string prefabName, GameObject parent, Vector3 position)
+		GameObject Create_DialogBox_Normal(string prefabName, GameObject parent, string dialogBoxId, Vector3 position, float height, float length, string dialog_title, string dialog_content, string yes_text, string no_text, int actionCode, float size, int state)
 		{
+		
 			GameObject obj;
 			try {
 				obj = CreateDafault(prefabName, parent, position);
+				obj.name = "parent_" + dialogBoxId;
+				GameObject dialogLayer = obj.transform.GetChild(2).gameObject;
+				dialogLayer.GetComponent<DialogBoxAction>().SetDialogBox(obj, dialogBoxId, position, height, length, dialog_title, dialog_content, yes_text, no_text, actionCode, size, state);
+
+				RectTransform m_RectTransform = obj.GetComponent<RectTransform>();
+				SetRecTransformDefault(m_RectTransform);
+				m_RectTransform.anchoredPosition = position;
 				return obj;
 			} catch {
 				return null;
@@ -461,11 +480,12 @@ namespace MaterialUI
 			}
 		}
 
-		GameObject Create_Slider_label_value(string prefabName, GameObject parent, Vector3 position)
+		GameObject Create_Slider_label_value(string prefabName, GameObject parent, string sliderId, Vector3 position, float heighh, float width, string slider_label, int actionCode, int size, int state)
 		{
 			GameObject obj;
 			try {
 				obj = CreateDafault(prefabName, parent, position);
+				obj.GetComponent<SliderLabelValueAction>().SetSlider(parent, sliderId, position, heighh, width, slider_label, actionCode, size, state);
 				return obj;
 			} catch {
 				return null;

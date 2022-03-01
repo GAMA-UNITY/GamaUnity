@@ -49,6 +49,7 @@ namespace MaterialUI
 			thisRectTransform.pivot = new Vector2(thisRectTransform.pivot.x, 1.1f);
 			thisRectTransform.anchorMin = new Vector2(thisRectTransform.anchorMin.x, 0f);
 			thisRectTransform.anchorMax = new Vector2(thisRectTransform.anchorMax.x, 0f);
+
 		}
 
 		public void BackgroundClick()
@@ -83,6 +84,42 @@ namespace MaterialUI
 
 			animStartTime = Time.realtimeSinceStartup;
 			state = 2;
+
+			Debug.Log(" Ici c'est le close du button");
+		}
+
+		public void CloseByYes(GameObject obj)
+		{
+			currentBackgroundAlpha = backroundCanvasGroup.alpha;
+			currentPivotY = thisRectTransform.pivot.y;
+			currentAnchorMinY = thisRectTransform.anchorMin.y;
+			currentAnchorMaxY = thisRectTransform.anchorMax.y;
+
+			backroundCanvasGroup.blocksRaycasts = false;
+
+			animStartTime = Time.realtimeSinceStartup;
+			state = 2;
+
+
+			Debug.Log(" Ici c'est le close du button by Yes");
+
+			Destroy(obj);
+		}
+
+		public void CloseByNo(GameObject obj)
+		{
+			currentBackgroundAlpha = backroundCanvasGroup.alpha;
+			currentPivotY = thisRectTransform.pivot.y;
+			currentAnchorMinY = thisRectTransform.anchorMin.y;
+			currentAnchorMaxY = thisRectTransform.anchorMax.y;
+
+			backroundCanvasGroup.blocksRaycasts = false;
+
+			animStartTime = Time.realtimeSinceStartup;
+			state = 2;
+
+			Debug.Log(" Ici c'est le close du button by No");
+			Destroy(obj);
 		}
 
 		void Update()

@@ -248,6 +248,10 @@
     <Compile Include="Assets/MaterialUI/Scripts/ToggleConfig.cs" />
     <Compile Include="Assets/MaterialUI/Scripts/ToggleTextChanger.cs" />
     <Compile Include="Assets/MaterialUI/Scripts/UIManager/ActionsScript/ButtonAction.cs" />
+    <Compile Include="Assets/MaterialUI/Scripts/UIManager/ActionsScript/CheckBoxAction.cs" />
+    <Compile Include="Assets/MaterialUI/Scripts/UIManager/ActionsScript/DialogBoxAction.cs" />
+    <Compile Include="Assets/MaterialUI/Scripts/UIManager/ActionsScript/DialogBoxYesNoAction.cs" />
+    <Compile Include="Assets/MaterialUI/Scripts/UIManager/ActionsScript/SliderLabelValueAction.cs" />
     <Compile Include="Assets/MaterialUI/Scripts/UIManager/UICreator.cs" />
     <Compile Include="Assets/MaterialUI/Scripts/UIManager/UIPrefabsManager.cs" />
     <Compile Include="Assets/MiniMapCameraContainer.cs" />
