@@ -22,6 +22,20 @@ GameObject Create_Checkbox(string prefabName, GameObject parent, string checkBox
 GameObject Create_DialogBox_Normal(string prefabName, GameObject parent, string dialogBoxId, Vector3 position, float height, float length, string dialog_title, string dialog_content, string yes_text, string no_text, int actionCode, float size, int state)
 ```
 
+## Divider 
+- Divider_Dark
+
+```
+GameObject Create_Divider_Dark(string prefabName, GameObject parent, string dividerId, Vector3 position, float height, float width, int size, int state)
+```
+
+## Round Button Raised
+- Round_Button_Raised
+
+```
+Create_Round_Button_Raised("Round_Button_Raised", MainPanel, "buttonRound1", new Vector3(459, -186, 0),10f, 10f, "ihm/I_urbanise_adapte", 14, 1, 1);
+```
+
 ## Slider with label
 
 - Slider with label

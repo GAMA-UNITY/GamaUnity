@@ -251,6 +251,8 @@
     <Compile Include="Assets/MaterialUI/Scripts/UIManager/ActionsScript/CheckBoxAction.cs" />
     <Compile Include="Assets/MaterialUI/Scripts/UIManager/ActionsScript/DialogBoxAction.cs" />
     <Compile Include="Assets/MaterialUI/Scripts/UIManager/ActionsScript/DialogBoxYesNoAction.cs" />
+    <Compile Include="Assets/MaterialUI/Scripts/UIManager/ActionsScript/DividerAction.cs" />
+    <Compile Include="Assets/MaterialUI/Scripts/UIManager/ActionsScript/RoundButtonAction.cs" />
     <Compile Include="Assets/MaterialUI/Scripts/UIManager/ActionsScript/SliderLabelValueAction.cs" />
     <Compile Include="Assets/MaterialUI/Scripts/UIManager/ActionsScript/SwitchAction.cs" />
     <Compile Include="Assets/MaterialUI/Scripts/UIManager/ActionsScript/TextAction.cs" />

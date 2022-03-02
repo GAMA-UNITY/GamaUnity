@@ -81,7 +81,6 @@ namespace MaterialUI
 				if (shadows)
 					shadows.alpha = 0f;
 			}
-			Debug.Log(" --------------------->>>> ");
 		}
 	}
 }

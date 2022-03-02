@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace MaterialUI
 {
@@ -151,27 +152,28 @@ namespace MaterialUI
 		{
 			if (GUI.Button(new Rect(10, 20, 180, 20), "Button_Raised*")) {
 				Debug.Log(" -  Button Raised - ");
-				Create_Button_Raised("Button_Raised", MainPanel, "button1", new Vector3(264, -38, 0), 10f, 10f, "Button Test", 12, 1, 1);
+				Create_Button_Raised("Button_Raised", MainPanel, "button1", new Vector3(264, -38, 0), 10f, 10f, "Button Test", 11, 1, 1);
 			}		
 
 			if (GUI.Button(new Rect(10, 50, 180, 20), "Checkbox*")) {
 				Debug.Log(" - Checkbox  - ");
-				Create_Checkbox("Checkbox", MainPanel, "checkbox1", new Vector3(337, -	66, 0), 10f, 10f, "CheckBox On__", "CheckBox Off___", 12, 1, 1);
+				Create_Checkbox("Checkbox", MainPanel, "checkbox1", new Vector3(337, -	66, 0), 10f, 10f, "CheckBox On__", "CheckBox Off___", 19, 1, 1);
 			}
 
 			if (GUI.Button(new Rect(10, 80, 180, 20), "DialogBox_Normal*")) {
 				Debug.Log(" -  DialogBox_Normal - ");
 				Vector3 position = new Vector3(917, 0, 0);
-				GameObject obj = Create_DialogBox_Normal("DialogBox_Normal", MainPanel, "dialogbox1", new Vector3(917, 0, 0), 10f, 10f, "_Dialog Title_", "_Dialog content: The is the dialog box content area. Your informative text, or questions, should be put here", "_YES_", "_NO_", 12, 1, 1);
+				GameObject obj = Create_DialogBox_Normal("DialogBox_Normal", MainPanel, "dialogbox1", new Vector3(917, 0, 0), 10f, 10f, "_Dialog Title_", "_Dialog content: The is the dialog box content area. Your informative text, or questions, should be put here", "_YES_", "_NO_", 13, 1, 1);
 				RectTransform m_RectTransform = obj.GetComponent<RectTransform>();
 				SetRecTransformDefault(m_RectTransform);
 				m_RectTransform.anchoredPosition = position;
 			}
 
 
-			if (GUI.Button(new Rect(10, 120, 180, 20), "Divider_Dark")) {
+			if (GUI.Button(new Rect(10, 120, 180, 20), "Divider_Dark*")) {
 				Debug.Log(" - Divider_Dark  - ");
-				Create_Divider_Dark("Divider_Dark", MainPanel, new Vector3(345, -132, 0));
+				Create_Divider_Dark("Divider_Dark", MainPanel, "divider1", new Vector3(345, -132, 0), 2f, 300f, 1, 1);
+				Create_Divider_Dark("Divider_Dark", MainPanel, "divider2", new Vector3(345, -132, 0), 300f, 2f, 1, 1);
 			}
 
 			if (GUI.Button(new Rect(10, 150, 180, 20), "RadioGroup")) {
@@ -179,9 +181,9 @@ namespace MaterialUI
 				Create_RadioGroup("RadioGroup", MainPanel, new Vector3(623, -115, 0));
 			}
 
-			if (GUI.Button(new Rect(10, 180, 180, 20), "Round_Button_Raised")) {
+			if (GUI.Button(new Rect(10, 180, 180, 20), "Round_Button_Raised*")) {
 				Debug.Log(" -  Round_Button_Raised - ");
-				Create_Round_Button_Raised("Round_Button_Raised", MainPanel, new Vector3(459, -186, 0));
+				Create_Round_Button_Raised("Round_Button_Raised", MainPanel, "buttonRound1", new Vector3(459, -186, 0),10f, 10f, "ihm/I_urbanise_adapte", 14, 1, 1);
 			}
 
 			if (GUI.Button(new Rect(10, 210, 180, 20), "Round_Button_Small_Raised")) {
@@ -211,7 +213,7 @@ namespace MaterialUI
 
 			if (GUI.Button(new Rect(10, 360, 180, 20), "Slider_label_value*")) {
 				Debug.Log(" - Slider_label_value  - ");
-				Create_Slider_label_value("Slider_label_value", MainPanel, "slider1", new Vector3(588, -362, 0), 10f, 10f, "My Slider label", 12, 1, 1);
+				Create_Slider_label_value("Slider_label_value", MainPanel, "slider1", new Vector3(588, -362, 0), 10f, 10f, "My Slider label", 15, 1, 1);
 			}
 
 			if (GUI.Button(new Rect(10, 390, 180, 20), "SpinnyArrow_Button")) {
@@ -221,18 +223,18 @@ namespace MaterialUI
 
 			if (GUI.Button(new Rect(10, 420, 180, 20), "Switch*")) {
 				Debug.Log(" - Switch  - ");
-				Create_Switch("Switch", MainPanel, "switch1", new Vector3(254, -430, 0), 10f, 10f, "Switch ON Text__", "Switch OFF Text__", 12, 1, 1);
+				Create_Switch("Switch", MainPanel, "switch1", new Vector3(254, -430, 0), 10f, 10f, "Switch ON Text__", "Switch OFF Text__", 16, 1, 1);
 			}
 
-			if (GUI.Button(new Rect(10, 450, 180, 20), "Text")) {
+			if (GUI.Button(new Rect(10, 450, 180, 20), "Text*")) {
 				Debug.Log(" - Text  - ");
-				Create_Text("Text", MainPanel, "text1", new Vector3(301, -460, 0), 10f, 10f, "This is a free text element", 12, 1, 1);
+				Create_Text("Text", MainPanel, "text1", new Vector3(301, -460, 0), 10f, 10f, "This is a free text element", 17, 1, 1);
 			}
 
 
-			if (GUI.Button(new Rect(10, 480, 180, 20), "TextInput")) {
+			if (GUI.Button(new Rect(10, 480, 180, 20), "TextInput*")) {
 				Debug.Log(" -  TextInput - ");
-				Create_TextInput("TextInput", MainPanel, "textInput1", new Vector3(322, -514, 0), 10f, 10f, "This is a free text input element", 12, 1, 1);
+				Create_TextInput("TextInput", MainPanel, "textInput1", new Vector3(322, -514, 0), 10f, 10f, "This is a free text input element", 18, 1, 1);
 			}
 
 
@@ -337,21 +339,21 @@ namespace MaterialUI
 			}
 		}
 
-		GameObject Create_Button_Raised(string prefabName, GameObject parent, string buttonId, Vector3 position, float height, float length, string text, int actionCode, float size, int state)
+		GameObject Create_Button_Raised(string prefabName, GameObject parent, string buttonId, Vector3 position, float height, float width, string text, int actionCode, float size, int state)
 		{
 			GameObject obj;
 			try {
 				obj = CreateDafault(prefabName, parent, position);
 				obj.name = "parent_" + buttonId;
 				GameObject child = obj.transform.GetChild(1).gameObject;
-				child.GetComponent<ButtonAction>().SetButton(obj, buttonId, position, height, length, text, actionCode, size, state) ;
+				child.GetComponent<ButtonAction>().SetButton(obj, buttonId, position, height, width, text, actionCode, size, state) ;
 				return obj;
 			} catch {
 				return null;
 			}
 		}
 				
-		GameObject Create_Checkbox(string prefabName, GameObject parent, string checkBoxId, Vector3 position, float height, float length, string text_on, string text_off, int actionCode, float size, int state)
+		GameObject Create_Checkbox(string prefabName, GameObject parent, string checkBoxId, Vector3 position, float height, float width, string text_on, string text_off, int actionCode, float size, int state)
 		{
 			GameObject obj;
 			try {
@@ -360,14 +362,14 @@ namespace MaterialUI
 				GameObject toggleChild = obj.transform.GetChild(0).gameObject;
 				GameObject textChild = obj.transform.GetChild(1).gameObject;
 				textChild.GetComponent<ToggleTextChanger>().SetText(text_on, text_off);
-				toggleChild.GetComponent<CheckBoxAction>().SetCheckBox(obj, textChild, checkBoxId, position, height, length, text_on, text_off, actionCode, size, state);
+				toggleChild.GetComponent<CheckBoxAction>().SetCheckBox(obj, textChild, checkBoxId, position, height, width, text_on, text_off, actionCode, size, state);
 				return obj;
 			} catch {
 				return null;
 			}
 		}
 
-		GameObject Create_DialogBox_Normal(string prefabName, GameObject parent, string dialogBoxId, Vector3 position, float height, float length, string dialog_title, string dialog_content, string yes_text, string no_text, int actionCode, float size, int state)
+		GameObject Create_DialogBox_Normal(string prefabName, GameObject parent, string dialogBoxId, Vector3 position, float height, float width, string dialog_title, string dialog_content, string yes_text, string no_text, int actionCode, float size, int state)
 		{
 		
 			GameObject obj;
@@ -375,7 +377,7 @@ namespace MaterialUI
 				obj = CreateDafault(prefabName, parent, position);
 				obj.name = "parent_" + dialogBoxId;
 				GameObject dialogLayer = obj.transform.GetChild(2).gameObject;
-				dialogLayer.GetComponent<DialogBoxAction>().SetDialogBox(obj, dialogBoxId, position, height, length, dialog_title, dialog_content, yes_text, no_text, actionCode, size, state);
+				dialogLayer.GetComponent<DialogBoxAction>().SetDialogBox(obj, dialogBoxId, position, height, width, dialog_title, dialog_content, yes_text, no_text, actionCode, size, state);
 
 				RectTransform m_RectTransform = obj.GetComponent<RectTransform>();
 				SetRecTransformDefault(m_RectTransform);
@@ -386,11 +388,12 @@ namespace MaterialUI
 			}
 		}
 
-		GameObject Create_Divider_Dark(string prefabName, GameObject parent, Vector3 position)
+		GameObject Create_Divider_Dark(string prefabName, GameObject parent, string dividerId, Vector3 position, float height, float width, int size, int state)
 		{
 			GameObject obj;
 			try {
 				obj = CreateDafault(prefabName, parent, position);
+				obj.GetComponent<DividerAction>().SetDivider(dividerId, position, height, width, size, state);
 				return obj;
 			} catch {
 				return null;
@@ -409,12 +412,18 @@ namespace MaterialUI
 			}
 		}
 
-
-		GameObject Create_Round_Button_Raised(string prefabName, GameObject parent, Vector3 position)
+		GameObject Create_Round_Button_Raised(string prefabName, GameObject parent, string buttonId, Vector3 position,  float height, float width, string buttonIcon, int actionCode, int size, int state)
 		{
 			GameObject obj;
 			try {
 				obj = CreateDafault(prefabName, parent, position);
+				obj.name = "parent_" + buttonId;
+				GameObject child = obj.transform.GetChild(1).gameObject;
+				child.GetComponent<RoundButtonAction>().SetRoundButton(obj, buttonId, position, height, width, buttonIcon, actionCode, size, state);
+
+				//Sprite buttonSprite = Resources.Load("Resources/images/icons/" + buttonIcon) as Sprite;
+				//Sprite buttonSprite = Resources.Load<Sprite>("images/icons/" + buttonIcon);
+				//child.GetComponent<Image>().sprite = buttonSprite;
 				return obj;
 			} catch {
 				return null;

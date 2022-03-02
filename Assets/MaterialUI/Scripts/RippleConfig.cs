@@ -195,6 +195,7 @@ namespace MaterialUI
 					thisImage.color = highlightColor;
 					state = 0;
 				}
+				
 			}
 			else if (state == 2)
 			{
@@ -209,6 +210,7 @@ namespace MaterialUI
 					thisImage.color = normalColor;
 					state = 0;
 				}
+
 			}
 		}
 
