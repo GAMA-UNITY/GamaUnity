@@ -8,6 +8,7 @@
 //	See the License for the specific language governing permissions and
 //	limitations under the License.
 
+using MaterialUI;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -37,6 +38,7 @@ public class ToggleTextChanger : MonoBehaviour
 		}
 		
 	}
+
 
 	public void SetText(string _text_on, string _text_off)
 	{

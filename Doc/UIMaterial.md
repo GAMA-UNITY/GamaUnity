@@ -1,16 +1,57 @@
 # UI Material
 
-## Button 
+## Button Raised
+
+- Button
+
 ```
-		public GameObject parent;
-		public Button _Button;
-		public string buttonId = "";
-		public Vector3 position = new Vector3(0,0,0);
-		public float height = 0.0f;
-		public float width = 0.0f;
-		public string text = "Button";
-		public int actionCode = 0;
-		public float size = 1; // the scale
-		public int state = 1;
+Create_Button_Raised(string prefabName, GameObject parent, string buttonId, Vector3 position, float height, float length, string text, int actionCode, float size, int state)
 ```
+
+## Checkbox
+- Checkbox
+
+```
+GameObject Create_Checkbox(string prefabName, GameObject parent, string checkBoxId, Vector3 position, float height, float length, string text_on, string text_off, int actionCode, float size, int state)
+```
+
+## Dialogbox
+- Dialogbox
+
+```
+GameObject Create_DialogBox_Normal(string prefabName, GameObject parent, string dialogBoxId, Vector3 position, float height, float length, string dialog_title, string dialog_content, string yes_text, string no_text, int actionCode, float size, int state)
+```
+
+## Slider with label
+
+- Slider with label
+
+```
+GameObject Create_Slider_label_value(string prefabName, GameObject parent, string sliderId, Vector3 position, float heighh, float width, string slider_label, int actionCode, int size, int state)
+```
+
+## Switch with label
+- Switch with label
+
+```
+GameObject Create_Switch(string prefabName, GameObject parent, string switchId, Vector3 position, float height, float width, string switch_text_on, string switch_text_off, int actionCode, int size, int state)
+```
+
+
+## Text
+
+- Text
+
+```
+GameObject Create_Text(string prefabName, GameObject parent, string textId, Vector3 position, float height, float width, string text_content, int actionCode, int size, int state)
+```
+
+
+## TextInput
+
+- TextInput
+- Le contenu est encoyé à chaque déselection de composant. 
 		
+```
+GameObject Create_TextInput(string prefabName, GameObject parent, string textInputId, Vector3 position, float height, float width, string text_content, int actionCode, int size, int state)
+```

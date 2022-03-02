@@ -16,7 +16,8 @@ using UnityEngine.EventSystems;
 namespace MaterialUI
 {
 	public class InputFieldConfig : MonoBehaviour, ISelectHandler, IDeselectHandler
-	{	
+	{
+		public GameObject parent;
 		public Color activeColor = Color.black;
 		bool dynamicHeight;
 		bool selected;
@@ -112,6 +113,8 @@ namespace MaterialUI
 
 			animStartTime = Time.realtimeSinceStartup;
 			state = 2;
+
+			Debug.Log("Text from the Text Input '" + parent.name + "' Action code : " + gameObject.GetComponent<TextInputAction>().textInputId + " Text to send : " + displayText.text);
 		}
 
 		public void CalculateHeight ()

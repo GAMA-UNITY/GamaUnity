@@ -252,6 +252,9 @@
     <Compile Include="Assets/MaterialUI/Scripts/UIManager/ActionsScript/DialogBoxAction.cs" />
     <Compile Include="Assets/MaterialUI/Scripts/UIManager/ActionsScript/DialogBoxYesNoAction.cs" />
     <Compile Include="Assets/MaterialUI/Scripts/UIManager/ActionsScript/SliderLabelValueAction.cs" />
+    <Compile Include="Assets/MaterialUI/Scripts/UIManager/ActionsScript/SwitchAction.cs" />
+    <Compile Include="Assets/MaterialUI/Scripts/UIManager/ActionsScript/TextAction.cs" />
+    <Compile Include="Assets/MaterialUI/Scripts/UIManager/ActionsScript/TextInputAction.cs" />
     <Compile Include="Assets/MaterialUI/Scripts/UIManager/UICreator.cs" />
     <Compile Include="Assets/MaterialUI/Scripts/UIManager/UIPrefabsManager.cs" />
     <Compile Include="Assets/MiniMapCameraContainer.cs" />

@@ -102,6 +102,8 @@ namespace MaterialUI
 
 			animStartTime = Time.realtimeSinceStartup;
 			state = 1;
+
+			Debug.Log("Switch On :  Ici mettre le code pour traiter l'envoie à GAMA");
 		}
 
 		private void TurnOnSilent()
@@ -131,6 +133,8 @@ namespace MaterialUI
 
 			animStartTime = Time.realtimeSinceStartup;
 			state = 2;
+
+			Debug.Log("Switch Off :  Ici mettre le code pour traiter l'envoie à GAMA");
 		}
 
 		private void TurnOffSilent()
