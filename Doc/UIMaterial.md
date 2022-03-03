@@ -8,6 +8,33 @@
 Create_Button_Raised(string prefabName, GameObject parent, string buttonId, Vector3 position, float height, float length, string text, int actionCode, float size, int state)
 ```
 
+### Les Attributs
+
+- identifiant du GameObject
+- le parent du GameObject
+- la position
+- la hauteur
+- la largeur
+- le texte sur le bouton
+- le code de l'aaction à renvoyer à gama
+- la taille du GameObject
+- l'état du bouton
+
+### Les attributs à ajouter
+
+- la couleur : de type couleur
+- un dictionnaire d'actions (prédéfinie) à éxécuter sur d'autres GameObject (des actions génériques). 
+
+### Les méthodes
+
+- changer de parent
+- changer la position
+- changer la hauteur
+- changer la largeur
+- changer le texte
+- changer la taille (le scale)
+- changer hauteur
+
 ## Checkbox
 - Checkbox
 
@@ -20,7 +47,7 @@ GameObject Create_Checkbox(string prefabName, GameObject parent, string checkBox
 
 ```
 GameObject Create_DialogBox_Normal(string prefabName, GameObject parent, string dialogBoxId, Vector3 position, float height, float length, string dialog_title, string dialog_content, string yes_text, string no_text, int actionCode, float size, int state)
-```
+```etat
 
 ## Divider 
 - Divider_Dark
