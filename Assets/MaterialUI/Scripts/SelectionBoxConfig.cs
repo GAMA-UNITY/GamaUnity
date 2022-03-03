@@ -12,6 +12,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
 using System.Text;
+using System.Collections.Generic;
 
 namespace MaterialUI
 {
@@ -495,5 +496,16 @@ namespace MaterialUI
 			if (highlightLastSelected)
 				listItemObjects[selectionId].GetComponent<Image>().color = highlightColor;
 		}
+
+		public void SetListItem(Dictionary<int, string> dicValues)
+		{
+			listItems = new string[dicValues.Count];
+			int cmp = 0;
+		foreach(KeyValuePair<int, string> kvp in dicValues)
+			{
+				listItems[cmp] = kvp.Value;
+				cmp++;
+			}
+}
 	}
 }

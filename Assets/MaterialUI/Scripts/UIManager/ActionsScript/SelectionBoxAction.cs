@@ -1,50 +1,50 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
+using System.Collections.Generic;
 
 namespace MaterialUI
 {
-	public class ButtonAction : MonoBehaviour
+	public class SelectionBoxAction : MonoBehaviour
 	{
 		public GameObject parent;
-		public Button _Button;
-		public string buttonId = "";
+		public string selectionBoxId = "";
+		
+		
 		public Vector3 position = new Vector3(0,0,0);
 		public float height = 0.0f;
 		public float width = 0.0f;
-		public string text = "Button";
+		public string text_label = "Selection Box";
+		public Dictionary<int, string> dicValues; 
 		public int actionCode = 0;
 		public float size = 1; // the scale
 		public int state = 1;
 
 		void Start()
 		{
-			Button btn = _Button.GetComponent<Button>();
-			btn.onClick.AddListener(TaskOnClick);
+			
 		}
 
-		void TaskOnClick()
-		{
-			Debug.Log("You have clicked the mono action button ("+ buttonId + ")! The action code is : "+ actionCode);
-		}
-
-		public void SetButton(GameObject _parent, string _buttonId, Vector3 _position, float _heigth, float _width, string _text, int _actionCode, float _size, int _state)
+	
+		public void SetSelectionBox(GameObject _parent, string _selectionBoxId, Vector3 _position, float _heigth, float _width, string _text_label, Dictionary<int, string> _dicValues, int _actionCode, float _size, int _state)
 		{
 			this.parent = _parent;
-			this.buttonId = _buttonId;
+			this.selectionBoxId = _selectionBoxId;
 			this.position = _position;
 			this.height = _heigth;
 			this.width = _width;
-			this.text = _text;
+			this.text_label = _text_label;
+			this.dicValues = _dicValues;
 			this.actionCode = _actionCode;
 			this.size = _size;
 			this.state = _state;
 
-			SetId(_buttonId);
+			SetId(selectionBoxId);
 			SetSize(_size);
 			//SetHeigth(_heigth);
 			//SetWidth(_width);
-			SetText(_text);
+			SetSelectionLabel(text_label);
+			SetSelectionValues(_dicValues);
 
 
 		}
@@ -54,9 +54,9 @@ namespace MaterialUI
 			this.parent = _parent;
 		}
 
-		public void SetId(string _buttonId)
+		public void SetId(string _selectionBoxId)
 		{
-			gameObject.name = buttonId;
+			gameObject.name = _selectionBoxId;
 		}
 
 		public void SetHeigth(float _height)
@@ -79,9 +79,18 @@ namespace MaterialUI
 			rt.sizeDelta = new Vector2(_width, _height);
 		}
 
-		public void SetText(string _text)
+		public void SetSelectionLabel(string _selection_label)
 		{
-			gameObject.GetComponentInChildren<Text>().text = _text;
+			Debug.Log("GameObject Name is " + gameObject.name);
+			//checkText.GetComponent<ToggleTextChanger>().onText = _text_on;
+			//checkText.GetComponent<ToggleTextChanger>().offText = _text_off;
+		}
+
+		public void SetSelectionValues(Dictionary<int, string> _dicValues)
+		{
+			Debug.Log("GameObject Name is " + gameObject.name);
+			gameObject.GetComponent<SelectionBoxConfig>().SetListItem(_dicValues);
+			//checkText.GetComponent<ToggleTextChanger>().offText = _text_off;
 		}
 
 		public void SetActionCode(int _actionCode)

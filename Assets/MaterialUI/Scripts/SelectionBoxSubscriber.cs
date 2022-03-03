@@ -31,7 +31,9 @@ namespace MaterialUI
 
 		void DoThing (int id)
 		{
-			Debug.Log ("'" + config.listItems[id] + "' picked, ID: " + id);
+			string objId = gameObject.GetComponent<SelectionBoxAction>().selectionBoxId;
+			int actionCode = gameObject.GetComponent<SelectionBoxAction>().actionCode;
+			Debug.Log ("Ici le code réponse à GAMA depuis '"+ objId+"' with action code "+ actionCode+" : "+"'" + config.listItems[id] + "' picked, ID: " + id);
 		}
 	}
 }

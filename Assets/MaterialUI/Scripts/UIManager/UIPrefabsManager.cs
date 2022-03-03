@@ -196,9 +196,15 @@ namespace MaterialUI
 				Create_SelectionBox_Flat("SelectionBox_Flat", MainPanel, new Vector3(294, -228, 0));
 			}
 
-			if (GUI.Button(new Rect(10, 270, 180, 20), "SelectionBox")) {
+			if (GUI.Button(new Rect(10, 270, 180, 20), "SelectionBox*")) {
 				Debug.Log(" -  SelectionBox - ");
-				Create_SelectionBox("SelectionBox", MainPanel, new Vector3(294, -276, 0));
+				Dictionary<int, string> dicValues = new Dictionary<int, string>();
+				dicValues.Add(0, "A");
+				dicValues.Add(1, "B");
+				dicValues.Add(2, "C");
+				dicValues.Add(3, "D");
+				dicValues.Add(4, "E");
+				Create_SelectionBox("SelectionBox", MainPanel, "selectionboxId1",  new Vector3(294, -276, 0), 10f, 10f, "_SELECTION_", dicValues, 15, 1, 1);
 			}
 
 			if (GUI.Button(new Rect(10, 300, 180, 20), "Slider")) {
@@ -455,11 +461,15 @@ namespace MaterialUI
 		}
 
 
-		GameObject Create_SelectionBox(string prefabName, GameObject parent, Vector3 position)
+		GameObject Create_SelectionBox(string prefabName, GameObject parent, string selectionBoxId, Vector3 position, float height, float width, string selection_label, Dictionary<int, string> dicValues, int actionCode, int size, int state)
 		{
 			GameObject obj;
 			try {
 				obj = CreateDafault(prefabName, parent, position);
+				obj.name = "parent_" + selectionBoxId;
+				GameObject child = obj.transform.GetChild(2).gameObject;
+				child.GetComponent<SelectionBoxAction>().SetSelectionBox(obj, selectionBoxId, position, height, width, selection_label, dicValues, actionCode, size, state);
+
 				return obj;
 			} catch {
 				return null;
