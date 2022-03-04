@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
+using wox.serial;
 
 namespace MaterialUI
 {
@@ -8,6 +9,7 @@ namespace MaterialUI
 	{
 		public GameObject parent;
 		public Button _Button;
+		public string topic;
 		public string buttonId = "";
 		public Vector3 position = new Vector3(0,0,0);
 		public float height = 0.0f;
@@ -26,9 +28,18 @@ namespace MaterialUI
 		void TaskOnClick()
 		{
 			Debug.Log("You have clicked the mono action button ("+ buttonId + ")! The action code is : "+ actionCode);
+			UIActionMessage msg = new UIActionMessage(buttonId, actionCode, topic) ;
+			string serial = WoxSerializer.serializeObject(msg);
+			Debug.Log("Serialized Object is : " + serial);
 		}
 
-		public void SetButton(GameObject _parent, string _buttonId, Vector3 _position, float _heigth, float _width, string _text, int _actionCode, float _size, int _state)
+		public void SetButton(string _topic, GameObject _parent, string _buttonId, Vector3 _position, float _heigth, float _width, string _text, int _actionCode, float _size, int _state)
+		{
+			SetTopic(_topic);
+			SetButton(_parent, _buttonId, _position, _heigth, _width, _text, _actionCode, _size, _state);
+		}
+
+			public void SetButton(GameObject _parent, string _buttonId, Vector3 _position, float _heigth, float _width, string _text, int _actionCode, float _size, int _state)
 		{
 			this.parent = _parent;
 			this.buttonId = _buttonId;
@@ -40,6 +51,7 @@ namespace MaterialUI
 			this.size = _size;
 			this.state = _state;
 
+			SetTopic(DefaultSettings.DEFAULT_TOPIC);
 			SetId(_buttonId);
 			SetSize(_size);
 			//SetHeigth(_heigth);
@@ -47,6 +59,11 @@ namespace MaterialUI
 			SetText(_text);
 
 
+		}
+
+		public void SetTopic(string _topic)
+		{
+			this.topic = _topic;
 		}
 
 		public void SetParent(GameObject _parent)

@@ -10,12 +10,14 @@
 
 using UnityEngine;
 using UnityEngine.UI;
+using wox.serial;
 
 namespace MaterialUI
 {
 	[ExecuteInEditMode]
 	public class SwitchConfig : MonoBehaviour
 	{
+		public GameObject switchObj;
 		public float animationDuration = 0.5f;
 
 		public Color onColor;
@@ -102,8 +104,18 @@ namespace MaterialUI
 
 			animStartTime = Time.realtimeSinceStartup;
 			state = 1;
-
+			GameObject textObject = switchObj.GetComponent<SwitchAction>().textObject;
+			textObject.GetComponent<Text>().text = switchObj.GetComponent<SwitchAction>().text_on;
 			Debug.Log("Switch On :  Ici mettre le code pour traiter l'envoie à GAMA");
+
+			switchObj.GetComponent<SwitchAction>().actionCode = 1;
+			Debug.Log("You have clicked the switch box '" + switchObj.GetComponent<SwitchAction>().switchId +
+				"' ! Toggle is On. The action code is : " + switchObj.GetComponent<SwitchAction>().actionCode);
+
+			UIActionMessage msg = new UIActionMessage(switchObj.GetComponent<SwitchAction>().switchId,
+				switchObj.GetComponent<SwitchAction>().actionCode, switchObj.GetComponent<SwitchAction>().topic);
+			string serial = WoxSerializer.serializeObject(msg);
+			Debug.Log("Serialized Object is (SwitchBox) : " + serial);
 		}
 
 		private void TurnOnSilent()
@@ -134,7 +146,17 @@ namespace MaterialUI
 			animStartTime = Time.realtimeSinceStartup;
 			state = 2;
 
+			GameObject textObject = switchObj.GetComponent<SwitchAction>().textObject;
+			textObject.GetComponent<Text>().text = switchObj.GetComponent<SwitchAction>().text_off;
 			Debug.Log("Switch Off :  Ici mettre le code pour traiter l'envoie à GAMA");
+
+			switchObj.GetComponent<SwitchAction>().actionCode = 0;
+			Debug.Log("You have clicked the switch box '" + switchObj.GetComponent<SwitchAction>().switchId +
+				"' ! Toggle is On. The action code is : " + switchObj.GetComponent<SwitchAction>().actionCode);
+			UIActionMessage msg = new UIActionMessage(switchObj.GetComponent<SwitchAction>().switchId,
+				switchObj.GetComponent<SwitchAction>().actionCode, switchObj.GetComponent<SwitchAction>().topic);
+			string serial = WoxSerializer.serializeObject(msg);
+			Debug.Log("Serialized Object is :  (SwitchBox)" + serial);
 		}
 
 		private void TurnOffSilent()

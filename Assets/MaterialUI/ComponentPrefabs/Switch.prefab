@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 22200000}
   - component: {fileID: 11400002}
   - component: {fileID: 11400000}
-  - component: {fileID: 11400646}
+  - component: {fileID: 1712792139168926768}
   m_Layer: 5
   m_Name: Text
   m_TagString: Untagged
@@ -93,7 +93,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   theToggle: {fileID: 11400006}
---- !u!114 &11400646
+--- !u!114 &1712792139168926768
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -102,10 +102,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 100000}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fa426bcca4f956042be28bfa0345eed4, type: 3}
+  m_Script: {fileID: 11500000, guid: e9151adc5dcdc472e8412b0e1e1efad3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  actionCode: 0
+  switchObj: {fileID: 100002}
   onText: Switch On
   offText: Switch Off
 --- !u!1 &100002
@@ -248,18 +248,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 11400646}
-        m_TargetAssemblyTypeName: ToggleTextChanger, Assembly-CSharp
-        m_MethodName: ToggleText
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
   m_IsOn: 0
 --- !u!114 &11400008
 MonoBehaviour:
@@ -273,6 +261,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b2e9b5c218b45fa4888c4325f21cabee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  switchObj: {fileID: 100002}
+  textObject: {fileID: 100000}
   animationDuration: 0.5
   onColor: {r: 0, g: 0.5882353, b: 0.53333336, a: 1}
   offColor: {r: 1, g: 1, b: 1, a: 1}
@@ -338,6 +328,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   parent: {fileID: 100006}
+  textObject: {fileID: 100000}
+  topic: 
   switchId: 
   position: {x: 0, y: 0, z: 0}
   height: 0
@@ -347,6 +339,7 @@ MonoBehaviour:
   actionCode: 0
   size: 1
   state: 1
+  isToggledOn: 0
 --- !u!1 &100004
 GameObject:
   m_ObjectHideFlags: 0

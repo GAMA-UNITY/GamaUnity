@@ -11,15 +11,18 @@
 using MaterialUI;
 using UnityEngine;
 using UnityEngine.UI;
+using wox.serial;
 
 [ExecuteInEditMode]
 public class ToggleTextChanger : MonoBehaviour
 {
 	private Text thisText;
 
-	public int actionCode;
+	public GameObject checkBoxObj; 
+	
 	public string onText;
 	public string offText;
+
 
 	void Awake ()
 	{
@@ -29,20 +32,35 @@ public class ToggleTextChanger : MonoBehaviour
 
 	public void ToggleText(bool isToggledOn)
 	{
+		
 		if (isToggledOn) {
 			thisText.text = onText;
-			Debug.Log("You have clicked the checkbox ! Toggle is On. The action code is : " + actionCode);
+			checkBoxObj.GetComponent<CheckBoxAction>().actionCode = 1;
+			Debug.Log("You have clicked the checkbox '"+ checkBoxObj.GetComponent<CheckBoxAction>().checkBoxId +
+				"' ! Toggle is On. The action code is : " + checkBoxObj.GetComponent<CheckBoxAction>().actionCode);
+
+			UIActionMessage msg = new UIActionMessage(checkBoxObj.GetComponent<CheckBoxAction>().checkBoxId,
+				checkBoxObj.GetComponent<CheckBoxAction>().actionCode, checkBoxObj.GetComponent<CheckBoxAction>().topic);
+			string serial = WoxSerializer.serializeObject(msg);
+			Debug.Log("Serialized Object is : " + serial);
+
 		} else {
 			thisText.text = offText;
-			Debug.Log("You have clicked the checkbox ! Toggle is Off. The action code is : " + actionCode);
+			checkBoxObj.GetComponent<CheckBoxAction>().actionCode = 0;
+			Debug.Log("You have clicked the checkbox '" + checkBoxObj.GetComponent<CheckBoxAction>().checkBoxId +
+				"' ! Toggle is On. The action code is : "+ checkBoxObj.GetComponent<CheckBoxAction>().actionCode);
+			UIActionMessage msg = new UIActionMessage(checkBoxObj.GetComponent<CheckBoxAction>().checkBoxId,
+				checkBoxObj.GetComponent<CheckBoxAction>().actionCode, checkBoxObj.GetComponent<CheckBoxAction>().topic);
+			string serial = WoxSerializer.serializeObject(msg);
+			Debug.Log("Serialized Object is : " + serial);
 		}
 		
 	}
 
 
-	public void SetText(string _text_on, string _text_off)
+	public void SetToggleTextChanger()
 	{
-		this.onText = _text_on;
-		this.offText = _text_off;
+		this.onText = checkBoxObj.GetComponent<CheckBoxAction>().text_on;
+		this.offText = checkBoxObj.GetComponent<CheckBoxAction>().text_off;
 	}
 }

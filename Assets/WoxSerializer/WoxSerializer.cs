@@ -124,10 +124,7 @@ namespace wox.serial
             if(builder.ToString()!= null)
                 return builder.ToString();
             else
-                return "";
-
-
-           
+                return "";           
         }
 
 		public static Object deserializeFromString(String content)

@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
+using System;
 
 namespace MaterialUI
 {
@@ -10,6 +11,7 @@ namespace MaterialUI
 		public GameObject parent;
 		public Text placeholderText;
 
+		public string topic;
 		public string textInputId = "";
 		public Vector3 position = new Vector3(0, 0, 0);
 		public float height = 0.0f;
@@ -29,6 +31,17 @@ namespace MaterialUI
 		void Update()
 		{
 
+		}
+
+		public void SetTextInput(string _topic, GameObject _parent, string _textInputId, Vector3 _position, float _heigth, float _width, string _text_content, int _actionCode, float _size, int _state)
+		{
+			SetTopic(_topic);
+			SetTextInput(_parent, _textInputId, _position, _heigth, _width, _text_content, _actionCode, _size, _state);
+		}
+
+		private void SetTopic(string _topic)
+		{
+			this.topic = _topic;
 		}
 
 		public void SetTextInput(GameObject _parent, string _textInputId, Vector3 _position, float _heigth, float _width, string _text_content, int _actionCode, float _size, int _state)

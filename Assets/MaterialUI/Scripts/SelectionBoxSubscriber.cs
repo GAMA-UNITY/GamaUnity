@@ -10,6 +10,7 @@
 
 using UnityEngine;
 using System.Collections;
+using wox.serial;
 
 namespace MaterialUI
 {
@@ -33,7 +34,11 @@ namespace MaterialUI
 		{
 			string objId = gameObject.GetComponent<SelectionBoxAction>().selectionBoxId;
 			int actionCode = gameObject.GetComponent<SelectionBoxAction>().actionCode;
+			string topic = gameObject.GetComponent<SelectionBoxAction>().topic;
 			Debug.Log ("Ici le code réponse à GAMA depuis '"+ objId+"' with action code "+ actionCode+" : "+"'" + config.listItems[id] + "' picked, ID: " + id);
+			UIActionMessage msg = new UIActionMessage(objId, id, topic);
+			string serial = WoxSerializer.serializeObject(msg);
+			Debug.Log("Serialized Object is : " + serial);
 		}
 	}
 }

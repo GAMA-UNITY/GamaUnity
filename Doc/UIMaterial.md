@@ -47,7 +47,7 @@ GameObject Create_Checkbox(string prefabName, GameObject parent, string checkBox
 
 ```
 GameObject Create_DialogBox_Normal(string prefabName, GameObject parent, string dialogBoxId, Vector3 position, float height, float length, string dialog_title, string dialog_content, string yes_text, string no_text, int actionCode, float size, int state)
-```etat
+``` 
 
 ## Divider 
 - Divider_Dark

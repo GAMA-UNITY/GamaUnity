@@ -12,6 +12,7 @@ using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
+using wox.serial;
 
 namespace MaterialUI
 {
@@ -115,8 +116,17 @@ namespace MaterialUI
 			state = 2;
 
 			Debug.Log("Text from the Text Input '" + parent.name + "' Action code : " + gameObject.GetComponent<TextInputAction>().textInputId + " Text to send : " + displayText.text);
-		}
 
+			
+			string objId = gameObject.GetComponent<TextInputAction>().textInputId;
+			int actionCode = gameObject.GetComponent<TextInputAction>().actionCode;
+			string topic = gameObject.GetComponent<TextInputAction>().topic;
+			//string text_content = gameObject.GetComponent<TextInputAction>().text_content;
+			UIActionMessage msg = new UIActionMessage(objId, actionCode, topic, displayText.text);
+			string serial = WoxSerializer.serializeObject(msg);
+			Debug.Log("Serialized Object is : " + serial);
+		}
+		 
 		public void CalculateHeight ()
 		{
 			StartCoroutine (DelayedHeight());

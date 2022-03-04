@@ -211,13 +211,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   parent: {fileID: 100010}
-  CheckText: {fileID: 153776}
-  buttonId: 
-  CheckBoxToggle: {fileID: 100006}
+  checkText: {fileID: 0}
+  checkBoxToggle: {fileID: 0}
+  checkBoxId: 
   position: {x: 0, y: 0, z: 0}
   height: 0
   width: 0
-  text: Button
+  text_on: CheckBox On
+  text_off: CheckBox Off
   actionCode: 0
   size: 1
   state: 1
@@ -482,7 +483,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fa426bcca4f956042be28bfa0345eed4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  actionCode: 0
+  checkBoxObj: {fileID: 100006}
   onText: Checkbox On
   offText: Checkbox Off
 --- !u!1 &169416

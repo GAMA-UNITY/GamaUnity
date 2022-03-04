@@ -12,6 +12,7 @@ using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
+using wox.serial;
 
 namespace MaterialUI
 {
@@ -208,7 +209,16 @@ namespace MaterialUI
 			}
 
 			Debug.Log(" Ici mettre le code pour envoyer à Gama -->  " + slider.value.ToString());
-		}
+
+			gameObject.GetComponent<SliderLabelValueAction>().actionCode = float.Parse(slider.value.ToString());
+			string objId = gameObject.GetComponent<SliderLabelValueAction>().sliderId;
+			float actionCode = gameObject.GetComponent<SliderLabelValueAction>().actionCode;
+			string topic = gameObject.GetComponent<SliderLabelValueAction>().topic;
+
+			UIActionMessage msg = new UIActionMessage(objId, actionCode, topic);
+			string serial = WoxSerializer.serializeObject(msg);
+			Debug.Log("Serialized Object is : " + serial);
+	}
 
         public void OnPointerDown (PointerEventData data)
 		{

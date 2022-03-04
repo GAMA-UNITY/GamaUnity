@@ -8,6 +8,7 @@ namespace MaterialUI
 	{
 
 		public GameObject parent;
+		public string topic;
 		public string sliderId = "";
 		public Vector3 position = new Vector3(0, 0, 0);
 		public float height = 0.0f;
@@ -29,6 +30,17 @@ namespace MaterialUI
 		void Update()
 		{
 
+		}
+
+		public void SetSlider(string _topic, GameObject _parent, string _sliderId, Vector3 _position, float _heigth, float _width, string _text_label, float _actionCode, float _size, int _state)
+		{
+			SetTopic(_topic);
+			SetSlider(_parent, _sliderId, _position, _heigth, _width, _text_label, _actionCode, _size, _state);
+		}
+
+		public void SetTopic(string _topic)
+		{
+			this.topic = _topic;
 		}
 
 		public void SetSlider(GameObject _parent, string _sliderId, Vector3 _position, float _heigth, float _width, string _text_label, float _actionCode, float _size, int _state)

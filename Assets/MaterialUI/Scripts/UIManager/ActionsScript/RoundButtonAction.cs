@@ -1,13 +1,16 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
+using System;
+using wox.serial;
 
 namespace MaterialUI
 {
 	public class RoundButtonAction : MonoBehaviour
 	{
 		public GameObject parent;
-	
+
+		public string topic;
 		public string buttonId = "";
 		public Vector3 position = new Vector3(0,0,0);
 		public float height = 0.0f;
@@ -26,8 +29,23 @@ namespace MaterialUI
 		public void TaskOnClick()
 		{
 			Debug.Log("You have clicked the Round Action Button! The action code is : "+ actionCode);
+			UIActionMessage msg = new UIActionMessage(buttonId, actionCode, topic);
+			string serial = WoxSerializer.serializeObject(msg);
+			Debug.Log("Serialized Object is : " + serial);
+
 		}
-	
+
+		public void SetRoundButton(string _topic, GameObject _parent, string _buttonId, Vector3 _position, float _heigth, float _width, string _icon, int _actionCode, float _size, int _state)
+		{
+			SetTopic(_topic);
+			SetRoundButton(_parent, _buttonId, _position, _heigth, _width, _icon, _actionCode, _size, _state);
+		}
+
+		private void SetTopic(string _topic)
+		{
+			this.topic = _topic;
+		}
+
 		public void SetRoundButton(GameObject _parent, string _buttonId, Vector3 _position, float _heigth, float _width, string _icon, int _actionCode, float _size, int _state)
 		{
 			this.parent = _parent;

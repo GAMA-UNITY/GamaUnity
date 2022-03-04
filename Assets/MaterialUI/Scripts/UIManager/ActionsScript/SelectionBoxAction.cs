@@ -2,6 +2,7 @@
 using UnityEngine.UI;
 using System.Collections;
 using System.Collections.Generic;
+using System;
 
 namespace MaterialUI
 {
@@ -9,8 +10,8 @@ namespace MaterialUI
 	{
 		public GameObject parent;
 		public string selectionBoxId = "";
-		
-		
+
+		public string topic;
 		public Vector3 position = new Vector3(0,0,0);
 		public float height = 0.0f;
 		public float width = 0.0f;
@@ -25,7 +26,17 @@ namespace MaterialUI
 			
 		}
 
-	
+		public void SetSelectionBox(string _topic, GameObject _parent, string _selectionBoxId, Vector3 _position, float _heigth, float _width, string _text_label, Dictionary<int, string> _dicValues, int _actionCode, float _size, int _state)
+		{
+			SetTopic(_topic);
+			SetSelectionBox(_parent, _selectionBoxId, _position, _heigth, _width, _text_label, _dicValues, _actionCode, _size, _state);
+		}
+
+		private void SetTopic(string _topic)
+		{
+			this.topic = _topic;
+		}
+
 		public void SetSelectionBox(GameObject _parent, string _selectionBoxId, Vector3 _position, float _heigth, float _width, string _text_label, Dictionary<int, string> _dicValues, int _actionCode, float _size, int _state)
 		{
 			this.parent = _parent;

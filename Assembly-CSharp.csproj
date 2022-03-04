@@ -247,6 +247,7 @@
     <Compile Include="Assets/MaterialUI/Scripts/Toaster.cs" />
     <Compile Include="Assets/MaterialUI/Scripts/ToggleConfig.cs" />
     <Compile Include="Assets/MaterialUI/Scripts/ToggleTextChanger.cs" />
+    <Compile Include="Assets/MaterialUI/Scripts/ToggleTextChangerSwitchUI.cs" />
     <Compile Include="Assets/MaterialUI/Scripts/UIManager/ActionsScript/ButtonAction.cs" />
     <Compile Include="Assets/MaterialUI/Scripts/UIManager/ActionsScript/CheckBoxAction.cs" />
     <Compile Include="Assets/MaterialUI/Scripts/UIManager/ActionsScript/DialogBoxAction.cs" />
@@ -258,6 +259,7 @@
     <Compile Include="Assets/MaterialUI/Scripts/UIManager/ActionsScript/SwitchAction.cs" />
     <Compile Include="Assets/MaterialUI/Scripts/UIManager/ActionsScript/TextAction.cs" />
     <Compile Include="Assets/MaterialUI/Scripts/UIManager/ActionsScript/TextInputAction.cs" />
+    <Compile Include="Assets/MaterialUI/Scripts/UIManager/Messaging/UIActionMessage.cs" />
     <Compile Include="Assets/MaterialUI/Scripts/UIManager/UICreator.cs" />
     <Compile Include="Assets/MaterialUI/Scripts/UIManager/UIPrefabsManager.cs" />
     <Compile Include="Assets/MiniMapCameraContainer.cs" />
@@ -269,10 +271,12 @@
     <Compile Include="Assets/Modal/ResponseModalWindow.cs" />
     <Compile Include="Assets/Modal/TestModalWindow.cs" />
     <Compile Include="Assets/PinchableScrollRectEmptyMap.cs" />
+    <Compile Include="Assets/Settings/DefaultSettings.cs" />
     <Compile Include="Assets/SliderControl.cs" />
     <Compile Include="Assets/TestScript/GamaAgent.cs" />
     <Compile Include="Assets/TestScript/PlaceUIElementAtWorldPosition.cs" />
     <Compile Include="Assets/UIElementDragger.cs" />
+    <Compile Include="Assets/Utils/TimeUtils.cs" />
     <Compile Include="Assets/WorldEnveloppe.cs" />
     <Compile Include="Assets/WorldShape.cs" />
     <Compile Include="Assets/Wox.cs" />
@@ -858,14 +862,8 @@
     <Reference Include="com.unity.multiplayer-hlapi.Editor">
       <HintPath>Library/ScriptAssemblies/com.unity.multiplayer-hlapi.Editor.dll</HintPath>
     </Reference>
-    <Reference Include="Unity.VSCode.Editor">
-      <HintPath>Library/ScriptAssemblies/Unity.VSCode.Editor.dll</HintPath>
-    </Reference>
     <Reference Include="UnityEngine.Advertisements">
       <HintPath>Library/ScriptAssemblies/UnityEngine.Advertisements.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.TextMeshPro.Editor">
-      <HintPath>Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.UI">
       <HintPath>Library/ScriptAssemblies/UnityEngine.UI.dll</HintPath>
@@ -873,17 +871,8 @@
     <Reference Include="Unity.Timeline">
       <HintPath>Library/ScriptAssemblies/Unity.Timeline.dll</HintPath>
     </Reference>
-    <Reference Include="com.unity.multiplayer-weaver.Editor">
-      <HintPath>Library/ScriptAssemblies/com.unity.multiplayer-weaver.Editor.dll</HintPath>
-    </Reference>
     <Reference Include="UnityEngine.XR.LegacyInputHelpers">
       <HintPath>Library/ScriptAssemblies/UnityEngine.XR.LegacyInputHelpers.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.Rider.Editor">
-      <HintPath>Library/ScriptAssemblies/Unity.Rider.Editor.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.2D.Tilemap.Editor">
-      <HintPath>Library/ScriptAssemblies/Unity.2D.Tilemap.Editor.dll</HintPath>
     </Reference>
     <Reference Include="UnityEditor.SpatialTracking">
       <HintPath>Library/ScriptAssemblies/UnityEditor.SpatialTracking.dll</HintPath>
@@ -894,9 +883,6 @@
     <Reference Include="Unity.VisualStudio.Editor">
       <HintPath>Library/ScriptAssemblies/Unity.VisualStudio.Editor.dll</HintPath>
     </Reference>
-    <Reference Include="Unity.TextMeshPro">
-      <HintPath>Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
-    </Reference>
     <Reference Include="Unity.Analytics.DataPrivacy">
       <HintPath>Library/ScriptAssemblies/Unity.Analytics.DataPrivacy.dll</HintPath>
     </Reference>
@@ -906,8 +892,26 @@
     <Reference Include="UnityEditor.UI">
       <HintPath>Library/ScriptAssemblies/UnityEditor.UI.dll</HintPath>
     </Reference>
+    <Reference Include="Unity.2D.Tilemap.Editor">
+      <HintPath>Library/ScriptAssemblies/Unity.2D.Tilemap.Editor.dll</HintPath>
+    </Reference>
     <Reference Include="com.unity.multiplayer-hlapi.Runtime">
       <HintPath>Library/ScriptAssemblies/com.unity.multiplayer-hlapi.Runtime.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.VSCode.Editor">
+      <HintPath>Library/ScriptAssemblies/Unity.VSCode.Editor.dll</HintPath>
+    </Reference>
+    <Reference Include="com.unity.multiplayer-weaver.Editor">
+      <HintPath>Library/ScriptAssemblies/com.unity.multiplayer-weaver.Editor.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.TextMeshPro.Editor">
+      <HintPath>Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Rider.Editor">
+      <HintPath>Library/ScriptAssemblies/Unity.Rider.Editor.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.TextMeshPro">
+      <HintPath>Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>

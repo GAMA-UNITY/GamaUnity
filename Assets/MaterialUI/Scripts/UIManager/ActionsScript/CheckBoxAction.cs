@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
+using System;
 
 namespace MaterialUI
 {
@@ -9,6 +10,7 @@ namespace MaterialUI
 		public GameObject parent;
 		public GameObject checkText;
 		public GameObject checkBoxToggle;
+		public string topic;
 		public string checkBoxId = "";
 		
 		
@@ -26,7 +28,18 @@ namespace MaterialUI
 			
 		}
 
-	
+
+		public void SetCheckBox(string topic, GameObject _parent, GameObject textGameObject, string _checkBoxId, Vector3 _position, float _heigth, float _width, string _text_on, string _text_off, int _actionCode, float _size, int _state)
+		{
+			SetCheckBox(_parent, textGameObject, _checkBoxId, _position, _heigth, _width, _text_on, _text_off, _actionCode, _size, _state);
+			SetTopic(topic);			
+		}
+
+		private void SetTopic(string _topic)
+		{
+			this.topic = _topic;
+		}
+
 		public void SetCheckBox(GameObject _parent, GameObject textGameObject, string _checkBoxId, Vector3 _position, float _heigth, float _width, string _text_on, string _text_off, int _actionCode, float _size, int _state)
 		{
 			this.parent = _parent;
@@ -46,6 +59,7 @@ namespace MaterialUI
 			//SetHeigth(_heigth);
 			//SetWidth(_width);
 			SetText(_text_on, _text_off);
+			SetTopic(DefaultSettings.DEFAULT_TOPIC);
 
 
 		}
@@ -102,5 +116,6 @@ namespace MaterialUI
 			this.state = _state;
 		}
 
+		
 	}
 }

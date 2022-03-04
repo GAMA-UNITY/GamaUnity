@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
+using System;
 
 namespace MaterialUI
 {
@@ -11,8 +12,8 @@ namespace MaterialUI
 		public GameObject dialogContentObject;
 		public GameObject buttonYes;
 		public GameObject buttonNo;
-		
 
+		public string topic;
 		public string dialogBoxId = "";
 		
 		
@@ -32,7 +33,17 @@ namespace MaterialUI
 			
 		}
 
-	
+		public void SetDialogBox(string _topic, GameObject _parent, string _dialogBoxId, Vector3 _position, float _heigth, float _width, string _dialog_title, string _dialog_content, string _text_yes, string _text_no, int _actionCode, float _size, int _state)
+		{
+			SetTopic(_topic);
+			SetDialogBox(_parent, _dialogBoxId, _position, _heigth, _width, _dialog_title, _dialog_content, _text_yes, _text_no, _actionCode, _size, _state);
+		}
+
+		private void SetTopic(string _topic)
+		{
+			this.topic = _topic;
+		}
+
 		public void SetDialogBox(GameObject _parent, string _dialogBoxId, Vector3 _position, float _heigth, float _width, string _dialog_title, string _dialog_content, string _text_yes, string _text_no, int _actionCode, float _size, int _state)
 		{
 			this.parent = _parent;

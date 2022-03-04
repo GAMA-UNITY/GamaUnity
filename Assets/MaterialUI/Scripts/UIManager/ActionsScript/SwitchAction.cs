@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
+using System;
 
 namespace MaterialUI
 {
@@ -8,15 +9,18 @@ namespace MaterialUI
 	{
 
 		public GameObject parent;
+		public GameObject textObject;
+		public string topic;
 		public string switchId = "";
 		public Vector3 position = new Vector3(0, 0, 0);
 		public float height = 0.0f;
 		public float width = 0.0f;
 		public string text_on = "Switch On text";
 		public string text_off = "Switch Off text";
-		public float actionCode = 0;
+		public int actionCode = 0;
 		public float size = 1; // the scale
 		public int state = 1;
+		public bool isToggledOn = false;
 
 
 
@@ -32,7 +36,18 @@ namespace MaterialUI
 
 		}
 
-		public void SetSwitch(GameObject _parent, string _switchId, Vector3 _position, float _heigth, float _width, string _text_on, string _text_off, float _actionCode, float _size, int _state)
+		public void SetSwitch(string _topic, GameObject _parent, string _switchId, Vector3 _position, float _heigth, float _width, string _text_on, string _text_off, int _actionCode, float _size, int _state)
+		{
+			SetTopic(_topic);
+			SetSwitch(_parent, _switchId, _position, _heigth, _width, _text_on, _text_off, _actionCode, _size, _state);
+		}
+
+		private void SetTopic(string _topic)
+		{
+			this.topic = _topic;
+		}
+
+		public void SetSwitch(GameObject _parent, string _switchId, Vector3 _position, float _heigth, float _width, string _text_on, string _text_off, int _actionCode, float _size, int _state)
 		{
 			this.parent = _parent;
 			this.switchId = _switchId;
@@ -104,6 +119,12 @@ namespace MaterialUI
 		public void SetState(int _state)
 		{
 			this.state = _state;
+		}
+
+
+		public void SetToggledOn(bool _isToggledOn)
+		{
+			this.isToggledOn = _isToggledOn;
 		}
 
 	}

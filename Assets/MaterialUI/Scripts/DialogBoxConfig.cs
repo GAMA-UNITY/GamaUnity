@@ -11,7 +11,7 @@
 using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
-
+using wox.serial;
 
 namespace MaterialUI
 {
@@ -88,7 +88,11 @@ namespace MaterialUI
 			Debug.Log(" Ici c'est le close du button");
 		}
 
-		public void CloseByYes(GameObject obj)
+		public void DestroyGameObject(GameObject obj)
+		{
+			Destroy(obj);
+		}
+		public void CloseByYes(GameObject dialogLayer)
 		{
 			currentBackgroundAlpha = backroundCanvasGroup.alpha;
 			currentPivotY = thisRectTransform.pivot.y;
@@ -100,13 +104,18 @@ namespace MaterialUI
 			animStartTime = Time.realtimeSinceStartup;
 			state = 2;
 
+			dialogLayer.GetComponent<DialogBoxAction>().actionCode = 1;
+			UIActionMessage msg = new UIActionMessage(dialogLayer.GetComponent<DialogBoxAction>().dialogBoxId,
+				dialogLayer.GetComponent<DialogBoxAction>().actionCode, dialogLayer.GetComponent<DialogBoxAction>().topic);
+			string serial = WoxSerializer.serializeObject(msg);
+			Debug.Log("Serialized Object is : " + serial);
 
 			Debug.Log(" Ici c'est le close du button by Yes");
 
-			Destroy(obj);
+		
 		}
-
-		public void CloseByNo(GameObject obj)
+		//dialogLayer
+		public void CloseByNo(GameObject dialogLayer)
 		{
 			currentBackgroundAlpha = backroundCanvasGroup.alpha;
 			currentPivotY = thisRectTransform.pivot.y;
@@ -118,8 +127,13 @@ namespace MaterialUI
 			animStartTime = Time.realtimeSinceStartup;
 			state = 2;
 
-			Debug.Log(" Ici c'est le close du button by No");
-			Destroy(obj);
+			dialogLayer.GetComponent<DialogBoxAction>().actionCode = 0;
+			UIActionMessage msg = new UIActionMessage(dialogLayer.GetComponent<DialogBoxAction>().dialogBoxId,
+				dialogLayer.GetComponent<DialogBoxAction>().actionCode, dialogLayer.GetComponent<DialogBoxAction>().topic);
+			string serial = WoxSerializer.serializeObject(msg);
+			Debug.Log("Serialized Object is : " + serial);
+
+			Debug.Log(" Ici c'est le close du button by No" );
 		}
 
 		void Update()
