@@ -109,7 +109,7 @@ namespace MaterialUI
 				dialogLayer.GetComponent<DialogBoxAction>().actionCode, dialogLayer.GetComponent<DialogBoxAction>().topic);
 			string serial = WoxSerializer.serializeObject(msg);
 			Debug.Log("Serialized Object is : " + serial);
-
+			GameObject.Find("MainUIManager").GetComponent<MainUIManager>().connector.Publish(dialogLayer.GetComponent<DialogBoxAction>().topic, serial);
 			Debug.Log(" Ici c'est le close du button by Yes");
 
 		
@@ -132,7 +132,7 @@ namespace MaterialUI
 				dialogLayer.GetComponent<DialogBoxAction>().actionCode, dialogLayer.GetComponent<DialogBoxAction>().topic);
 			string serial = WoxSerializer.serializeObject(msg);
 			Debug.Log("Serialized Object is : " + serial);
-
+			GameObject.Find("MainUIManager").GetComponent<MainUIManager>().connector.Publish(dialogLayer.GetComponent<DialogBoxAction>().topic, serial);
 			Debug.Log(" Ici c'est le close du button by No" );
 		}
 

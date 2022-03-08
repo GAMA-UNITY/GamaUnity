@@ -10,7 +10,7 @@ namespace MaterialUI
 		public GameObject parent;
 		public GameObject checkText;
 		public GameObject checkBoxToggle;
-		public string topic;
+		public string topic = DefaultSettings.DEFAULT_TOPIC;
 		public string checkBoxId = "";
 		
 		
@@ -59,9 +59,6 @@ namespace MaterialUI
 			//SetHeigth(_heigth);
 			//SetWidth(_width);
 			SetText(_text_on, _text_off);
-			SetTopic(DefaultSettings.DEFAULT_TOPIC);
-
-
 		}
 
 		public void SetParent(GameObject _parent)

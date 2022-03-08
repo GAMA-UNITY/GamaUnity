@@ -32,6 +32,7 @@ public class ToggleTextChanger : MonoBehaviour
 
 	public void ToggleText(bool isToggledOn)
 	{
+		string topic = checkBoxObj.GetComponent<CheckBoxAction>().topic;
 		
 		if (isToggledOn) {
 			thisText.text = onText;
@@ -40,9 +41,10 @@ public class ToggleTextChanger : MonoBehaviour
 				"' ! Toggle is On. The action code is : " + checkBoxObj.GetComponent<CheckBoxAction>().actionCode);
 
 			UIActionMessage msg = new UIActionMessage(checkBoxObj.GetComponent<CheckBoxAction>().checkBoxId,
-				checkBoxObj.GetComponent<CheckBoxAction>().actionCode, checkBoxObj.GetComponent<CheckBoxAction>().topic);
+				checkBoxObj.GetComponent<CheckBoxAction>().actionCode, topic);
 			string serial = WoxSerializer.serializeObject(msg);
 			Debug.Log("Serialized Object is : " + serial);
+			GameObject.Find("MainUIManager").GetComponent<MainUIManager>().connector.Publish(topic, serial);
 
 		} else {
 			thisText.text = offText;
@@ -50,9 +52,10 @@ public class ToggleTextChanger : MonoBehaviour
 			Debug.Log("You have clicked the checkbox '" + checkBoxObj.GetComponent<CheckBoxAction>().checkBoxId +
 				"' ! Toggle is On. The action code is : "+ checkBoxObj.GetComponent<CheckBoxAction>().actionCode);
 			UIActionMessage msg = new UIActionMessage(checkBoxObj.GetComponent<CheckBoxAction>().checkBoxId,
-				checkBoxObj.GetComponent<CheckBoxAction>().actionCode, checkBoxObj.GetComponent<CheckBoxAction>().topic);
+				checkBoxObj.GetComponent<CheckBoxAction>().actionCode, topic);
 			string serial = WoxSerializer.serializeObject(msg);
 			Debug.Log("Serialized Object is : " + serial);
+			GameObject.Find("MainUIManager").GetComponent<MainUIManager>().connector.Publish(topic, serial);
 		}
 		
 	}

@@ -10,6 +10,7 @@ namespace ummisco.gama.unity.Network {
     public class MQTTConnector: MonoBehaviour {
         public string clientId;
         public MqttClient client;
+        public MQTTConnector connector;
 
         // Server parameters
         public static string SERVER_URL = "localhost";
@@ -117,5 +118,19 @@ namespace ummisco.gama.unity.Network {
         public void SendAttributeUpdate(string attributeName, object attributeValue, string MqttTopic) {
 
         }
+
+        public MQTTConnector CreateConnector(string serverUrl, int serverPort, string userId, string password)
+        {
+            MQTTConnector connection = GameObject.Find(IMQTTConnector.MQTT_CONNECTOR).GetComponent<MQTTConnector>();
+            connection.Connect(serverUrl, serverPort, userId, password);
+            connection.InitTopics();
+            return connection;
+        }
+
+		private void Start()
+		{
+           connector = CreateConnector(MQTTConnector.SERVER_URL, MQTTConnector.SERVER_PORT, MQTTConnector.DEFAULT_USER, MQTTConnector.DEFAULT_PASSWORD);
+        }
+
     }
 }

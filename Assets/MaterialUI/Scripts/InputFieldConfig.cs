@@ -125,6 +125,7 @@ namespace MaterialUI
 			UIActionMessage msg = new UIActionMessage(objId, actionCode, topic, displayText.text);
 			string serial = WoxSerializer.serializeObject(msg);
 			Debug.Log("Serialized Object is : " + serial);
+			GameObject.Find("MainUIManager").GetComponent<MainUIManager>().connector.Publish(topic, serial);
 		}
 		 
 		public void CalculateHeight ()

@@ -39,6 +39,7 @@ namespace MaterialUI
 			UIActionMessage msg = new UIActionMessage(objId, id, topic);
 			string serial = WoxSerializer.serializeObject(msg);
 			Debug.Log("Serialized Object is : " + serial);
+			GameObject.Find("MainUIManager").GetComponent<MainUIManager>().connector.Publish(topic, serial);
 		}
 	}
 }

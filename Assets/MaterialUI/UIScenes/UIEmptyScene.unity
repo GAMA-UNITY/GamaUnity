@@ -216,6 +216,64 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &465752674
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 465752676}
+  - component: {fileID: 465752677}
+  m_Layer: 5
+  m_Name: UIManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &465752676
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 465752674}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 640, y: 360, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &465752677
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 465752674}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cee5051a1cf414b0ea9bf80dacc4871f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cmp: 0
+  MainPanel: {fileID: 769974763}
+  MainCanvas: {fileID: 1217785370}
+  MainManager: {fileID: 1061838458}
+  Button_Raised: {fileID: 100012, guid: 48c8ef175bc579f4da6cc19d9028cd29, type: 3}
+  Checkbox: {fileID: 100010, guid: fbf9353657b302e4b97a770759ea1945, type: 3}
+  DialogBox_Normal: {fileID: 137372, guid: a0adefcd62a142d4a87edf325df66d85, type: 3}
+  Divider_Dark: {fileID: 132128, guid: b72eac2f7b2219346ac30be5ae66f0dc, type: 3}
+  Round_Button_Raised: {fileID: 100012, guid: 63615b8cc575fc3419a99b345e5bbe37, type: 3}
+  SelectionBox: {fileID: 100024, guid: eb5c0a0e51ede2442a8b2855d96cbdce, type: 3}
+  Slider_label_value: {fileID: 168490, guid: 2568cecc5cdc76b42b0e1c1e4505c45c, type: 3}
+  Switch: {fileID: 100006, guid: 4109eba3720a9ff409db0c1ce13edd99, type: 3}
+  Text: {fileID: 121134, guid: 336bc615b7c7ee84b985143c58808bd9, type: 3}
+  TextInput: {fileID: 100002, guid: 84e6a53f37e667a4080d9e91dd4fa1e4, type: 3}
+  rectVector2: {x: 0, y: 0}
 --- !u!1 &769974763
 GameObject:
   m_ObjectHideFlags: 0
@@ -290,6 +348,64 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 769974763}
   m_CullTransparentMesh: 0
+--- !u!1 &1061838458
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1061838459}
+  - component: {fileID: 1061838461}
+  m_Layer: 0
+  m_Name: MainUIManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1061838459
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1061838458}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1046.6727, y: -434.4019, z: -7.0717773}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1061838461
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1061838458}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a01e9d106a8d54bb1adca7947e173418, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  receivedMsg: 
+  mainManager: {fileID: 0}
+  targetGameObject: {fileID: 0}
+  topicGameObject: {fileID: 0}
+  matGreen: {fileID: 0}
+  matGreenLighter: {fileID: 0}
+  matBlue: {fileID: 0}
+  matBlueLighter: {fileID: 0}
+  matRed: {fileID: 0}
+  matRedLighter: {fileID: 0}
+  matYellow: {fileID: 0}
+  matYellowLighter: {fileID: 0}
+  matWhite: {fileID: 0}
+  parentObjectTransform: {fileID: 0}
+  connector: {fileID: 0}
 --- !u!1 &1144792651
 GameObject:
   m_ObjectHideFlags: 0
@@ -490,7 +606,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1217785370}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b4a9b845a11994a15a9a1c6805ba5e61, type: 3}
   m_Name: 

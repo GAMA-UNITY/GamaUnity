@@ -115,7 +115,8 @@ namespace MaterialUI
 			UIActionMessage msg = new UIActionMessage(switchObj.GetComponent<SwitchAction>().switchId,
 				switchObj.GetComponent<SwitchAction>().actionCode, switchObj.GetComponent<SwitchAction>().topic);
 			string serial = WoxSerializer.serializeObject(msg);
-			Debug.Log("Serialized Object is (SwitchBox) : " + serial);
+			Debug.Log("--> Serialized Object is (SwitchBox) : " + serial);
+			GameObject.Find("MainUIManager").GetComponent<MainUIManager>().connector.Publish(switchObj.GetComponent<SwitchAction>().topic, serial);
 		}
 
 		private void TurnOnSilent()
@@ -156,7 +157,8 @@ namespace MaterialUI
 			UIActionMessage msg = new UIActionMessage(switchObj.GetComponent<SwitchAction>().switchId,
 				switchObj.GetComponent<SwitchAction>().actionCode, switchObj.GetComponent<SwitchAction>().topic);
 			string serial = WoxSerializer.serializeObject(msg);
-			Debug.Log("Serialized Object is :  (SwitchBox)" + serial);
+			Debug.Log("--> Serialized Object is :  (SwitchBox)" + serial);
+			GameObject.Find("MainUIManager").GetComponent<MainUIManager>().connector.Publish(switchObj.GetComponent<SwitchAction>().topic, serial);
 		}
 
 		private void TurnOffSilent()
