@@ -36,22 +36,21 @@ public class ToggleTextChangerSwitchUI: MonoBehaviour
 		if (isToggledOn) {
 			thisText.text = onText;
 			
-			switchObj.GetComponent<SwitchAction>().actionCode = 1;
+			
 			Debug.Log("You have clicked the switch box '"+ switchObj.GetComponent<SwitchAction>().switchId +
-				"' ! Toggle is On. The action code is : " + switchObj.GetComponent<SwitchAction>().actionCode);
+				"' ! Toggle is On. The action code is : " + switchObj.GetComponent<SwitchAction>().GetActionOn());
 
 			UIActionMessage msg = new UIActionMessage(switchObj.GetComponent<SwitchAction>().switchId,
-				switchObj.GetComponent<SwitchAction>().actionCode, switchObj.GetComponent<SwitchAction>().topic);
+				switchObj.GetComponent<SwitchAction>().GetActionOn(), switchObj.GetComponent<SwitchAction>().topic);
 			string serial = WoxSerializer.serializeObject(msg);
 			Debug.Log("Serialized Object is (SwitchBox) : " + serial);
 
 		} else {
 			thisText.text = offText;
-			switchObj.GetComponent<CheckBoxAction>().actionCode = 0;
 			Debug.Log("You have clicked the switch box '" + switchObj.GetComponent<SwitchAction>().switchId +
-				"' ! Toggle is On. The action code is : "+ switchObj.GetComponent<SwitchAction>().actionCode);
+				"' ! Toggle is On. The action code is : "+ switchObj.GetComponent<SwitchAction>().GetActionOff());
 			UIActionMessage msg = new UIActionMessage(switchObj.GetComponent<SwitchAction>().switchId,
-				switchObj.GetComponent<SwitchAction>().actionCode, switchObj.GetComponent<SwitchAction>().topic);
+				switchObj.GetComponent<SwitchAction>().GetActionOff(), switchObj.GetComponent<SwitchAction>().topic);
 			string serial = WoxSerializer.serializeObject(msg);
 			Debug.Log("Serialized Object is :  (SwitchBox)" + serial);
 		}
@@ -66,23 +65,21 @@ public class ToggleTextChangerSwitchUI: MonoBehaviour
 
 		if (isToggledOn) {
 			thisText.text = onText;
-			switchObj.GetComponent<SwitchAction>().actionCode = 1;
 			Debug.Log("You have clicked the switch box '" + switchObj.GetComponent<SwitchAction>().switchId +
-				"' ! Toggle is On. The action code is : " + switchObj.GetComponent<SwitchAction>().actionCode);
+				"' ! Toggle is On. The action code is : " + switchObj.GetComponent<SwitchAction>().GetActionOn());
 
 			UIActionMessage msg = new UIActionMessage(switchObj.GetComponent<SwitchAction>().switchId,
-				switchObj.GetComponent<SwitchAction>().actionCode, switchObj.GetComponent<SwitchAction>().topic);
+				switchObj.GetComponent<SwitchAction>().GetActionOn(), switchObj.GetComponent<SwitchAction>().topic);
 			string serial = WoxSerializer.serializeObject(msg);
 			Debug.Log("Serialized Object is (SwitchBox) : " + serial);
 
 			switchObj.GetComponent<SwitchAction>().SetToggledOn(false);
 		} else {
 			thisText.text = offText;
-			switchObj.GetComponent<SwitchAction>().actionCode = 0;
 			Debug.Log("You have clicked the switch box '" + switchObj.GetComponent<SwitchAction>().switchId +
-				"' ! Toggle is On. The action code is : " + switchObj.GetComponent<SwitchAction>().actionCode);
+				"' ! Toggle is On. The action code is : " + switchObj.GetComponent<SwitchAction>().GetActionOff());
 			UIActionMessage msg = new UIActionMessage(switchObj.GetComponent<SwitchAction>().switchId,
-				switchObj.GetComponent<SwitchAction>().actionCode, switchObj.GetComponent<SwitchAction>().topic);
+				switchObj.GetComponent<SwitchAction>().GetActionOff(), switchObj.GetComponent<SwitchAction>().topic);
 			string serial = WoxSerializer.serializeObject(msg);
 			Debug.Log("Serialized Object is :  (SwitchBox)" + serial);
 
@@ -91,10 +88,9 @@ public class ToggleTextChangerSwitchUI: MonoBehaviour
 
 	}
 
-
 	public void SetToggleTextChanger()
 	{
-		this.onText = switchObj.GetComponent<SwitchAction>().text_on;
-		this.offText = switchObj.GetComponent<SwitchAction>().text_off;
+		this.onText = switchObj.GetComponent<SwitchAction>().GetTextOn();
+		this.offText = switchObj.GetComponent<SwitchAction>().GetTextOff();
 	}
 }

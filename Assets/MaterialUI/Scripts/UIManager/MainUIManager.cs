@@ -22,13 +22,18 @@ namespace MaterialUI
         public static GameObject MainCamera;
         public static MainUIManager Instance { get { return m_Instance; } }
 
-        public string receivedMsg = "";
+        [Space(5)]
+        [Header("---- Main GameObjects ----")]
 
         public GameObject mainManager;
         public GameObject targetGameObject;
         public GameObject topicGameObject;
-        public object[] obj;
+        private GameObject mainTopicManager;
+        private GameObject agentCreator;
 
+
+        [Space(5)]
+        [Header("---- Material elements ----")]
         public Material matGreen;
         public Material matGreenLighter;
         public Material matBlue;
@@ -41,14 +46,29 @@ namespace MaterialUI
 
         public Transform parentObjectTransform;
 
-        private GameObject mainTopicManager;
-        private GameObject agentCreator;
+        [Space(5)]
+        [Header("---- Local variables ----")]
 
+        public string receivedMsg = "";
+        public object[] obj;
         public static Dictionary<string, string> agentsTopicDic = new Dictionary<string, string>();
-
         public MQTTConnector connector;
 
+        [Space(5)]
+        [Header("---- GameObjects instances  ----")]
 
+        public bool isColorTopic = true;
+        public bool isPositionTopic = true;
+        public bool isSetTopic = true;
+        public bool isGetTopic = true;
+        public bool isMonoFreeTopic = true;
+        public bool isMultiFreeTopic = true;
+        public bool isCreateTopic = true;
+        public bool isDestroyTopic = true;
+        public bool isMoveTopic = true;
+        public bool isNotificationTopic = true;
+        public bool isPropertyTopic = true;
+        public bool isMainTopic = true;
         void Awake()
         {
             m_Instance = this;
@@ -62,17 +82,17 @@ namespace MaterialUI
 
             // Create the Topic's manager GameObjects
             new GameObject(IMQTTConnector.COLOR_TOPIC_MANAGER).AddComponent<SerializeTopic>();
-            new GameObject(IMQTTConnector.COLOR_TOPIC_MANAGER).AddComponent<ColorTopic>();
-            new GameObject(IMQTTConnector.POSITION_TOPIC_MANAGER).AddComponent<PositionTopic>();
-            new GameObject(IMQTTConnector.SET_TOPIC_MANAGER).AddComponent<SetTopic>();
-            new GameObject(IMQTTConnector.GET_TOPIC_MANAGER).AddComponent<GetTopic>();
-            new GameObject(IMQTTConnector.MONO_FREE_TOPIC_MANAGER).AddComponent<MonoFreeTopic>();
-            new GameObject(IMQTTConnector.MULTIPLE_FREE_TOPIC_MANAGER).AddComponent<MultipleFreeTopic>();
-            new GameObject(IMQTTConnector.CREATE_TOPIC_MANAGER).AddComponent<CreateTopic>();
-            new GameObject(IMQTTConnector.DESTROY_TOPIC_MANAGER).AddComponent<DestroyTopic>();
-            new GameObject(IMQTTConnector.MOVE_TOPIC_MANAGER).AddComponent<MoveTopic>();
-            new GameObject(IMQTTConnector.NOTIFICATION_TOPIC_MANAGER).AddComponent<NotificationTopic>();
-            new GameObject(IMQTTConnector.PROPERTY_TOPIC_MANAGER).AddComponent<PropertyTopic>();
+            if (isColorTopic) new GameObject(IMQTTConnector.COLOR_TOPIC_MANAGER).AddComponent<ColorTopic>();
+            if (isPositionTopic) new GameObject(IMQTTConnector.POSITION_TOPIC_MANAGER).AddComponent<PositionTopic>();
+            if (isSetTopic) new GameObject(IMQTTConnector.SET_TOPIC_MANAGER).AddComponent<SetTopic>();
+            if (isGetTopic) new GameObject(IMQTTConnector.GET_TOPIC_MANAGER).AddComponent<GetTopic>();
+            if (isMonoFreeTopic) new GameObject(IMQTTConnector.MONO_FREE_TOPIC_MANAGER).AddComponent<MonoFreeTopic>();
+            if (isMultiFreeTopic) new GameObject(IMQTTConnector.MULTIPLE_FREE_TOPIC_MANAGER).AddComponent<MultipleFreeTopic>();
+            if (isCreateTopic) new GameObject(IMQTTConnector.CREATE_TOPIC_MANAGER).AddComponent<CreateTopic>();
+            if (isDestroyTopic) new GameObject(IMQTTConnector.DESTROY_TOPIC_MANAGER).AddComponent<DestroyTopic>();
+            if (isMoveTopic) new GameObject(IMQTTConnector.MOVE_TOPIC_MANAGER).AddComponent<MoveTopic>();
+            if (isNotificationTopic) new GameObject(IMQTTConnector.NOTIFICATION_TOPIC_MANAGER).AddComponent<NotificationTopic>();
+            if (isPropertyTopic) new GameObject(IMQTTConnector.PROPERTY_TOPIC_MANAGER).AddComponent<PropertyTopic>();
 
             new GameObject(IMQTTConnector.MQTT_CONNECTOR).AddComponent<MQTTConnector>();
 
@@ -399,6 +419,17 @@ namespace MaterialUI
                             Debug.Log("New received message -> " + receivedMsg);
                             Student studentJava = (Student)WoxSerializer.deserializeFromJavaString(receivedMsg);
                             Debug.Log("--> Result is : " + studentJava.printStudent());
+                            break;
+                        case IMQTTConnector.TOPIC_UI_CREATE:
+                            Debug.Log("-> Topic to deal with is : " + IMQTTConnector.TOPIC_UI_CREATE);
+                            Debug.Log("Load object from " + receivedMsg);
+
+                            Debug.Log("New received message -> " + receivedMsg);
+                            string javaClassPath = "\"ummisco.gama.unity.client.messages.UICreateMessage\"";
+                            string unityClassPath = "\"MaterialUI.UICreateMessage\" dotnettype=\"MaterialUI.UICreateMessage, Assembly-CSharp, Version = 0.0.0.0, Culture = neutral, PublicKeyToken = null\" ";
+                            UICreateMessage msg = (UICreateMessage)WoxSerializer.deserializeFromJavaString(receivedMsg, javaClassPath, unityClassPath);
+                            msg.printClass();
+                            GameObject.Find("UIManager").GetComponent<UIManager>().UICreate(msg);                       
                             break;
                         default:
                             //------------------------------------------------------------------------------

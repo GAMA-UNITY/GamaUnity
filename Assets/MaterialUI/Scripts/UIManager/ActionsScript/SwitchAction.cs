@@ -15,9 +15,7 @@ namespace MaterialUI
 		public Vector3 position = new Vector3(0, 0, 0);
 		public float height = 0.0f;
 		public float width = 0.0f;
-		public string text_on = "Switch On text";
-		public string text_off = "Switch Off text";
-		public int actionCode = 0;
+		public Hashtable option_action = new Hashtable();
 		public float size = 1; // the scale
 		public int state = 1;
 		public bool isToggledOn = false;
@@ -36,10 +34,10 @@ namespace MaterialUI
 
 		}
 
-		public void SetSwitch(string _topic, GameObject _parent, string _switchId, Vector3 _position, float _heigth, float _width, string _text_on, string _text_off, int _actionCode, float _size, int _state)
+		public void SetSwitch(string _topic, GameObject _parent, string _switchId, Vector3 _position, float _heigth, float _width, Hashtable _option_action, float _size, int _state)
 		{
 			SetTopic(_topic);
-			SetSwitch(_parent, _switchId, _position, _heigth, _width, _text_on, _text_off, _actionCode, _size, _state);
+			SetSwitch(_parent, _switchId, _position, _heigth, _width, _option_action, _size, _state);
 		}
 
 		private void SetTopic(string _topic)
@@ -47,16 +45,14 @@ namespace MaterialUI
 			this.topic = _topic;
 		}
 
-		public void SetSwitch(GameObject _parent, string _switchId, Vector3 _position, float _heigth, float _width, string _text_on, string _text_off, int _actionCode, float _size, int _state)
+		public void SetSwitch(GameObject _parent, string _switchId, Vector3 _position, float _heigth, float _width, Hashtable _option_action, float _size, int _state)
 		{
 			this.parent = _parent;
 			this.switchId = _switchId;
 			this.position = _position;
 			this.height = _heigth;
 			this.width = _width;
-			this.text_on = _text_on;
-			this.text_off = _text_off;
-			this.actionCode = _actionCode;
+			this.option_action = _option_action;
 			this.size = _size;
 			this.state = _state;
 
@@ -64,7 +60,7 @@ namespace MaterialUI
 			SetSize(_size);
 			//SetHeigth(_heigth);
 			//SetWidth(_width);
-			SetText(text_on, text_off);
+			SetActions(_option_action);
 
 
 		}
@@ -99,16 +95,21 @@ namespace MaterialUI
 			rt.sizeDelta = new Vector2(_width, _height);
 		}
 
-		public void SetText(string _switch_on_text, string _switch_off_text)
+		public void SetActions(Hashtable _option_action)
 		{
-			parent.transform.GetChild(1).gameObject.GetComponent<ToggleTextChanger>().onText = _switch_on_text;
-			parent.transform.GetChild(1).gameObject.GetComponent<ToggleTextChanger>().offText = _switch_off_text;
+			Debug.Log("GameObject Name is " + gameObject.name);
+			int cmp = 0;
+			string _text_on = "On";
+			string _text_off = "Off";
 
-		}
-
-		public void SetActionCode(int _actionCode)
-		{
-			this.actionCode = _actionCode;
+			foreach (DictionaryEntry st in option_action) {
+				cmp++;
+				if (cmp > 2) break;
+				if (cmp == 1) _text_on = (string)st.Value;
+				if (cmp == 2) _text_off = (string)st.Value;
+			}
+			parent.transform.GetChild(1).gameObject.GetComponent<ToggleTextChanger>().onText = _text_on;
+			parent.transform.GetChild(1).gameObject.GetComponent<ToggleTextChanger>().offText = _text_off;
 		}
 
 		public void SetSize(float _size)
@@ -126,6 +127,55 @@ namespace MaterialUI
 		{
 			this.isToggledOn = _isToggledOn;
 		}
+
+		public int GetActionOn()
+		{
+			int cmp = 0;
+			int actionOn = 0;
+			foreach (DictionaryEntry st in option_action) {
+				cmp++;
+				if (cmp > 2) break;
+				if (cmp == 1) actionOn = Int32.Parse((string)st.Key);
+			}
+			return actionOn;
+		}
+
+		public int GetActionOff()
+		{
+			int cmp = 0;
+			int actionOff = 0;
+			foreach (DictionaryEntry st in option_action) {
+				cmp++;
+				if (cmp > 2) break;
+				if (cmp == 2) actionOff = Int32.Parse((string)st.Key);
+			}
+			return actionOff;
+		}
+
+		public string GetTextOn()
+		{
+			int cmp = 0;
+			string textOn = "On";
+			foreach (DictionaryEntry st in option_action) {
+				cmp++;
+				if (cmp > 2) break;
+				if (cmp == 1) textOn = (string)st.Value;
+			}
+			return textOn;
+		}
+
+		public string GetTextOff()
+		{
+			int cmp = 0;
+			string textOff = "Off";
+			foreach (DictionaryEntry st in option_action) {
+				cmp++;
+				if (cmp > 2) break;
+				if (cmp == 2) textOff = (string)st.Value;
+			}
+			return textOff;
+		}
+
 
 	}
 }

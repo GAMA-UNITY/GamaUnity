@@ -153,11 +153,42 @@ namespace wox.serial
             return ob;
         }
 
+        public static Object deserializeFromJavaString(String content, String javaClassPath, String unityClassPath)
+        {
+            content = content.Replace("\"data.Student\"", "\"Student\" dotnettype=\"Student, Assembly-CSharp, Version = 0.0.0.0, Culture = neutral, PublicKeyToken = null\"  ");
+            content = content.Replace("\"data.Course\"", "\"Course\" dotnettype=\"Course, Assembly-CSharp, Version = 0.0.0.0, Culture = neutral, PublicKeyToken = null\" ");
+
+            //content = content.Replace("\"ummisco.gama.unity.client.messages.UICreateMessage\"", "\"MaterialUI.UICreateMessage\" dotnettype=\"MaterialUI.UICreateMessage, Assembly-CSharp, Version = 0.0.0.0, Culture = neutral, PublicKeyToken = null\" ");
+
+            content = content.Replace(javaClassPath, unityClassPath);
+
+            //this creates an XML reader, which will be used to de-serialize the object
+            //XmlTextReader xmlReader2 = new XmlTextReader(new System.IO.StringReader(content));
+            //XmlReader xmlReader2 = XmlReader.Create(new StringReader(content));
+
+            XmlReader xmlReader = XmlReader.Create(new StringReader(content));
+            //reader.Read();
+            //string inner = reader.ReadInnerXml();
+
+            //XmlTextReader xmlReader = new XmlTextReader(content);
+            //this creates the WOX reader
+            ObjectReader woxReader = new SimpleReader();
+            //Read the next node from the Stream. In this case it will be the Root Element
+            xmlReader.Read();
+            //reads the object from the XML file. We pass the xmlReader positioned in the first node!
+            Object ob = woxReader.read(xmlReader);
+            xmlReader.Close();
+            //Console.Out.WriteLine("Load object from " + content);
+            return ob;
+        }
+
+
         public static Object deserializeFromJavaString(String content)
         {
             content = content.Replace("\"data.Student\"", "\"Student\" dotnettype=\"Student, Assembly-CSharp, Version = 0.0.0.0, Culture = neutral, PublicKeyToken = null\"  ");
             content = content.Replace("\"data.Course\"", "\"Course\" dotnettype=\"Course, Assembly-CSharp, Version = 0.0.0.0, Culture = neutral, PublicKeyToken = null\" ");
 
+            
             //this creates an XML reader, which will be used to de-serialize the object
             //XmlTextReader xmlReader2 = new XmlTextReader(new System.IO.StringReader(content));
             //XmlReader xmlReader2 = XmlReader.Create(new StringReader(content));

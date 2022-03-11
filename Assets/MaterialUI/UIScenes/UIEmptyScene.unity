@@ -391,7 +391,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a01e9d106a8d54bb1adca7947e173418, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  receivedMsg: 
   mainManager: {fileID: 0}
   targetGameObject: {fileID: 0}
   topicGameObject: {fileID: 0}
@@ -405,7 +404,9 @@ MonoBehaviour:
   matYellowLighter: {fileID: 0}
   matWhite: {fileID: 0}
   parentObjectTransform: {fileID: 0}
+  receivedMsg: 
   connector: {fileID: 0}
+  isColorGameObject: 0
 --- !u!1 &1144792651
 GameObject:
   m_ObjectHideFlags: 0

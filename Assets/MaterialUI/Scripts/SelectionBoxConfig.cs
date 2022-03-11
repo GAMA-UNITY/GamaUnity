@@ -497,15 +497,14 @@ namespace MaterialUI
 				listItemObjects[selectionId].GetComponent<Image>().color = highlightColor;
 		}
 
-		public void SetListItem(Dictionary<int, string> dicValues)
+		public void SetListItem(Hashtable option_action)
 		{
-			listItems = new string[dicValues.Count];
+			listItems = new string[option_action.Count];
 			int cmp = 0;
-		foreach(KeyValuePair<int, string> kvp in dicValues)
-			{
-				listItems[cmp] = kvp.Value;
+			foreach (DictionaryEntry de in option_action) {
+				listItems[cmp] = (string)de.Value;
 				cmp++;
 			}
-}
+		}
 	}
 }

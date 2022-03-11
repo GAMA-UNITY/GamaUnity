@@ -22,9 +22,7 @@ namespace MaterialUI
 		public float width = 0.0f;
 		public string title = "Dialog Box Title";
 		public string text = "Dialog Box body text. Dialog Box body text 1. Dialog Box body text 2. Dialog Box body text 3. Dialog Box body text 4. ";
-		public string buttonYesText = "Yes";
-		public string buttonNoText = "No";
-		public int actionCode = 0;
+		Hashtable option_action = new Hashtable();
 		public float size = 1; // the scale
 		public int state = 1;
 
@@ -33,10 +31,10 @@ namespace MaterialUI
 			
 		}
 
-		public void SetDialogBox(string _topic, GameObject _parent, string _dialogBoxId, Vector3 _position, float _heigth, float _width, string _dialog_title, string _dialog_content, string _text_yes, string _text_no, int _actionCode, float _size, int _state)
+		public void SetDialogBox(string _topic, GameObject _parent, string _dialogBoxId, Vector3 _position, float _heigth, float _width, string _dialog_title, string _dialog_content, Hashtable _option_action, float _size, int _state)
 		{
 			SetTopic(_topic);
-			SetDialogBox(_parent, _dialogBoxId, _position, _heigth, _width, _dialog_title, _dialog_content, _text_yes, _text_no, _actionCode, _size, _state);
+			SetDialogBox(_parent, _dialogBoxId, _position, _heigth, _width, _dialog_title, _dialog_content, _option_action, _size, _state);
 		}
 
 		private void SetTopic(string _topic)
@@ -44,7 +42,7 @@ namespace MaterialUI
 			this.topic = _topic;
 		}
 
-		public void SetDialogBox(GameObject _parent, string _dialogBoxId, Vector3 _position, float _heigth, float _width, string _dialog_title, string _dialog_content, string _text_yes, string _text_no, int _actionCode, float _size, int _state)
+		public void SetDialogBox(GameObject _parent, string _dialogBoxId, Vector3 _position, float _heigth, float _width, string _dialog_title, string _dialog_content, Hashtable _option_action, float _size, int _state)
 		{
 			this.parent = _parent;
 			this.dialogBoxId = _dialogBoxId;
@@ -53,9 +51,7 @@ namespace MaterialUI
 			this.width = _width;
 			this.title = _dialog_title;
 			this.text = _dialog_content;
-			this.buttonYesText = _text_yes;
-			this.buttonNoText = _text_no;
-			this.actionCode = _actionCode;
+			this.option_action = _option_action;
 			this.size = _size;
 			this.state = _state;
 
@@ -65,7 +61,7 @@ namespace MaterialUI
 			//SetWidth(_width);
 			SetDialogTitleText(_dialog_title);
 			SetDialogContentText(_dialog_content);
-			SetButtonYesNoText(_text_yes, _text_no);
+			SetButtonYesNoText();
 
 
 		}
@@ -110,17 +106,11 @@ namespace MaterialUI
 			dialogContentObject.GetComponent<Text>().text = dialog_content;
 		}
 
-		public void SetButtonYesNoText(string _text_yes, string _text_no)
+		public void SetButtonYesNoText()
 		{
-			buttonYes.GetComponent<Text>().text = _text_yes;
-			buttonNo.GetComponent<Text>().text = _text_no;
-		}
+			buttonYes.GetComponent<Text>().text = GetTextYes(); ;
+			buttonNo.GetComponent<Text>().text = GetTextNo();
 
-
-
-		public void SetActionCode(int _actionCode)
-		{
-			this.actionCode = _actionCode;
 		}
 
 		public void SetSize(float _size)
@@ -131,6 +121,55 @@ namespace MaterialUI
 		public void SetState(int _state)
 		{
 			this.state = _state;
+		}
+
+
+		public int GetActionYes()
+		{
+			int cmp = 0;
+			int actionOn = 0;
+			foreach (DictionaryEntry st in option_action) {
+				cmp++;
+				if (cmp > 2) break;
+				if (cmp == 1) actionOn = Int32.Parse((string)st.Key);
+			}
+			return actionOn;
+		}
+
+		public int GetActionNo()
+		{
+			int cmp = 0;
+			int actionOff = 0;
+			foreach (DictionaryEntry st in option_action) {
+				cmp++;
+				if (cmp > 2) break;
+				if (cmp == 2) actionOff = Int32.Parse((string)st.Key);
+			}
+			return actionOff;
+		}
+
+		public string GetTextYes()
+		{
+			int cmp = 0;
+			string textOn = "Yes";
+			foreach (DictionaryEntry st in option_action) {
+				cmp++;
+				if (cmp > 2) break;
+				if (cmp == 1) textOn = (string)st.Value;
+			}
+			return textOn;
+		}
+
+		public string GetTextNo()
+		{
+			int cmp = 0;
+			string textOff = "No";
+			foreach (DictionaryEntry st in option_action) {
+				cmp++;
+				if (cmp > 2) break;
+				if (cmp == 2) textOff = (string)st.Value;
+			}
+			return textOff;
 		}
 
 	}

@@ -104,9 +104,9 @@ namespace MaterialUI
 			animStartTime = Time.realtimeSinceStartup;
 			state = 2;
 
-			dialogLayer.GetComponent<DialogBoxAction>().actionCode = 1;
+			
 			UIActionMessage msg = new UIActionMessage(dialogLayer.GetComponent<DialogBoxAction>().dialogBoxId,
-				dialogLayer.GetComponent<DialogBoxAction>().actionCode, dialogLayer.GetComponent<DialogBoxAction>().topic);
+				dialogLayer.GetComponent<DialogBoxAction>().GetActionYes(), dialogLayer.GetComponent<DialogBoxAction>().topic);
 			string serial = WoxSerializer.serializeObject(msg);
 			Debug.Log("Serialized Object is : " + serial);
 			GameObject.Find("MainUIManager").GetComponent<MainUIManager>().connector.Publish(dialogLayer.GetComponent<DialogBoxAction>().topic, serial);
@@ -127,9 +127,8 @@ namespace MaterialUI
 			animStartTime = Time.realtimeSinceStartup;
 			state = 2;
 
-			dialogLayer.GetComponent<DialogBoxAction>().actionCode = 0;
 			UIActionMessage msg = new UIActionMessage(dialogLayer.GetComponent<DialogBoxAction>().dialogBoxId,
-				dialogLayer.GetComponent<DialogBoxAction>().actionCode, dialogLayer.GetComponent<DialogBoxAction>().topic);
+				dialogLayer.GetComponent<DialogBoxAction>().GetActionNo(), dialogLayer.GetComponent<DialogBoxAction>().topic);
 			string serial = WoxSerializer.serializeObject(msg);
 			Debug.Log("Serialized Object is : " + serial);
 			GameObject.Find("MainUIManager").GetComponent<MainUIManager>().connector.Publish(dialogLayer.GetComponent<DialogBoxAction>().topic, serial);

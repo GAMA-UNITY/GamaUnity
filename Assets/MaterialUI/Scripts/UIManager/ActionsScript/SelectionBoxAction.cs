@@ -16,7 +16,7 @@ namespace MaterialUI
 		public float height = 0.0f;
 		public float width = 0.0f;
 		public string text_label = "Selection Box";
-		public Dictionary<int, string> dicValues; 
+		public Hashtable option_action;
 		public int actionCode = 0;
 		public float size = 1; // the scale
 		public int state = 1;
@@ -26,10 +26,10 @@ namespace MaterialUI
 			
 		}
 
-		public void SetSelectionBox(string _topic, GameObject _parent, string _selectionBoxId, Vector3 _position, float _heigth, float _width, string _text_label, Dictionary<int, string> _dicValues, int _actionCode, float _size, int _state)
+		public void SetSelectionBox(string _topic, GameObject _parent, string _selectionBoxId, Vector3 _position, float _heigth, float _width, string _text_label, Hashtable _option_action, float _size, int _state)
 		{
 			SetTopic(_topic);
-			SetSelectionBox(_parent, _selectionBoxId, _position, _heigth, _width, _text_label, _dicValues, _actionCode, _size, _state);
+			SetSelectionBox(_parent, _selectionBoxId, _position, _heigth, _width, _text_label, _option_action, _size, _state);
 		}
 
 		private void SetTopic(string _topic)
@@ -37,7 +37,7 @@ namespace MaterialUI
 			this.topic = _topic;
 		}
 
-		public void SetSelectionBox(GameObject _parent, string _selectionBoxId, Vector3 _position, float _heigth, float _width, string _text_label, Dictionary<int, string> _dicValues, int _actionCode, float _size, int _state)
+		public void SetSelectionBox(GameObject _parent, string _selectionBoxId, Vector3 _position, float _heigth, float _width, string _text_label, Hashtable _option_action, float _size, int _state)
 		{
 			this.parent = _parent;
 			this.selectionBoxId = _selectionBoxId;
@@ -45,8 +45,7 @@ namespace MaterialUI
 			this.height = _heigth;
 			this.width = _width;
 			this.text_label = _text_label;
-			this.dicValues = _dicValues;
-			this.actionCode = _actionCode;
+			this.option_action = _option_action;
 			this.size = _size;
 			this.state = _state;
 
@@ -55,7 +54,7 @@ namespace MaterialUI
 			//SetHeigth(_heigth);
 			//SetWidth(_width);
 			SetSelectionLabel(text_label);
-			SetSelectionValues(_dicValues);
+			SetSelectionOption(option_action);
 
 
 		}
@@ -97,11 +96,10 @@ namespace MaterialUI
 			//checkText.GetComponent<ToggleTextChanger>().offText = _text_off;
 		}
 
-		public void SetSelectionValues(Dictionary<int, string> _dicValues)
+		public void SetSelectionOption(Hashtable _option_action)
 		{
-			Debug.Log("GameObject Name is " + gameObject.name);
-			gameObject.GetComponent<SelectionBoxConfig>().SetListItem(_dicValues);
-			//checkText.GetComponent<ToggleTextChanger>().offText = _text_off;
+			Debug.Log(_option_action.Count + " - - GameObject Name is ------> " + gameObject.name);
+			gameObject.GetComponent<SelectionBoxConfig>().SetListItem(_option_action);
 		}
 
 		public void SetActionCode(int _actionCode)

@@ -125,15 +125,10 @@ namespace MaterialUI
 
 		void SetRecTransformDefault(RectTransform _mRect)
 		{
-			_mRect.anchorMin = new Vector2(0f, 1f);
-			_mRect.anchorMax = new Vector2(0f, 1f);
-			_mRect.pivot = new Vector2(0f, 1f);
-
-			//_mRect.anchoredPosition = _parent.position;
 			_mRect.anchorMin = new Vector2(0, 1);
 			_mRect.anchorMax = new Vector2(0, 1);
 			_mRect.pivot = new Vector2(0.5f, 0.5f);
-			//_mRect.transform.SetParent(_parent);
+
 
 		}
 
@@ -154,13 +149,19 @@ namespace MaterialUI
 
 			if (GUI.Button(new Rect(10, 50, 180, 20), "Checkbox*")) {
 				Debug.Log(" - Checkbox  - ");
-				Create_Checkbox("GamaCheckboxTopic", "Checkbox", MainPanel, "checkbox1", new Vector3(337, -66, 0), 10f, 10f, "CheckBox On__", "CheckBox Off___", 19, 1, 1);
+				Hashtable option_action = new Hashtable();
+				option_action.Add(1, "On");
+				option_action.Add(0, "Off");
+				Create_Checkbox("GamaCheckboxTopic", "Checkbox", MainPanel, "checkbox1", new Vector3(337, -66, 0), 10f, 10f, option_action, 1, 1);
 			}
 
 			if (GUI.Button(new Rect(10, 80, 180, 20), "DialogBox_Normal*")) {
 				Debug.Log(" -  DialogBox_Normal - ");
-				Vector3 position = new Vector3(917, 0, 0);
-				GameObject obj = Create_DialogBox_Normal("GamaDialogBoxTopic", "DialogBox_Normal", MainPanel, "dialogbox1", new Vector3(917, 0, 0), 10f, 10f, "_Dialog Title_", "_Dialog content: The is the dialog box content area. Your informative text, or questions, should be put here", "_YES_", "_NO_", 13, 1, 1);
+				Hashtable option_action = new Hashtable();
+				option_action.Add(1, "Yes Option");
+				option_action.Add(0, "No Option");
+				Vector3 position = new Vector3(917, 0, 0); //Vector3(917, 0, 0)
+				GameObject obj = Create_DialogBox_Normal("GamaDialogBoxTopic", "DialogBox_Normal", MainPanel, "dialogbox1", new Vector3(917, 0, 0), 10f, 10f, "_Dialog Title_", "_Dialog content: The is the dialog box content area. Your informative text, or questions, should be put here", option_action, 1, 1);
 				RectTransform m_RectTransform = obj.GetComponent<RectTransform>();
 				SetRecTransformDefault(m_RectTransform);
 				m_RectTransform.anchoredPosition = position;
@@ -179,13 +180,13 @@ namespace MaterialUI
 
 			if (GUI.Button(new Rect(10, 270, 180, 20), "SelectionBox*")) {
 				Debug.Log(" -  SelectionBox - ");
-				Dictionary<int, string> dicValues = new Dictionary<int, string>();
-				dicValues.Add(0, "A");
-				dicValues.Add(1, "B");
-				dicValues.Add(2, "C");
-				dicValues.Add(3, "D");
-				dicValues.Add(4, "E");
-				Create_SelectionBox("GamaSelectionBoxTopic", "SelectionBox", MainPanel, "selectionboxId1", new Vector3(294, -276, 0), 10f, 10f, "_SELECTION_", dicValues, 15, 1, 1);
+				Hashtable option_action = new Hashtable();
+				option_action.Add(0, "A");
+				option_action.Add(1, "B");
+				option_action.Add(2, "C");
+				option_action.Add(3, "D");
+				option_action.Add(4, "E");
+				Create_SelectionBox("GamaSelectionBoxTopic", "SelectionBox", MainPanel, "selectionboxId1", new Vector3(294, -276, 0), 10f, 10f, "_SELECTION_", option_action, 1, 1);
 			}
 
 			if (GUI.Button(new Rect(10, 360, 180, 20), "Slider_label_value*")) {
@@ -195,7 +196,10 @@ namespace MaterialUI
 
 			if (GUI.Button(new Rect(10, 420, 180, 20), "Switch*")) {
 				Debug.Log(" - Switch  - ");
-				Create_Switch("Switch", MainPanel, "switch1", new Vector3(254, -430, 0), 10f, 10f, "Switch ON Text__", "Switch OFF Text__", 16, 1, 1);
+				Hashtable option_action = new Hashtable();
+				option_action.Add(1, "Switch On");
+				option_action.Add(0, "Switch Off");
+				Create_Switch("Switch", MainPanel, "switch1", new Vector3(254, -430, 0), 10f, 10f, option_action, 1, 1);
 			}
 
 			if (GUI.Button(new Rect(10, 450, 180, 20), "Text*")) {
@@ -357,7 +361,7 @@ namespace MaterialUI
 			}
 		}
 
-		GameObject Create_Checkbox(string topic, string prefabName, GameObject parent, string checkBoxId, Vector3 position, float height, float width, string text_on, string text_off, int actionCode, float size, int state)
+		GameObject Create_Checkbox(string topic, string prefabName, GameObject parent, string checkBoxId, Vector3 position, float height, float width, Hashtable option_action, float size, int state)
 		{
 			GameObject obj;
 			try {
@@ -365,7 +369,7 @@ namespace MaterialUI
 				obj.name = "parent_" + checkBoxId;
 				GameObject toggleChild = obj.transform.GetChild(0).gameObject;
 				GameObject textChild = obj.transform.GetChild(1).gameObject;
-				toggleChild.GetComponent<CheckBoxAction>().SetCheckBox(topic, obj, textChild, checkBoxId, position, height, width, text_on, text_off, actionCode, size, state);
+				toggleChild.GetComponent<CheckBoxAction>().SetCheckBox(topic, obj, textChild, checkBoxId, position, height, width, option_action, size, state);
 				textChild.GetComponent<ToggleTextChanger>().SetToggleTextChanger();
 				return obj;
 			} catch {
@@ -373,7 +377,7 @@ namespace MaterialUI
 			}
 		}
 
-		GameObject Create_DialogBox_Normal(string topic, string prefabName, GameObject parent, string dialogBoxId, Vector3 position, float height, float width, string dialog_title, string dialog_content, string yes_text, string no_text, int actionCode, float size, int state)
+		GameObject Create_DialogBox_Normal(string topic, string prefabName, GameObject parent, string dialogBoxId, Vector3 position, float height, float width, string dialog_title, string dialog_content, Hashtable option_action, float size, int state)
 		{
 
 			GameObject obj;
@@ -381,7 +385,7 @@ namespace MaterialUI
 				obj = CreateDafault(prefabName, parent, position);
 				obj.name = "parent_" + dialogBoxId;
 				GameObject dialogLayer = obj.transform.GetChild(2).gameObject;
-				dialogLayer.GetComponent<DialogBoxAction>().SetDialogBox(topic, obj, dialogBoxId, position, height, width, dialog_title, dialog_content, yes_text, no_text, actionCode, size, state);
+				dialogLayer.GetComponent<DialogBoxAction>().SetDialogBox(topic, obj, dialogBoxId, position, height, width, dialog_title, dialog_content, option_action, size, state);
 
 				RectTransform m_RectTransform = obj.GetComponent<RectTransform>();
 				SetRecTransformDefault(m_RectTransform);
@@ -459,14 +463,14 @@ namespace MaterialUI
 		}
 
 
-		GameObject Create_SelectionBox(string topic, string prefabName, GameObject parent, string selectionBoxId, Vector3 position, float height, float width, string selection_label, Dictionary<int, string> dicValues, int actionCode, int size, int state)
+		GameObject Create_SelectionBox(string topic, string prefabName, GameObject parent, string selectionBoxId, Vector3 position, float height, float width, string selection_label, Hashtable option_action, int size, int state)
 		{
 			GameObject obj;
 			try {
 				obj = CreateDafault(prefabName, parent, position);
 				obj.name = "parent_" + selectionBoxId;
 				GameObject child = obj.transform.GetChild(2).gameObject;
-				child.GetComponent<SelectionBoxAction>().SetSelectionBox(topic, obj, selectionBoxId, position, height, width, selection_label, dicValues, actionCode, size, state);
+				child.GetComponent<SelectionBoxAction>().SetSelectionBox(topic, obj, selectionBoxId, position, height, width, selection_label, option_action, size, state);
 
 				return obj;
 			} catch {
@@ -523,14 +527,14 @@ namespace MaterialUI
 		}
 
 
-		GameObject Create_Switch(string prefabName, GameObject parent, string switchId, Vector3 position, float height, float width, string switch_text_on, string switch_text_off, int actionCode, int size, int state)
+		GameObject Create_Switch(string prefabName, GameObject parent, string switchId, Vector3 position, float height, float width, Hashtable option_action, int size, int state)
 		{
 			GameObject obj;
 			try {
 				obj = CreateDafault(prefabName, parent, position);
 				obj.name = "parent_" + switchId;
 				GameObject switchToggle = obj.transform.GetChild(0).gameObject;
-				switchToggle.GetComponent<SwitchAction>().SetSwitch(obj, switchId, position, height, width, switch_text_on, switch_text_off, actionCode, size, state);
+				switchToggle.GetComponent<SwitchAction>().SetSwitch(obj, switchId, position, height, width, option_action, size, state);
 				return obj;
 			} catch {
 				return null;

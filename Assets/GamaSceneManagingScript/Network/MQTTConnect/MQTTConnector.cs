@@ -101,6 +101,7 @@ namespace ummisco.gama.unity.Network {
                 IMQTTConnector.DESTROY_TOPIC,
                 IMQTTConnector.SERIALIZATION_TOPIC,
                 IMQTTConnector.SERIALIZATION_JAVA_TOPIC,
+                IMQTTConnector.TOPIC_UI_CREATE,
                 "listdata"
             };
             return topicsList;

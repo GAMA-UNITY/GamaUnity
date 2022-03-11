@@ -5,6 +5,14 @@ namespace ummisco.gama.unity.Network
 { 
     public class IMQTTConnector
     {
+
+        // Main topics
+        public const string TOPIC_UI_CREATE = "UICreate";
+        public const string TOPIC_UI_CONTROLE = "UIControle";
+        public const string TOPIC_GAME_OBJECT_CREATE = "GOCreate";
+        public const string TOPIC_GAME_OBJECT_CONTROLE = "GOControle";
+
+
         public const string MQTT_CONNECTOR = "MQTTConnector";
         public const string SCENE_MANAGER = "SceneManager";
         //Object's names'
@@ -23,6 +31,8 @@ namespace ummisco.gama.unity.Network
         public const string CREATE_TOPIC_MANAGER = "CreateTopicManager";
         public const string DESTROY_TOPIC_MANAGER = "DestroyTopicManager";
         public const string MAIN_TOPIC_MANAGER = "MainTopicManager";
+
+        
 
 
 

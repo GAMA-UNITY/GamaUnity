@@ -4,8 +4,9 @@ namespace MaterialUI
 	public class UIActionMessage
 	{
 		public string topic;
-		public int messageTime;
-		public static int messageNumber;
+		public long messageTime;
+		public static int msgNbr;
+		public int messageNumber;
 		public string elementId;
 		public object actionCode;
 		public string content;
@@ -46,7 +47,8 @@ namespace MaterialUI
 
 		private void SetDefault()
 		{
-			messageNumber++;
+			msgNbr++;
+			messageNumber = msgNbr;
 			messageTime = TimeUtils.ToUnixTimeSeconds();
 			topic = DefaultSettings.DEFAULT_TOPIC;
 		}
