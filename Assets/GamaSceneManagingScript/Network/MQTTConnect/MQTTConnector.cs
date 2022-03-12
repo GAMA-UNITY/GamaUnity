@@ -10,7 +10,7 @@ namespace ummisco.gama.unity.Network {
     public class MQTTConnector: MonoBehaviour {
         public string clientId;
         public MqttClient client;
-        public MQTTConnector connector;
+        public static MQTTConnector connector;
 
         // Server parameters
         public static string SERVER_URL = "localhost";
@@ -60,6 +60,7 @@ namespace ummisco.gama.unity.Network {
 
         void client_MqttMsgPublishReceived(object sender, MqttMsgPublishEventArgs e) {
             msgList.Add(e);
+            Debug.Log(" New message ");
         }
 
         public MqttMsgPublishEventArgs GetNextMessage() {
@@ -122,15 +123,15 @@ namespace ummisco.gama.unity.Network {
 
         public MQTTConnector CreateConnector(string serverUrl, int serverPort, string userId, string password)
         {
-            MQTTConnector connection = GameObject.Find(IMQTTConnector.MQTT_CONNECTOR).GetComponent<MQTTConnector>();
-            connection.Connect(serverUrl, serverPort, userId, password);
-            connection.InitTopics();
-            return connection;
+            connector = GameObject.Find(IMQTTConnector.MQTT_CONNECTOR).GetComponent<MQTTConnector>();
+            connector.Connect(serverUrl, serverPort, userId, password);
+            connector.InitTopics();
+            return connector;
         }
 
 		private void Start()
 		{
-           connector = CreateConnector(MQTTConnector.SERVER_URL, MQTTConnector.SERVER_PORT, MQTTConnector.DEFAULT_USER, MQTTConnector.DEFAULT_PASSWORD);
+          // connector = CreateConnector(MQTTConnector.SERVER_URL, MQTTConnector.SERVER_PORT, MQTTConnector.DEFAULT_USER, MQTTConnector.DEFAULT_PASSWORD);
         }
 
     }

@@ -9,9 +9,7 @@ using ummisco.gama.unity.topics;
 
 using ummisco.gama.unity.GamaAgent;
 using ummisco.gama.unity.littosim;
-using ummisco.gama.unity.files;
 using ummisco.gama.unity.Network;
-using UnityEngine.UI;
 using wox.serial;
 
 namespace MaterialUI
@@ -105,15 +103,13 @@ namespace MaterialUI
         {
             connector = GameObject.Find(IMQTTConnector.MQTT_CONNECTOR).GetComponent<MQTTConnector>().CreateConnector(MQTTConnector.SERVER_URL, MQTTConnector.SERVER_PORT, MQTTConnector.DEFAULT_USER, MQTTConnector.DEFAULT_PASSWORD);
             //connector = CreateConnector("vmpams.ird.fr", 1935, MQTTConnector.DEFAULT_USER, MQTTConnector.DEFAULT_PASSWORD);
-            connector.Subscribe("gui");
+            //connector.Subscribe("gui");
            
         }
 
         void FixedUpdate()
         {
             HandleMessage();
-
-
         }
 
 
