@@ -53,6 +53,9 @@ namespace ummisco.gama.unity.Scene
         public static MQTTConnector connector;
         public static SceneManager sceneManager;
 
+        
+
+
         void Awake()
         {
             m_Instance = this;

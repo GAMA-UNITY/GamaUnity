@@ -8,39 +8,35 @@ namespace MaterialUI.UIElements
 	{
 		public GameObject parent;
 		public string topic = DefaultSettings.DEFAULT_TOPIC;
-		public string ElementId = "";
+		public string uiId = "";
 		public Vector3 position = new Vector3(0, 0, 0);
 		public float height = 0.0f;
 		public float width = 0.0f;
 		public float size = 1; // the scale
 		public int state = 1;
 
-		public UIElement(GameObject parent, string topic, string elementId, Vector3 position, float height, float width, float size, int state)
+		public UIElement(GameObject parent, string topic, string uiId, Vector3 position, float height, float width, float size, int state)
 		{
 			this.parent = parent;
 			this.topic = topic;
-			this.ElementId = elementId;
+			this.uiId = uiId;
 			this.position = position;
 			this.height = height;
 			this.width = width;
 			this.size = size;
 			this.state = state;
 		}
-
-
-		//public abstract void afficheCaracteristiques();
-
+		
 		// Use this for initialization
 		void Start()
 		{
 
 		}
-	
-			// Update is called once per 
-		
+		// Update is called once per 
 		void Update()
 		{
 
 		}
+
 	}
 }
