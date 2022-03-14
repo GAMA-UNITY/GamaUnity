@@ -289,7 +289,7 @@ namespace MaterialUI
 			GameObject obj;
 			try {
 				obj = CreateDafault(prefabName, parent, position);
-				obj.name = "parent_" + buttonId;
+				obj.name = "group_" + buttonId;
 				GameObject child = obj.transform.GetChild(1).gameObject;
 				child.GetComponent<ButtonAction>().SetButton(topic, obj, buttonId, position, height, width, text, actionCode, size, state);
 				return obj;
@@ -303,7 +303,7 @@ namespace MaterialUI
 			GameObject obj;
 			try {
 				obj = CreateDafault(prefabName, parent, position);
-				obj.name = "parent_" + checkBoxId;
+				obj.name = "group_" + checkBoxId;
 				GameObject toggleChild = obj.transform.GetChild(0).gameObject;
 				GameObject textChild = obj.transform.GetChild(1).gameObject;
 				toggleChild.GetComponent<CheckBoxAction>().SetCheckBox(topic, obj, textChild, checkBoxId, position, height, width, option_action, size, state);
@@ -320,7 +320,7 @@ namespace MaterialUI
 			GameObject obj;
 			try {
 				obj = CreateDafault(prefabName, parent, position);
-				obj.name = "parent_" + dialogBoxId;
+				obj.name = "group_" + dialogBoxId;
 				GameObject dialogLayer = obj.transform.GetChild(2).gameObject;
 				dialogLayer.GetComponent<DialogBoxAction>().SetDialogBox(topic, obj, dialogBoxId, position, height, width, dialog_title, dialog_content, option_action, size, state);
 
@@ -365,7 +365,7 @@ namespace MaterialUI
 			GameObject obj;
 			try {
 				obj = CreateDafault(prefabName, parent, position);
-				obj.name = "parent_" + buttonId;
+				obj.name = "group_" + buttonId;
 				GameObject child = obj.transform.GetChild(1).gameObject;
 				child.GetComponent<RoundButtonAction>().SetRoundButton(topic, obj, buttonId, position, height, width, buttonIcon, actionCode, size, state);
 				return obj;
@@ -401,7 +401,7 @@ namespace MaterialUI
 			GameObject obj;
 			try {
 				obj = CreateDafault(prefabName, parent, position);
-				obj.name = "parent_" + selectionBoxId;
+				obj.name = "group_" + selectionBoxId;
 				GameObject child = obj.transform.GetChild(2).gameObject;
 				child.GetComponent<SelectionBoxAction>().SetSelectionBox(topic, obj, selectionBoxId, position, height, width, selection_label, option_action, size, state);
 
@@ -461,7 +461,7 @@ namespace MaterialUI
 			GameObject obj;
 			try {
 				obj = CreateDafault(prefabName, parent, position);
-				obj.name = "parent_" + switchId;
+				obj.name = "group_" + switchId;
 				GameObject switchToggle = obj.transform.GetChild(0).gameObject;
 				switchToggle.GetComponent<SwitchAction>().SetSwitch(topic, obj, switchId, position, height, width, option_action, size, state);
 				return obj;
@@ -487,7 +487,7 @@ namespace MaterialUI
 			GameObject obj;
 			try {
 				obj = CreateDafault(prefabName, parent, position);
-				obj.name = "parent_" + textInputId;
+				obj.name = "group_" + textInputId;
 				GameObject inputField = obj.transform.GetChild(0).gameObject;
 				inputField.GetComponent<TextInputAction>().SetTextInput(topic, obj, textInputId, position, height, width, text_content, actionCode, size, state);
 				return obj;
