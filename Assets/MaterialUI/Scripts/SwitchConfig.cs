@@ -104,8 +104,7 @@ namespace MaterialUI
 
 			animStartTime = Time.realtimeSinceStartup;
 			state = 1;
-			GameObject textObject = switchObj.GetComponent<SwitchAction>().textObject;
-			textObject.GetComponent<Text>().text = switchObj.GetComponent<SwitchAction>().GetTextOn();
+			switchObj.GetComponent<SwitchAction>().textObject.GetComponent<Text>().text = switchObj.GetComponent<SwitchAction>().GetTextOn();
 			Debug.Log("Switch On :  Ici mettre le code pour traiter l'envoie à GAMA");
 
 			
@@ -147,13 +146,12 @@ namespace MaterialUI
 			animStartTime = Time.realtimeSinceStartup;
 			state = 2;
 
-			GameObject textObject = switchObj.GetComponent<SwitchAction>().textObject;
-			textObject.GetComponent<Text>().text = switchObj.GetComponent<SwitchAction>().GetTextOff();
+			switchObj.GetComponent<SwitchAction>().textObject.GetComponent<Text>().text = switchObj.GetComponent<SwitchAction>().GetTextOff();
 			Debug.Log("Switch Off :  Ici mettre le code pour traiter l'envoie à GAMA");
 
 		
 			Debug.Log("You have clicked the switch box '" + switchObj.GetComponent<SwitchAction>().switchId +
-				"' ! Toggle is On. The action code is : " + switchObj.GetComponent<SwitchAction>().GetActionOff());
+				"' ! Toggle is Off. The action code is : " + switchObj.GetComponent<SwitchAction>().GetActionOff());
 			UIActionMessage msg = new UIActionMessage(switchObj.GetComponent<SwitchAction>().switchId,
 				switchObj.GetComponent<SwitchAction>().GetActionOff(), switchObj.GetComponent<SwitchAction>().topic);
 			string serial = WoxSerializer.serializeObject(msg);

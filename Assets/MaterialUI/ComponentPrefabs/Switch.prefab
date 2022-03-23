@@ -262,7 +262,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   switchObj: {fileID: 100002}
-  textObject: {fileID: 100000}
   animationDuration: 0.5
   onColor: {r: 0, g: 0.5882353, b: 0.53333336, a: 1}
   offColor: {r: 1, g: 1, b: 1, a: 1}
@@ -328,15 +327,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   parent: {fileID: 100006}
+  switchText: {fileID: 11400002}
   textObject: {fileID: 100000}
   topic: 
   switchId: 
   position: {x: 0, y: 0, z: 0}
   height: 0
   width: 0
-  text_on: Switch On text
-  text_off: Switch Off text
-  actionCode: 0
   size: 1
   state: 1
   isToggledOn: 0

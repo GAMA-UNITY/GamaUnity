@@ -97,19 +97,32 @@ namespace MaterialUI
 
 		public void SetActions(Hashtable _option_action)
 		{
-			Debug.Log("GameObject Name is " + gameObject.name);
+			Debug.Log("----->  GameObject Name is " + gameObject.name);
 			int cmp = 0;
 			string _text_on = "On";
 			string _text_off = "Off";
-
+			Debug.Log("-+-+-+-+->  option_action size is " + option_action.Count);
 			foreach (DictionaryEntry st in option_action) {
 				cmp++;
-				if (cmp > 2) break;
-				if (cmp == 1) _text_on = (string)st.Value;
-				if (cmp == 2) _text_off = (string)st.Value;
+				//if (cmp > 2) break;
+				Debug.Log("\n      - key= " + st.Key + " value= " + st.Value);
+				if (cmp == 1) _text_off = (string)st.Value;
+				if (cmp == 2) _text_on = (string)st.Value;
 			}
-			parent.transform.GetChild(1).gameObject.GetComponent<ToggleTextChanger>().onText = _text_on;
-			parent.transform.GetChild(1).gameObject.GetComponent<ToggleTextChanger>().offText = _text_off;
+			Debug.Log("-*-*-*-*=====>  textObject.name" + textObject.name);
+
+			textObject.GetComponent<Text>().text = _text_off;
+
+			textObject.GetComponent<ToggleTextChangerSwitchUI>().offText = _text_off;
+			textObject.GetComponent<ToggleTextChangerSwitchUI>().onText = _text_on;
+
+			Debug.Log("-*-*-*-*->  textObject.GetComponent<ToggleTextChanger>().offText " + textObject.GetComponent<ToggleTextChangerSwitchUI>().offText);
+		
+			Debug.Log("-°-°-°-°->  GameObject Name is " + gameObject.name);
+			Debug.Log("Text On is " + _text_on);
+			Debug.Log("Text Off is " + _text_off);
+			Debug.Log("-1-1-1-1->  GameObject Name is " + gameObject.name);
+			Debug.Log("Switch text is " + textObject.GetComponent<Text>().text);
 		}
 
 		public void SetSize(float _size)
@@ -134,8 +147,7 @@ namespace MaterialUI
 			int actionOn = 0;
 			foreach (DictionaryEntry st in option_action) {
 				cmp++;
-				if (cmp > 2) break;
-				if (cmp == 1) actionOn = Int32.Parse((string)st.Key);
+				if (cmp == 2) actionOn = Int32.Parse((string)st.Key);
 			}
 			return actionOn;
 		}
@@ -146,8 +158,7 @@ namespace MaterialUI
 			int actionOff = 0;
 			foreach (DictionaryEntry st in option_action) {
 				cmp++;
-				if (cmp > 2) break;
-				if (cmp == 2) actionOff = Int32.Parse((string)st.Key);
+				if (cmp == 1) actionOff = Int32.Parse((string)st.Key);
 			}
 			return actionOff;
 		}
@@ -158,8 +169,7 @@ namespace MaterialUI
 			string textOn = "On";
 			foreach (DictionaryEntry st in option_action) {
 				cmp++;
-				if (cmp > 2) break;
-				if (cmp == 1) textOn = (string)st.Value;
+				if (cmp == 2) textOn = (string)st.Value;
 			}
 			return textOn;
 		}
@@ -170,8 +180,7 @@ namespace MaterialUI
 			string textOff = "Off";
 			foreach (DictionaryEntry st in option_action) {
 				cmp++;
-				if (cmp > 2) break;
-				if (cmp == 2) textOff = (string)st.Value;
+				if (cmp == 1) textOff = (string)st.Value;
 			}
 			return textOff;
 		}

@@ -6,40 +6,43 @@ namespace MaterialUI.UIElements
 {
 	public abstract class UIElement : MonoBehaviour
 	{
-		public GameObject parent { get; set; }
-		public string uiId { get; set; }
-		public Vector3 position { get; set; }
-		public float height { get; set; }
-		public float width { get; set; }
-		public float size { get; set; }
-		public int state { get; set; }
-		public Color color { get; set; }
+		public GameObject Group_parent { get; set; } // group parent. 
+		public string UiId { get; set; }
+		public Vector3 Position { get; set; }
+		public float Height { get; set; }
+		public float Width { get; set; }
+		public float Size { get; set; }
+		public int State { get; set; }
+		public Color Color_ { get; set; }
 		
-		public UIElement(GameObject parent, string uiId, Vector3 position, float height, float width, float size, int state)
+		public UIElement(GameObject group_parent, string uiId, Vector3 position, float height, float width, float size, int state)
 		{
-			this.parent = parent;
-			this.uiId = uiId;
-			this.position = position;
-			this.height = height;
-			this.width = width;
-			this.size = size;
-			this.state = state;
+			this.Group_parent = group_parent;
+			this.UiId = uiId;
+			this.Position = position;
+			this.Height = height;
+			this.Width = width;
+			this.Size = size;
+			this.State = state;
 			Initialized();
 		}
 
 		public void Initialized()
 		{
-			SetParent(parent);
-			SetId(uiId);
-			SetPosition(position);
+			SetParent(Group_parent);
+			SetId(UiId);
+			SetPosition(Position);
+			SetHeigth(Height);
+			SetWidth(Width);
+
 
 		}
-		public void SetParent(GameObject _parent)
+		public void SetParent(GameObject _group_parent)
 		{
-			if (parent != null)
-				gameObject.transform.SetParent(parent.transform);
+			if (Group_parent != null)
+				gameObject.transform.SetParent(Group_parent.transform);
 		}
-		void SetId(string _uiId)
+		public void SetId(string _uiId)
 		{
 			gameObject.name = "parent_" + _uiId;
 		}
@@ -51,21 +54,25 @@ namespace MaterialUI.UIElements
 			m_RectTransform.anchoredPosition = _position;
 		}
 
-		public void SetSize(int _size)
+		public void SetSize(float _size)
 		{
-			parent.transform.localScale = new Vector3(_size, _size, _size);
+			if(_size != 1) {
+				Group_parent.transform.localScale = new Vector3(_size, _size, _size);
+			}			
 		}
 		public void SetHeigth(float _height)
 		{
-			RectTransform rt = (RectTransform)parent.transform;
-			float width = rt.rect.width;
-			rt.sizeDelta = new Vector2(width, _height);
+			if (_height != 0.0) {
+				RectTransform rt = (RectTransform)Group_parent.transform;
+				float width = rt.rect.width;
+				rt.sizeDelta = new Vector2(width, _height);
+			}
 		}
 
 		public void SetWidth(float _width)
 		{
 			if(_width != 0.0) {
-				RectTransform rt = (RectTransform)parent.transform;
+				RectTransform rt = (RectTransform)Group_parent.transform;
 				float height = rt.rect.height;
 				rt.sizeDelta = new Vector2(_width, height);
 			}
@@ -74,20 +81,22 @@ namespace MaterialUI.UIElements
 
 		public void SetWidthHeigth(float _width, float _height)
 		{
-			RectTransform rt = (RectTransform)parent.transform;
-			rt.sizeDelta = new Vector2(_width, _height);
+			if (_height != 0.0 && _width != 0.0) {
+				RectTransform rt = (RectTransform)Group_parent.transform;
+				rt.sizeDelta = new Vector2(_width, _height);
+			}
 		}
 
-		void SetLabel(string _label)
+		public void SetLabel(string _label)
 		{
 
 		}
-		void SetColor(Color _color)
+		public void SetColor(Color _color)
 		{
 
 		}
-		
-		void SetState(int _state)
+
+		public void SetState(int _state)
 		{
 
 		}

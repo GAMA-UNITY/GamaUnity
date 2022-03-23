@@ -263,6 +263,7 @@
     <Compile Include="Assets/MaterialUI/Scripts/UIManager/UIElements/IUIWithAction.cs" />
     <Compile Include="Assets/MaterialUI/Scripts/UIManager/UIElements/UIButton.cs" />
     <Compile Include="Assets/MaterialUI/Scripts/UIManager/UIElements/UICheckbox.cs" />
+    <Compile Include="Assets/MaterialUI/Scripts/UIManager/UIElements/UIDefault.cs" />
     <Compile Include="Assets/MaterialUI/Scripts/UIManager/UIElements/UIDialogBox.cs" />
     <Compile Include="Assets/MaterialUI/Scripts/UIManager/UIElements/UIDivider.cs" />
     <Compile Include="Assets/MaterialUI/Scripts/UIManager/UIElements/UIElement.cs" />

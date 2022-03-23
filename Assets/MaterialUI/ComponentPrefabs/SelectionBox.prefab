@@ -1328,7 +1328,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   parent: {fileID: 100024}
+  SelectionBoxText: {fileID: 11400034}
   selectionBoxId: 
+  topic: 
   position: {x: 0, y: 0, z: 0}
   height: 0
   width: 0

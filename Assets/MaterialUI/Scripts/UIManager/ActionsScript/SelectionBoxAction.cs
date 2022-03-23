@@ -9,6 +9,7 @@ namespace MaterialUI
 	public class SelectionBoxAction : MonoBehaviour
 	{
 		public GameObject parent;
+		public Text SelectionBoxText;
 		public string selectionBoxId = "";
 
 		public string topic;
@@ -91,9 +92,7 @@ namespace MaterialUI
 
 		public void SetSelectionLabel(string _selection_label)
 		{
-			Debug.Log("GameObject Name is " + gameObject.name);
-			//checkText.GetComponent<ToggleTextChanger>().onText = _text_on;
-			//checkText.GetComponent<ToggleTextChanger>().offText = _text_off;
+			SelectionBoxText.text = _selection_label;
 		}
 
 		public void SetSelectionOption(Hashtable _option_action)

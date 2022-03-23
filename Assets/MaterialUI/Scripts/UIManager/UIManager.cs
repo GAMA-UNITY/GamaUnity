@@ -12,7 +12,7 @@ namespace MaterialUI
 
 		[Space(5)]
 		[Header("---- Main GameObjects ----")]
-		
+
 		public GameObject MainPanel;
 		public GameObject MainCanvas;
 		public GameObject MainManager;
@@ -82,6 +82,8 @@ namespace MaterialUI
 		private const string UIText = "Text";
 		private const string UITextInput = "TextInput";
 
+		private bool isTest = false;
+
 
 		void Start()
 		{
@@ -133,7 +135,7 @@ namespace MaterialUI
 			UIList.Add("Switch", Switch);
 			UIList.Add("Text", Text);
 			UIList.Add("TextInput", TextInput);
-			
+
 		}
 
 		// Update is called once per frame
@@ -158,7 +160,7 @@ namespace MaterialUI
 					Create_Divider_Dark("Divider_Dark", MainPanel, msg.uiId, new Vector3(msg.x, msg.y, msg.z), msg.height, msg.width, msg.size, msg.state);
 					break;
 				case UIRoundButton:
-					Create_Round_Button_Raised(msg.topic, "Round_Button_Raised", MainPanel, msg.uiId, new Vector3(msg.x, msg.y, msg.z), msg.height, msg.width, "ihm/I_urbanise_adapte", 14, msg.size, msg.state);
+					Create_Round_Button_Raised(msg.topic, "Round_Button_Raised", MainPanel, msg.uiId, new Vector3(msg.x, msg.y, msg.z), msg.height, msg.width, msg.content_text, 1, msg.size, msg.state);
 					break;
 				case UISelectionBox:
 					Create_SelectionBox(msg.topic, "SelectionBox", MainPanel, msg.uiId, new Vector3(msg.x, msg.y, msg.z), msg.height, msg.width, msg.label, msg.option_action, msg.size, msg.state);
@@ -197,72 +199,73 @@ namespace MaterialUI
 
 		void OnGUI()
 		{
-			
-			if (GUI.Button(new Rect(10, 50, 180, 20), "Checkbox*")) {
-				Debug.Log(" - Checkbox  - ");
-				Hashtable option_action = new Hashtable();
-				option_action.Add(1, "On");
-				option_action.Add(0, "Off");				
-				Create_Checkbox("UITopic", "Checkbox", MainPanel, "checkbox1", new Vector3(337, -66, 0), 10f, 10f, option_action, 1, 1);
-			}
+			if (isTest) {
+				if (GUI.Button(new Rect(10, 50, 180, 20), "Checkbox*")) {
+					Debug.Log(" - Checkbox  - ");
+					Hashtable option_action = new Hashtable();
+					option_action.Add(1, "On");
+					option_action.Add(0, "Off");
+					Create_Checkbox("UITopic", "Checkbox", MainPanel, "checkbox1", new Vector3(337, -66, 0), 10f, 10f, option_action, 1, 1);
+				}
 
-			if (GUI.Button(new Rect(10, 80, 180, 20), "DialogBox_Normal*")) {
-				Debug.Log(" -  DialogBox_Normal - ");
-				Vector3 position = new Vector3(1252, 1282, 0); //Vector3(917, 0, 0)
-				Hashtable option_action = new Hashtable();
-				option_action.Add(1, "Yes Option");
-				option_action.Add(0, "No Option");
-				Create_DialogBox_Normal("UITopic", "DialogBox_Normal", MainPanel, "dialogbox1", new Vector3(1252, 1282, 0), 10f, 10f, "_Dialog Title_", "_Dialog content: The is the dialog box content area. Your informative text, or questions, should be put here", option_action, 1, 1);
-			}
+				if (GUI.Button(new Rect(10, 80, 180, 20), "DialogBox_Normal*")) {
+					Debug.Log(" -  DialogBox_Normal - ");
+					Vector3 position = new Vector3(1252, 1282, 0); //Vector3(917, 0, 0)
+					Hashtable option_action = new Hashtable();
+					option_action.Add(1, "Yes Option");
+					option_action.Add(0, "No Option");
+					Create_DialogBox_Normal("UITopic", "DialogBox_Normal", MainPanel, "dialogbox1", new Vector3(1252, 1282, 0), 10f, 10f, "_Dialog Title_", "_Dialog content: The is the dialog box content area. Your informative text, or questions, should be put here", option_action, 1, 1);
+				}
 
-			if (GUI.Button(new Rect(10, 120, 180, 20), "Divider_Dark*")) {
-				Debug.Log(" - Divider_Dark  - ");
-				Create_Divider_Dark("Divider_Dark", MainPanel, "divider1", new Vector3(345, -132, 0), 2f, 300f, 1, 1);
-			}
+				if (GUI.Button(new Rect(10, 120, 180, 20), "Divider_Dark*")) {
+					Debug.Log(" - Divider_Dark  - ");
+					Create_Divider_Dark("Divider_Dark", MainPanel, "divider1", new Vector3(345, -132, 0), 2f, 300f, 1, 1);
+				}
 
-			if (GUI.Button(new Rect(10, 180, 180, 20), "Round_Button_Raised*")) {
-				Debug.Log(" -  Round_Button_Raised - ");
-				Create_Round_Button_Raised("UITopic", "Round_Button_Raised", MainPanel, "buttonRound1", new Vector3(459, -186, 0), 10f, 10f, "ihm/I_urbanise_adapte", 14, 1, 1);
-			}
+				if (GUI.Button(new Rect(10, 180, 180, 20), "Round_Button_Raised*")) {
+					Debug.Log(" -  Round_Button_Raised - ");
+					Create_Round_Button_Raised("UITopic", "Round_Button_Raised", MainPanel, "buttonRound1", new Vector3(459, -186, 0), 10f, 10f, "ihm/I_urbanise_adapte", 14, 1, 1);
+				}
 
-			if (GUI.Button(new Rect(10, 220, 180, 20), "Button_Raised*")) {
-				Debug.Log(" -  Button Raised - ");
-				Create_Button_Raised("UITopic", "Button_Raised", MainPanel, "button1", new Vector3(264, -200, 0), 10f, 10f, "Button Test", 11, 1, 1);
-			}
+				if (GUI.Button(new Rect(10, 220, 180, 20), "Button_Raised*")) {
+					Debug.Log(" -  Button Raised - ");
+					Create_Button_Raised("UITopic", "Button_Raised", MainPanel, "button1", new Vector3(264, -200, 0), 10f, 10f, "Button Test", 11, 1, 1);
+				}
 
-			if (GUI.Button(new Rect(10, 270, 180, 20), "SelectionBox*")) {
-				Debug.Log(" -  SelectionBox - ");
-				Hashtable option_action = new Hashtable();
-				option_action.Add(0, "A OP -----");
-				option_action.Add(1, "B OP -----");
-				option_action.Add(2, "C OP -----");
-				option_action.Add(3, "D OP -----");
-				option_action.Add(4, "E OP -----");
-				option_action.Add(5, "F OP -----");
-				Create_SelectionBox("UITopic", "SelectionBox", MainPanel, "selectionboxId1", new Vector3(294, -276, 0), 10f, 10f, "_SELECTION_", option_action, 1, 1);
-			}
+				if (GUI.Button(new Rect(10, 270, 180, 20), "SelectionBox*")) {
+					Debug.Log(" -  SelectionBox - ");
+					Hashtable option_action = new Hashtable();
+					option_action.Add(0, "A OP -----");
+					option_action.Add(1, "B OP -----");
+					option_action.Add(2, "C OP -----");
+					option_action.Add(3, "D OP -----");
+					option_action.Add(4, "E OP -----");
+					option_action.Add(5, "F OP -----");
+					Create_SelectionBox("UITopic", "SelectionBox", MainPanel, "selectionboxId1", new Vector3(294, -276, 0), 10f, 10f, "_SELECTION_", option_action, 1, 1);
+				}
 
-			if (GUI.Button(new Rect(10, 360, 180, 20), "Slider_label_value*")) {
-				Debug.Log(" - Slider_label_value  - ");
-				Create_Slider_label_value("UITopic", "Slider_label_value", MainPanel, "slider1", new Vector3(588, -362, 0), 10f, 10f, "My Slider label", 15, 1, 1);
-			}
+				if (GUI.Button(new Rect(10, 360, 180, 20), "Slider_label_value*")) {
+					Debug.Log(" - Slider_label_value  - ");
+					Create_Slider_label_value("UITopic", "Slider_label_value", MainPanel, "slider1", new Vector3(588, -362, 0), 10f, 10f, "My Slider label", 15, 1, 1);
+				}
 
-			if (GUI.Button(new Rect(10, 420, 180, 20), "Switch*")) {
-				Debug.Log(" - Switch  - ");
-				Hashtable option_action = new Hashtable();
-				option_action.Add(1, "Switch On");
-				option_action.Add(0, "Switch Off");
-				Create_Switch("UITopic", "Switch", MainPanel, "switch1", new Vector3(254, -430, 0), 10f, 10f, option_action, 1, 1);
-			}
+				if (GUI.Button(new Rect(10, 420, 180, 20), "Switch*")) {
+					Debug.Log(" - Switch  - ");
+					Hashtable option_action = new Hashtable();
+					option_action.Add(1, "Switch On");
+					option_action.Add(0, "Switch Off");
+					Create_Switch("UITopic", "Switch", MainPanel, "switch1", new Vector3(254, -430, 0), 10f, 10f, option_action, 1, 1);
+				}
 
-			if (GUI.Button(new Rect(10, 450, 180, 20), "Text*")) {
-				Debug.Log(" - Text  - ");
-				Create_Text("Text", MainPanel, "text1", new Vector3(301, -460, 0), 10f, 10f, "This is a free text element", 17, 1, 1);
-			}
+				if (GUI.Button(new Rect(10, 450, 180, 20), "Text*")) {
+					Debug.Log(" - Text  - ");
+					Create_Text("Text", MainPanel, "text1", new Vector3(301, -460, 0), 10f, 10f, "This is a free text element", 17, 1, 1);
+				}
 
-			if (GUI.Button(new Rect(10, 330, 180, 20), "TextInput*")) {
-				Debug.Log(" -  TextInput - ");
-				Create_TextInput("UITopic", "TextInput", MainPanel, "textInput1", new Vector3(594, -329, 0), 10f, 10f, "This is a free text input element", 18, 1, 1);
+				if (GUI.Button(new Rect(10, 330, 180, 20), "TextInput*")) {
+					Debug.Log(" -  TextInput - ");
+					Create_TextInput("UITopic", "TextInput", MainPanel, "textInput1", new Vector3(594, -329, 0), 10f, 10f, "This is a free text input element", 18, 1, 1);
+				}
 			}
 		}
 
@@ -289,7 +292,7 @@ namespace MaterialUI
 			GameObject obj;
 			try {
 				obj = CreateDafault(prefabName, parent, position);
-				obj.name = "group_" + buttonId;
+				obj.name = "group_parent_" + buttonId;
 				GameObject child = obj.transform.GetChild(1).gameObject;
 				child.GetComponent<ButtonAction>().SetButton(topic, obj, buttonId, position, height, width, text, actionCode, size, state);
 				return obj;
@@ -303,7 +306,7 @@ namespace MaterialUI
 			GameObject obj;
 			try {
 				obj = CreateDafault(prefabName, parent, position);
-				obj.name = "group_" + checkBoxId;
+				obj.name = "group_parent_" + checkBoxId;
 				GameObject toggleChild = obj.transform.GetChild(0).gameObject;
 				GameObject textChild = obj.transform.GetChild(1).gameObject;
 				toggleChild.GetComponent<CheckBoxAction>().SetCheckBox(topic, obj, textChild, checkBoxId, position, height, width, option_action, size, state);
@@ -320,7 +323,7 @@ namespace MaterialUI
 			GameObject obj;
 			try {
 				obj = CreateDafault(prefabName, parent, position);
-				obj.name = "group_" + dialogBoxId;
+				obj.name = "group_parent_" + dialogBoxId;
 				GameObject dialogLayer = obj.transform.GetChild(2).gameObject;
 				dialogLayer.GetComponent<DialogBoxAction>().SetDialogBox(topic, obj, dialogBoxId, position, height, width, dialog_title, dialog_content, option_action, size, state);
 
@@ -365,7 +368,7 @@ namespace MaterialUI
 			GameObject obj;
 			try {
 				obj = CreateDafault(prefabName, parent, position);
-				obj.name = "group_" + buttonId;
+				obj.name = "group_parent_" + buttonId;
 				GameObject child = obj.transform.GetChild(1).gameObject;
 				child.GetComponent<RoundButtonAction>().SetRoundButton(topic, obj, buttonId, position, height, width, buttonIcon, actionCode, size, state);
 				return obj;
@@ -401,7 +404,7 @@ namespace MaterialUI
 			GameObject obj;
 			try {
 				obj = CreateDafault(prefabName, parent, position);
-				obj.name = "group_" + selectionBoxId;
+				obj.name = "group_parent_" + selectionBoxId;
 				GameObject child = obj.transform.GetChild(2).gameObject;
 				child.GetComponent<SelectionBoxAction>().SetSelectionBox(topic, obj, selectionBoxId, position, height, width, selection_label, option_action, size, state);
 
@@ -461,7 +464,7 @@ namespace MaterialUI
 			GameObject obj;
 			try {
 				obj = CreateDafault(prefabName, parent, position);
-				obj.name = "group_" + switchId;
+				obj.name = "group_parent_" + switchId;
 				GameObject switchToggle = obj.transform.GetChild(0).gameObject;
 				switchToggle.GetComponent<SwitchAction>().SetSwitch(topic, obj, switchId, position, height, width, option_action, size, state);
 				return obj;
@@ -487,7 +490,7 @@ namespace MaterialUI
 			GameObject obj;
 			try {
 				obj = CreateDafault(prefabName, parent, position);
-				obj.name = "group_" + textInputId;
+				obj.name = "group_parent_" + textInputId;
 				GameObject inputField = obj.transform.GetChild(0).gameObject;
 				inputField.GetComponent<TextInputAction>().SetTextInput(topic, obj, textInputId, position, height, width, text_content, actionCode, size, state);
 				return obj;
