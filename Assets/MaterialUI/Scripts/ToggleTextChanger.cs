@@ -49,7 +49,7 @@ public class ToggleTextChanger : MonoBehaviour
 		} else {
 			thisText.text = offText;
 			Debug.Log("You have clicked the checkbox '" + checkBoxObj.GetComponent<CheckBoxAction>().checkBoxId +
-				"' ! Toggle is On. The action code is : "+ checkBoxObj.GetComponent<CheckBoxAction>().GetActionOff());
+				"' ! Toggle is Off. The action code is : "+ checkBoxObj.GetComponent<CheckBoxAction>().GetActionOff());
 			UIActionMessage msg = new UIActionMessage(checkBoxObj.GetComponent<CheckBoxAction>().checkBoxId,
 				checkBoxObj.GetComponent<CheckBoxAction>().GetActionOff(), topic);
 			string serial = WoxSerializer.serializeObject(msg);

@@ -211,15 +211,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   parent: {fileID: 100010}
-  checkText: {fileID: 0}
-  checkBoxToggle: {fileID: 0}
+  checkBoxText: {fileID: 153776}
+  checkBoxToggle: {fileID: 100006}
+  topic: GamaTopic
   checkBoxId: 
   position: {x: 0, y: 0, z: 0}
   height: 0
   width: 0
-  text_on: CheckBox On
-  text_off: CheckBox Off
-  actionCode: 0
   size: 1
   state: 1
 --- !u!1 &100010

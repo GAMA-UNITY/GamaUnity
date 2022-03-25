@@ -368,9 +368,9 @@ namespace MaterialUI
 				obj = CreateDafault(prefabName, parent, position);
 				obj.name = "parent_" + checkBoxId;
 				GameObject toggleChild = obj.transform.GetChild(0).gameObject;
-				GameObject textChild = obj.transform.GetChild(1).gameObject;
-				toggleChild.GetComponent<CheckBoxAction>().SetCheckBox(topic, obj, textChild, checkBoxId, position, height, width, option_action, size, state);
-				textChild.GetComponent<ToggleTextChanger>().SetToggleTextChanger();
+			
+				toggleChild.GetComponent<CheckBoxAction>().SetCheckBox(topic, obj, checkBoxId, position, height, width, option_action, size, state);
+				
 				return obj;
 			} catch {
 				return null;

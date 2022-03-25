@@ -71,6 +71,7 @@
     <Compile Include="Assets/GamaSceneManagingScript/DataStructure/GamaPoint.cs" />
     <Compile Include="Assets/GamaSceneManagingScript/DataStructure/IDataType.cs" />
     <Compile Include="Assets/GamaSceneManagingScript/DataStructure/Point.cs" />
+    <Compile Include="Assets/GamaSceneManagingScript/DataStructure/RGBColor.cs" />
     <Compile Include="Assets/GamaSceneManagingScript/DataStructure/map.cs" />
     <Compile Include="Assets/GamaSceneManagingScript/FilesReader/CSVParser.cs" />
     <Compile Include="Assets/GamaSceneManagingScript/FilesReader/CSVReader.cs" />

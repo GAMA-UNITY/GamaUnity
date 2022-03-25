@@ -8,7 +8,7 @@ namespace MaterialUI
 	public class CheckBoxAction : MonoBehaviour
 	{
 		public GameObject parent;
-		public GameObject checkText;
+		public GameObject checkBoxText;
 		public GameObject checkBoxToggle;
 		public string topic = DefaultSettings.DEFAULT_TOPIC;
 		public string checkBoxId = "";
@@ -27,9 +27,9 @@ namespace MaterialUI
 		}
 
 
-		public void SetCheckBox(string topic, GameObject _parent, GameObject textGameObject, string _checkBoxId, Vector3 _position, float _heigth, float _width, Hashtable _option_action, float _size, int _state)
+		public void SetCheckBox(string topic, GameObject _parent, string _checkBoxId, Vector3 _position, float _heigth, float _width, Hashtable _option_action, float _size, int _state)
 		{
-			SetCheckBox(_parent, textGameObject, _checkBoxId, _position, _heigth, _width, _option_action, _size, _state);
+			SetCheckBox(_parent, _checkBoxId, _position, _heigth, _width, _option_action, _size, _state);
 			SetTopic(topic);			
 		}
 
@@ -38,10 +38,9 @@ namespace MaterialUI
 			this.topic = _topic;
 		}
 
-		public void SetCheckBox(GameObject _parent, GameObject textGameObject, string _checkBoxId, Vector3 _position, float _heigth, float _width, Hashtable _option_action, float _size, int _state)
+		public void SetCheckBox(GameObject _parent, string _checkBoxId, Vector3 _position, float _heigth, float _width, Hashtable _option_action, float _size, int _state)
 		{
 			this.parent = _parent;
-			this.checkText = textGameObject;
 			this.checkBoxId = _checkBoxId;
 			this.position = _position;
 			this.height = _heigth;
@@ -55,6 +54,7 @@ namespace MaterialUI
 			//SetHeigth(_heigth);
 			//SetWidth(_width);
 			SetActions(_option_action);
+			checkBoxText.GetComponent<ToggleTextChanger>().SetToggleTextChanger();
 		}
 
 		public void SetParent(GameObject _parent)
@@ -96,12 +96,12 @@ namespace MaterialUI
 
 			foreach (DictionaryEntry st in option_action) {
 				cmp++;
-				if (cmp > 2) break;
-				if (cmp == 1) _text_on = (string) st.Value;
-				if (cmp == 2) _text_off = (string)st.Value;
+				if (cmp == 1) _text_off = (string) st.Value;
+				if (cmp == 2) _text_on = (string)st.Value;
 			}
-			checkText.GetComponent<ToggleTextChanger>().onText = _text_on;
-			checkText.GetComponent<ToggleTextChanger>().offText = _text_off;
+			checkBoxText.GetComponent<ToggleTextChanger>().onText = _text_on;
+			checkBoxText.GetComponent<ToggleTextChanger>().offText = _text_off;
+			checkBoxText.GetComponent<Text>().text = _text_off;
 		}
 
 		public int GetActionOn()
@@ -110,8 +110,7 @@ namespace MaterialUI
 			int actionOn = 0;
 			foreach (DictionaryEntry st in option_action) {
 				cmp++;
-				if (cmp > 2) break;
-				if (cmp == 1) actionOn = Int32.Parse((string)st.Key);				
+				if (cmp == 2) actionOn = Int32.Parse((string)st.Key);				
 			}
 			return actionOn;
 		}
@@ -122,8 +121,7 @@ namespace MaterialUI
 			int actionOff = 0;
 			foreach (DictionaryEntry st in option_action) {
 				cmp++;
-				if (cmp > 2) break;
-				if (cmp == 2) actionOff = Int32.Parse((string)st.Key);
+				if (cmp == 1) actionOff = Int32.Parse((string)st.Key);
 			}
 			return actionOff;
 		}
@@ -134,8 +132,7 @@ namespace MaterialUI
 			string textOn = "On";
 			foreach (DictionaryEntry st in option_action) {
 				cmp++;
-				if (cmp > 2) break;
-				if (cmp == 1) textOn = (string)st.Value;
+				if (cmp == 2) textOn = (string)st.Value;
 			}
 			return textOn;
 		}
@@ -146,8 +143,7 @@ namespace MaterialUI
 			string textOff = "Off";
 			foreach (DictionaryEntry st in option_action) {
 				cmp++;
-				if (cmp > 2) break;
-				if (cmp == 2) textOff = (string)st.Value;
+				if (cmp == 1) textOff = (string)st.Value;
 			}
 			return textOff;
 		}

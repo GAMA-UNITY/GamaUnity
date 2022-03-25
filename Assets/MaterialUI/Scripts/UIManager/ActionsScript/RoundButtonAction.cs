@@ -101,25 +101,17 @@ namespace MaterialUI
 
 		public void SetIcon(string _icon)
 		{
-			//gameObject.GetComponentInChildren<Text>().text = _icon;
+	
 			Debug.Log(" The game Object name is : " + gameObject.name);
 			GameObject child = gameObject.transform.GetChild(0).gameObject;
 			Debug.Log(" The game Object child is : " + child.name);
 			Sprite buttonSprite = Resources.Load<Sprite>("images/"+_icon) as Sprite;
-			
-			//gameObject.GetComponent<Image>().sprite = buttonSprite;
-
-			
+					
 			gameObject.GetComponent<SpriteSwapper>().sprite1x = buttonSprite;
 			gameObject.GetComponent<SpriteSwapper>().sprite2x = buttonSprite;
 			gameObject.GetComponent<SpriteSwapper>().sprite4x = buttonSprite;
 			
-			//child.GetComponent<Image>().sprite = buttonSprite;
-			/*
-			child.GetComponent<SpriteSwapper>().sprite1x = buttonSprite;
-			child.GetComponent<SpriteSwapper>().sprite2x = buttonSprite;
-			child.GetComponent<SpriteSwapper>().sprite4x = buttonSprite;
-			*/
+		
 
 
 		}

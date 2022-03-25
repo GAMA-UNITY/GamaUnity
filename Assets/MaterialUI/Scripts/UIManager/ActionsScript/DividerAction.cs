@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
+using ummisco.gama.unity.datastructure;
 
 namespace MaterialUI
 {
@@ -11,6 +12,7 @@ namespace MaterialUI
 		public Vector3 position = new Vector3(0, 0, 0);
 		public float height = 0.0f;
 		public float width = 0.0f;
+		public RGBColor color;
 		public float size = 1; // the scale
 		public int state = 1;
 
@@ -28,6 +30,13 @@ namespace MaterialUI
 
 		}
 
+		public void SetDivider(string _dividerId, Vector3 _position, float _heigth, float _width, RGBColor _color, float _size, int _state)
+		{
+			this.color = _color;
+			SetDivider(_dividerId, _position, _heigth, _width, _size, _state);		
+			SetColor(color);
+		}
+
 		public void SetDivider(string _dividerId, Vector3 _position, float _heigth, float _width, float _size, int _state)
 		{
 			this.dividerId = _dividerId;
@@ -43,7 +52,7 @@ namespace MaterialUI
 			//SetWidth(_width);
 			SetWidthHeigth(width, height);
 		}
-		
+
 		public void SetId(string _dividerId)
 		{
 			gameObject.name = _dividerId;
@@ -67,6 +76,11 @@ namespace MaterialUI
 		{
 			RectTransform rt = (RectTransform)gameObject.transform;
 			rt.sizeDelta = new Vector2(_width, _height);
+		}
+
+		public void SetColor(RGBColor _color)
+		{
+			gameObject.GetComponent<Image>().color = new Color(_color.Red, _color.Green, _color.Blue, _color.Alpha);
 		}
 
 		public void SetSize(float _size)

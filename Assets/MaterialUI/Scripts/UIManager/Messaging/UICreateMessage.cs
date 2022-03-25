@@ -16,6 +16,12 @@ namespace MaterialUI
 		public float height;
 		public float width;
 		public string label;
+
+		public int redColor;
+		public int greenColor;
+		public int blueColor;
+		public int alphaColor;
+
 		public string content_text;
 
 		public Hashtable option_action = new Hashtable();
@@ -41,7 +47,14 @@ namespace MaterialUI
 			Debug.Log("--> height : " + height);
 			Debug.Log("--> width : " + width);
 			Debug.Log("--> label : " + label);
-			Debug.Log("--> content_text : " + content_text);
+
+			Debug.Log("--> redColor : " + redColor);
+			Debug.Log("--> greenColor : " + greenColor);
+			Debug.Log("--> blueColor : " + blueColor);
+			Debug.Log("--> alphaColor : " + alphaColor);
+	
+
+		Debug.Log("--> content_text : " + content_text);
 					
 			string str = "";
 		

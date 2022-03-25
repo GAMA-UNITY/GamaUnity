@@ -101,28 +101,14 @@ namespace MaterialUI
 			int cmp = 0;
 			string _text_on = "On";
 			string _text_off = "Off";
-			Debug.Log("-+-+-+-+->  option_action size is " + option_action.Count);
 			foreach (DictionaryEntry st in option_action) {
 				cmp++;
-				//if (cmp > 2) break;
-				Debug.Log("\n      - key= " + st.Key + " value= " + st.Value);
 				if (cmp == 1) _text_off = (string)st.Value;
 				if (cmp == 2) _text_on = (string)st.Value;
 			}
-			Debug.Log("-*-*-*-*=====>  textObject.name" + textObject.name);
-
 			textObject.GetComponent<Text>().text = _text_off;
-
 			textObject.GetComponent<ToggleTextChangerSwitchUI>().offText = _text_off;
 			textObject.GetComponent<ToggleTextChangerSwitchUI>().onText = _text_on;
-
-			Debug.Log("-*-*-*-*->  textObject.GetComponent<ToggleTextChanger>().offText " + textObject.GetComponent<ToggleTextChangerSwitchUI>().offText);
-		
-			Debug.Log("-°-°-°-°->  GameObject Name is " + gameObject.name);
-			Debug.Log("Text On is " + _text_on);
-			Debug.Log("Text Off is " + _text_off);
-			Debug.Log("-1-1-1-1->  GameObject Name is " + gameObject.name);
-			Debug.Log("Switch text is " + textObject.GetComponent<Text>().text);
 		}
 
 		public void SetSize(float _size)

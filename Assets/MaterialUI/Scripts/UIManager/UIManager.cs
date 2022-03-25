@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using ummisco.gama.unity.datastructure;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -157,7 +158,7 @@ namespace MaterialUI
 					Create_DialogBox_Normal(msg.topic, "DialogBox_Normal", MainPanel, msg.uiId, new Vector3(msg.x, msg.y, msg.z), msg.height, msg.width, msg.label, msg.content_text, msg.option_action, msg.size, msg.state);
 					break;
 				case UIDivider:
-					Create_Divider_Dark("Divider_Dark", MainPanel, msg.uiId, new Vector3(msg.x, msg.y, msg.z), msg.height, msg.width, msg.size, msg.state);
+					Create_Divider_Dark("Divider_Dark", MainPanel, msg.uiId, new Vector3(msg.x, msg.y, msg.z), msg.height, msg.width, new RGBColor(msg.redColor, msg.greenColor, msg.blueColor, msg.alphaColor), msg.size, msg.state);
 					break;
 				case UIRoundButton:
 					Create_Round_Button_Raised(msg.topic, "Round_Button_Raised", MainPanel, msg.uiId, new Vector3(msg.x, msg.y, msg.z), msg.height, msg.width, msg.content_text, 1, msg.size, msg.state);
@@ -219,7 +220,7 @@ namespace MaterialUI
 
 				if (GUI.Button(new Rect(10, 120, 180, 20), "Divider_Dark*")) {
 					Debug.Log(" - Divider_Dark  - ");
-					Create_Divider_Dark("Divider_Dark", MainPanel, "divider1", new Vector3(345, -132, 0), 2f, 300f, 1, 1);
+					Create_Divider_Dark("Divider_Dark", MainPanel, "divider1", new Vector3(345, -132, 0), 2f, 300f, new RGBColor(255,255,255,255), 1, 1);
 				}
 
 				if (GUI.Button(new Rect(10, 180, 180, 20), "Round_Button_Raised*")) {
@@ -308,9 +309,7 @@ namespace MaterialUI
 				obj = CreateDafault(prefabName, parent, position);
 				obj.name = "group_parent_" + checkBoxId;
 				GameObject toggleChild = obj.transform.GetChild(0).gameObject;
-				GameObject textChild = obj.transform.GetChild(1).gameObject;
-				toggleChild.GetComponent<CheckBoxAction>().SetCheckBox(topic, obj, textChild, checkBoxId, position, height, width, option_action, size, state);
-				textChild.GetComponent<ToggleTextChanger>().SetToggleTextChanger();
+				toggleChild.GetComponent<CheckBoxAction>().SetCheckBox(topic, obj, checkBoxId, position, height, width, option_action, size, state);
 				return obj;
 			} catch {
 				return null;
@@ -340,12 +339,12 @@ namespace MaterialUI
 			}
 		}
 
-		GameObject Create_Divider_Dark(string prefabName, GameObject parent, string dividerId, Vector3 position, float height, float width, int size, int state)
+		GameObject Create_Divider_Dark(string prefabName, GameObject parent, string dividerId, Vector3 position, float height, float width, RGBColor color, int size, int state)
 		{
 			GameObject obj;
 			try {
 				obj = CreateDafault(prefabName, parent, position);
-				obj.GetComponent<DividerAction>().SetDivider(dividerId, position, height, width, size, state);
+				obj.GetComponent<DividerAction>().SetDivider(dividerId, position, height, width, color, size, state);
 				return obj;
 			} catch {
 				return null;

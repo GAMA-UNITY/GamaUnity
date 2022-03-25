@@ -87,7 +87,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8c0ca86380c714bdf823b18a72864470, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  textId: 
+  dividerId: 
   position: {x: 0, y: 0, z: 0}
   height: 0
   width: 0
