@@ -248,6 +248,7 @@
     <Compile Include="Assets/MaterialUI/Scripts/ToggleTextChangerSwitchUI.cs" />
     <Compile Include="Assets/MaterialUI/Scripts/UIManager/ActionsScript/ButtonAction.cs" />
     <Compile Include="Assets/MaterialUI/Scripts/UIManager/ActionsScript/CheckBoxAction.cs" />
+    <Compile Include="Assets/MaterialUI/Scripts/UIManager/ActionsScript/CloseButton.cs" />
     <Compile Include="Assets/MaterialUI/Scripts/UIManager/ActionsScript/DialogBoxAction.cs" />
     <Compile Include="Assets/MaterialUI/Scripts/UIManager/ActionsScript/DialogBoxYesNoAction.cs" />
     <Compile Include="Assets/MaterialUI/Scripts/UIManager/ActionsScript/DividerAction.cs" />

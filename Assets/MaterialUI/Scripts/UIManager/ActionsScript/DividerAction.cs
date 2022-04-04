@@ -80,7 +80,7 @@ namespace MaterialUI
 
 		public void SetColor(RGBColor _color)
 		{
-			gameObject.GetComponent<Image>().color = new Color(_color.Red, _color.Green, _color.Blue, _color.Alpha);
+			gameObject.GetComponent<Image>().color = color.GetRGBColor(); 
 		}
 
 		public void SetSize(float _size)

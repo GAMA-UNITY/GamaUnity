@@ -20,5 +20,17 @@ namespace ummisco.gama.unity.datastructure
             this.Blue = blue;
             this.Alpha = alpha;
         }
+
+
+        public string ToString()
+		{
+            return (" Red : " + Red + " Green : " + Green + " Blue : " + Blue + " Alpha : " + Alpha);
+		}
+
+        public Color GetRGBColor()
+		{
+            return new Color(Red / 255f, Green / 255f, Blue / 255f, Alpha / 255f);
+
+        }
     }
 }

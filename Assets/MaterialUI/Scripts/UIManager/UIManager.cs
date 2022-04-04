@@ -341,6 +341,7 @@ namespace MaterialUI
 
 		GameObject Create_Divider_Dark(string prefabName, GameObject parent, string dividerId, Vector3 position, float height, float width, RGBColor color, int size, int state)
 		{
+			
 			GameObject obj;
 			try {
 				obj = CreateDafault(prefabName, parent, position);
