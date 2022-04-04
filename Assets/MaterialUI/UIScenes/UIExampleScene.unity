@@ -584,17 +584,17 @@ PrefabInstance:
     - target: {fileID: 2817205989183901780, guid: a8a29fc15b61e4a8ea77c04db57f51e0,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 506
+      value: 537
       objectReference: {fileID: 0}
     - target: {fileID: 2817205989183901780, guid: a8a29fc15b61e4a8ea77c04db57f51e0,
         type: 3}
       propertyPath: m_SizeDelta.x
-      value: 432.5
+      value: 192.9
       objectReference: {fileID: 0}
     - target: {fileID: 2817205989183901780, guid: a8a29fc15b61e4a8ea77c04db57f51e0,
         type: 3}
       propertyPath: m_SizeDelta.y
-      value: 91.7
+      value: 99.4
       objectReference: {fileID: 0}
     - target: {fileID: 2817205989183901780, guid: a8a29fc15b61e4a8ea77c04db57f51e0,
         type: 3}
@@ -631,6 +631,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: UILogoUmmisco
       objectReference: {fileID: 0}
+    - target: {fileID: 2817205989183901786, guid: a8a29fc15b61e4a8ea77c04db57f51e0,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: f3a98c5fbbeb640cc90b19a6274ac7f6,
+        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a8a29fc15b61e4a8ea77c04db57f51e0, type: 3}
 --- !u!224 &1203886925 stripped
@@ -1019,7 +1025,7 @@ PrefabInstance:
     - target: {fileID: 2817205989183901780, guid: a8a29fc15b61e4a8ea77c04db57f51e0,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 506
+      value: 362
       objectReference: {fileID: 0}
     - target: {fileID: 2817205989183901780, guid: a8a29fc15b61e4a8ea77c04db57f51e0,
         type: 3}
