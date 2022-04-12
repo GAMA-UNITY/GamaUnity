@@ -13,6 +13,7 @@ using UnityEngine.UI;
 using System.Collections;
 using System.Text;
 using System.Collections.Generic;
+using System;
 
 namespace MaterialUI
 {
@@ -501,10 +502,25 @@ namespace MaterialUI
 		{
 			listItems = new string[option_action.Count];
 			int cmp = 0;
+
+			for (int i = 0; i < 5; i++) {
+			//	listItems[i] = option_action["i"];
+			}
+
+			/*
+			foreach (string key in option_action.Keys) {
+				listItems[Int32.Parse("key")] = option_action[key].ToString();
+				Debug.Log(" ======================> Key is   " +key + " ---- value : " + option_action[key].ToString());
+			}
+			*/
+			
 			foreach (DictionaryEntry de in option_action) {
-				listItems[cmp] = (string)de.Value;
+
+				listItems[Int32.Parse((string)de.Key)] = (string)de.Value;
+				//listItems[cmp] = (string)de.Value;
 				cmp++;
 			}
+			
 		}
 	}
 }
