@@ -57,7 +57,7 @@ namespace ummisco.gama.unity.Network
 			Debug.Log("Connected to : " + serverUrl + "  " + serverPort + "  " + userId + "   " + password);
 			//client.Connect(clientId);
 
-			Debug.Log(" Is sent: " + client.Publish("test", System.Text.Encoding.UTF8.GetBytes("Test 1 sur Test"), MqttMsgBase.QOS_LEVEL_AT_MOST_ONCE, true));
+			//Debug.Log(" Is sent: " + client.Publish("test", System.Text.Encoding.UTF8.GetBytes("Test 1 sur Test"), MqttMsgBase.QOS_LEVEL_AT_MOST_ONCE, true));
 		}
 
 		public void Subscribe(string topic)
@@ -79,7 +79,7 @@ namespace ummisco.gama.unity.Network
 		void client_MqttMsgPublishReceived(object sender, MqttMsgPublishEventArgs e)
 		{
 			msgList.Add(e);
-			Debug.Log(" New message ");
+			//Debug.Log(" New message ");
 		}
 
 		public MqttMsgPublishEventArgs GetNextMessage()
@@ -136,7 +136,7 @@ namespace ummisco.gama.unity.Network
 			List<string> topicsList = GetTopicsInList();
 			foreach (string topic in topicsList) {
 				Subscribe(topic);
-				Debug.Log(" Subscribed to topic : " + topic);
+			//	Debug.Log(" Subscribed to topic : " + topic);
 			}
 		}
 

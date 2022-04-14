@@ -46,6 +46,7 @@ namespace MaterialUI
 			SetSize(_size);
 			//SetHeigth(_heigth);
 			//SetWidth(_width);
+			SetWidthHeigth(_width, _heigth);
 			SetText(text_content);
 
 

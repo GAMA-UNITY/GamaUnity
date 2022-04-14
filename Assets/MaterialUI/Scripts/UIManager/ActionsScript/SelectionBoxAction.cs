@@ -3,6 +3,7 @@ using UnityEngine.UI;
 using System.Collections;
 using System.Collections.Generic;
 using System;
+using ummisco.gama.unity.datastructure;
 
 namespace MaterialUI
 {
@@ -16,6 +17,7 @@ namespace MaterialUI
 		public Vector3 position = new Vector3(0,0,0);
 		public float height = 0.0f;
 		public float width = 0.0f;
+		public RGBColor color;
 		public string text_label = "Selection Box";
 		public Hashtable option_action;
 		public int actionCode = 0;
@@ -32,6 +34,20 @@ namespace MaterialUI
 			SetTopic(_topic);
 			SetSelectionBox(_parent, _selectionBoxId, _position, _heigth, _width, _text_label, _option_action, _size, _state);
 		}
+
+		public void SetSelectionBox(string _topic, GameObject _parent, string _selectionBoxId, Vector3 _position, RGBColor _color, float _heigth, float _width, string _text_label, Hashtable _option_action, float _size, int _state)
+		{
+			this.color = _color;
+			SetTopic(_topic);
+			SetSelectionBox(_parent, _selectionBoxId, _position, _heigth, _width, _text_label, _option_action, _size, _state);
+			SetColor(color);
+		}
+
+		public void SetColor(RGBColor color)
+		{
+			gameObject.GetComponent<Image>().color = color.GetRGBColor();
+		}
+
 
 		private void SetTopic(string _topic)
 		{

@@ -129,7 +129,7 @@ namespace MaterialUI
 
                 receivedMsg = System.Text.Encoding.UTF8.GetString(e.Message);
 
-                Debug.Log("-> Received Message is : " + receivedMsg + " On topic : " + e.Topic);
+                //Debug.Log("-> Received Message is : " + receivedMsg + " On topic : " + e.Topic);
 
                 if (agentsTopicDic.Keys.Contains(e.Topic)) {
 
@@ -138,7 +138,7 @@ namespace MaterialUI
 					string serialisedObject = new XStream().ToXml(receivedMsg);
 					GamaExposeMessage deserialisedObject = (GamaExposeMessage) new XStream().FromXml(serialisedObject);
 					*/
-                    Debug.Log("It concerns an exposed variable on :  " + e.Topic);
+                    //Debug.Log("It concerns an exposed variable on :  " + e.Topic);
                     GamaExposeMessage exposeMessage = new GamaExposeMessage(receivedMsg);
 
 
@@ -148,7 +148,7 @@ namespace MaterialUI
                         //    break;
                         case IMQTTConnector.MAIN_TOPIC:
                             //------------------------------------------------------------------------------
-                            Debug.Log("  -> Topic to deal with is : " + IMQTTConnector.MAIN_TOPIC);
+                            //Debug.Log("  -> Topic to deal with is : " + IMQTTConnector.MAIN_TOPIC);
 
                             UnityAgent unityAgent = (UnityAgent)MsgSerialization.FromXML(receivedMsg, new UnityAgent());
                             Agent agent = unityAgent.GetAgent();
@@ -189,10 +189,10 @@ namespace MaterialUI
                                 default:
                                     targetGameObject = GameObject.Find(unityAgent.receivers);
                                     if (targetGameObject == null) {
-                                        Debug.LogError(" Sorry, requested gameObject is null (" + unityAgent.receivers + "). Please check you code! ");
+                                        //Debug.LogError(" Sorry, requested gameObject is null (" + unityAgent.receivers + "). Please check you code! ");
                                         break;
                                     } else {
-                                        Debug.Log("Generic Object creation : " + unityAgent.contents.agentName);
+                                        //Debug.Log("Generic Object creation : " + unityAgent.contents.agentName);
                                         obj = new object[] { unityAgent, targetGameObject };
                                         mainTopicManager.GetComponent<MainTopic>().ProcessTopic(obj);
                                         //mainTopicManager.GetComponent(IMQTTConnector.MAIN_TOPIC_SCRIPT).SendMessage("ProcessTopic", obj);

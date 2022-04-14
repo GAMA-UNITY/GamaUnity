@@ -60,11 +60,11 @@ namespace wox.serial
             // HashMap, and then get retrieve the objects from the collection
             Object ob = null;
             String id = xob.GetAttribute(ID);
-            Debug.Log("--> id: " + id);
+            //Debug.Log("--> id: " + id);
 
 			if (xob.HasAttributes) {
 				if (xob.GetAttribute(TYPE) != null) {
-                    Debug.Log(" -------------> " + xob.GetAttribute(TYPE));
+                   // Debug.Log(" -------------> " + xob.GetAttribute(TYPE));
 				}
             }
 

@@ -50,6 +50,9 @@ namespace MaterialUI
 		public GameObject Switch;
 		public GameObject Text;
 		public GameObject TextInput;
+
+		public GameObject CloseButton;
+		public GameObject CloseXButton;
 		//public GameObject List_Item_Double_Avatar;
 		//public GameObject List_Item_Double_Icon_Avatar;
 		//public GameObject List_Item_Double_Icon;
@@ -82,6 +85,8 @@ namespace MaterialUI
 		private const string UISwitch = "Switch";
 		private const string UIText = "Text";
 		private const string UITextInput = "TextInput";
+		private const string UICloseButton = "CloseButton";
+		private const string UICloseXButton = "CloseXButton";
 
 		private bool isTest = false;
 
@@ -136,7 +141,8 @@ namespace MaterialUI
 			UIList.Add("Switch", Switch);
 			UIList.Add("Text", Text);
 			UIList.Add("TextInput", TextInput);
-
+			UIList.Add("CloseButton", CloseButton);
+			UIList.Add("CloseXButton", CloseXButton);
 		}
 
 		// Update is called once per frame
@@ -149,7 +155,7 @@ namespace MaterialUI
 		{
 			switch (msg.uiType) {
 				case UIButtonRaised:
-					Create_Button_Raised(msg.topic, "Button_Raised", MainPanel, msg.uiId, new Vector3(msg.x, msg.y, msg.z), msg.height, msg.width, msg.label, 11, msg.size, msg.state);
+					Create_Button_Raised(msg.topic, "Button_Raised", MainPanel, msg.uiId, new Vector3(msg.x, msg.y, msg.z), msg.GetRGBColor(), msg.height, msg.width, msg.label, 11, msg.size, msg.state);
 					break;
 				case UICheckbox:
 					Create_Checkbox(msg.topic, "Checkbox", MainPanel, msg.uiId, new Vector3(msg.x, msg.y, msg.z), msg.height, msg.width, msg.option_action, msg.size, msg.state);
@@ -158,13 +164,13 @@ namespace MaterialUI
 					Create_DialogBox_Normal(msg.topic, "DialogBox_Normal", MainPanel, msg.uiId, new Vector3(msg.x, msg.y, msg.z), msg.height, msg.width, msg.label, msg.content_text, msg.option_action, msg.size, msg.state);
 					break;
 				case UIDivider:
-					Create_Divider_Dark("Divider_Dark", MainPanel, msg.uiId, new Vector3(msg.x, msg.y, msg.z), msg.height, msg.width, new RGBColor(msg.redColor, msg.greenColor, msg.blueColor, msg.alphaColor), msg.size, msg.state);
+					Create_Divider_Dark("Divider_Dark", MainPanel, msg.uiId, new Vector3(msg.x, msg.y, msg.z), msg.GetRGBColor(), msg.height, msg.width, msg.size, msg.state);
 					break;
 				case UIRoundButton:
 					Create_Round_Button_Raised(msg.topic, "Round_Button_Raised", MainPanel, msg.uiId, new Vector3(msg.x, msg.y, msg.z), msg.height, msg.width, msg.content_text, 1, msg.size, msg.state);
 					break;
 				case UISelectionBox:
-					Create_SelectionBox(msg.topic, "SelectionBox", MainPanel, msg.uiId, new Vector3(msg.x, msg.y, msg.z), msg.height, msg.width, msg.label, msg.option_action, msg.size, msg.state);
+					Create_SelectionBox(msg.topic, "SelectionBox", MainPanel, msg.uiId, new Vector3(msg.x, msg.y, msg.z), msg.GetRGBColor(), msg.height, msg.width, msg.label, msg.option_action, msg.size, msg.state);
 					break;
 				case UISlider:
 					Create_Slider_label_value(msg.topic, "Slider_label_value", MainPanel, msg.uiId, new Vector3(msg.x, msg.y, msg.z), msg.height, msg.width, msg.label, 15, msg.size, msg.state);
@@ -177,6 +183,9 @@ namespace MaterialUI
 					break;
 				case UITextInput:
 					Create_TextInput(msg.topic, "TextInput", MainPanel, msg.uiId, new Vector3(msg.x, msg.y, msg.z), msg.height, msg.width, msg.label, 18, msg.size, msg.state);
+					break;
+				case UICloseButton:
+					Create_CloseButton(msg.topic, "CloseButton", MainPanel, msg.uiId, new Vector3(msg.x, msg.y, msg.z), msg.GetRGBColor(), msg.height, msg.width, msg.label, 11, msg.size, msg.state);
 					break;
 				default:
 					Debug.LogWarning("The Topic is not covered by the GameObject " + gameObject.name);
@@ -220,7 +229,7 @@ namespace MaterialUI
 
 				if (GUI.Button(new Rect(10, 120, 180, 20), "Divider_Dark*")) {
 					Debug.Log(" - Divider_Dark  - ");
-					Create_Divider_Dark("Divider_Dark", MainPanel, "divider1", new Vector3(345, -132, 0), 2f, 300f, new RGBColor(255,255,255,255), 1, 1);
+					Create_Divider_Dark("Divider_Dark", MainPanel, "divider1", new Vector3(345, -132, 0), new RGBColor(255, 255, 255, 255), 2f, 300f, 1, 1);
 				}
 
 				if (GUI.Button(new Rect(10, 180, 180, 20), "Round_Button_Raised*")) {
@@ -230,7 +239,7 @@ namespace MaterialUI
 
 				if (GUI.Button(new Rect(10, 220, 180, 20), "Button_Raised*")) {
 					Debug.Log(" -  Button Raised - ");
-					Create_Button_Raised("UITopic", "Button_Raised", MainPanel, "button1", new Vector3(264, -200, 0), 10f, 10f, "Button Test", 11, 1, 1);
+					Create_Button_Raised("UITopic", "Button_Raised", MainPanel, "button1", new Vector3(264, -200, 0), new RGBColor(255, 255, 255, 255), 10f, 10f, "Button Test", 11, 1, 1);
 				}
 
 				if (GUI.Button(new Rect(10, 270, 180, 20), "SelectionBox*")) {
@@ -242,7 +251,7 @@ namespace MaterialUI
 					option_action.Add(3, "D OP -----");
 					option_action.Add(4, "E OP -----");
 					option_action.Add(5, "F OP -----");
-					Create_SelectionBox("UITopic", "SelectionBox", MainPanel, "selectionboxId1", new Vector3(294, -276, 0), 10f, 10f, "_SELECTION_", option_action, 1, 1);
+					Create_SelectionBox("UITopic", "SelectionBox", MainPanel, "selectionboxId1", new Vector3(294, -276, 0), new RGBColor(33,146,241,255), 10f, 10f, "_SELECTION_", option_action, 1, 1);
 				}
 
 				if (GUI.Button(new Rect(10, 360, 180, 20), "Slider_label_value*")) {
@@ -288,14 +297,14 @@ namespace MaterialUI
 			}
 		}
 
-		GameObject Create_Button_Raised(string topic, string prefabName, GameObject parent, string buttonId, Vector3 position, float height, float width, string text, int actionCode, float size, int state)
+		GameObject Create_Button_Raised(string topic, string prefabName, GameObject parent, string buttonId, Vector3 position, RGBColor color, float height, float width, string text, int actionCode, float size, int state)
 		{
 			GameObject obj;
 			try {
 				obj = CreateDafault(prefabName, parent, position);
 				obj.name = "group_parent_" + buttonId;
 				GameObject child = obj.transform.GetChild(1).gameObject;
-				child.GetComponent<ButtonAction>().SetButton(topic, obj, buttonId, position, height, width, text, actionCode, size, state);
+				child.GetComponent<ButtonAction>().SetButton(topic, obj, buttonId, position, color, height, width, text, actionCode, size, state);
 				return obj;
 			} catch {
 				return null;
@@ -339,13 +348,13 @@ namespace MaterialUI
 			}
 		}
 
-		GameObject Create_Divider_Dark(string prefabName, GameObject parent, string dividerId, Vector3 position, float height, float width, RGBColor color, int size, int state)
+		GameObject Create_Divider_Dark(string prefabName, GameObject parent, string dividerId, Vector3 position, RGBColor color, float height, float width, int size, int state)
 		{
 			
 			GameObject obj;
 			try {
 				obj = CreateDafault(prefabName, parent, position);
-				obj.GetComponent<DividerAction>().SetDivider(dividerId, position, height, width, color, size, state);
+				obj.GetComponent<DividerAction>().SetDivider(dividerId, position, color, height, width, size, state);
 				return obj;
 			} catch {
 				return null;
@@ -399,14 +408,14 @@ namespace MaterialUI
 			}
 		}
 
-		GameObject Create_SelectionBox(string topic, string prefabName, GameObject parent, string selectionBoxId, Vector3 position, float height, float width, string selection_label, Hashtable option_action, int size, int state)
+		GameObject Create_SelectionBox(string topic, string prefabName, GameObject parent, string selectionBoxId, Vector3 position, RGBColor color, float height, float width, string selection_label, Hashtable option_action, int size, int state)
 		{
 			GameObject obj;
 			try {
 				obj = CreateDafault(prefabName, parent, position);
 				obj.name = "group_parent_" + selectionBoxId;
 				GameObject child = obj.transform.GetChild(2).gameObject;
-				child.GetComponent<SelectionBoxAction>().SetSelectionBox(topic, obj, selectionBoxId, position, height, width, selection_label, option_action, size, state);
+				child.GetComponent<SelectionBoxAction>().SetSelectionBox(topic, obj, selectionBoxId, position, color, height, width, selection_label, option_action, size, state);
 
 				return obj;
 			} catch {
@@ -493,6 +502,20 @@ namespace MaterialUI
 				obj.name = "group_parent_" + textInputId;
 				GameObject inputField = obj.transform.GetChild(0).gameObject;
 				inputField.GetComponent<TextInputAction>().SetTextInput(topic, obj, textInputId, position, height, width, text_content, actionCode, size, state);
+				return obj;
+			} catch {
+				return null;
+			}
+		}
+
+		GameObject Create_CloseButton(string topic, string prefabName, GameObject parent, string closeButtonId, Vector3 position, RGBColor color, float height, float width, string text, int actionCode, int size, int state)
+		{
+			GameObject obj;
+			try {
+				obj = CreateDafault(prefabName, parent, position);
+				obj.name = "group_parent_" + closeButtonId;
+				GameObject child = obj.transform.GetChild(1).gameObject;
+				child.GetComponent<CloseButtonAction>().SetButton(topic, obj, closeButtonId, position, color, height, width, text, actionCode, size, state);
 				return obj;
 			} catch {
 				return null;

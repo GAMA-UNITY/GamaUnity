@@ -17,7 +17,7 @@ public class CloseButton: MonoBehaviour
 
 	public void CloseApp()
 	{
-		// Application.Quit();
+		 Application.Quit();
 	}
 
 	void TaskOnClick()

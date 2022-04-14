@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections;
+using ummisco.gama.unity.datastructure;
 using UnityEngine;
 
 namespace MaterialUI
@@ -33,6 +34,19 @@ namespace MaterialUI
 		{
 
 
+		}
+
+		public RGBColor GetRGBColor() {
+
+			//if(redColor != 255 && greenColor != 0 && blueColor != 255) { 
+				int red_color = redColor; //!= 0 ? redColor : 255;
+				int green_color = greenColor; // != 0 ? greenColor : 255; ;
+				int blue_color = blueColor; // != 0 ? blueColor : 255; ;
+				int alpha_color = alphaColor; // != 0 ? alphaColor : 255; ;
+				RGBColor rbgColor = new RGBColor(red_color, green_color, blue_color, alpha_color);
+				return rbgColor;
+			//}
+			//return new RGBColor(255, 255, 255, 255);	
 		}
 
 		public void printClass()

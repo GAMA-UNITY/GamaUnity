@@ -61,6 +61,7 @@ namespace MaterialUI
 			SetSize(size);
 			//SetHeigth(_heigth);
 			//SetWidth(_width);
+			SetWidthHeigth(_width, _heigth);
 			SetText(text_content);
 
 
@@ -87,7 +88,7 @@ namespace MaterialUI
 
 		public void SetWidthHeigth(float _width, float _height)
 		{
-			RectTransform rt = (RectTransform)gameObject.transform;
+			RectTransform rt = (RectTransform)parent.transform;
 			rt.sizeDelta = new Vector2(_width, _height);
 		}
 

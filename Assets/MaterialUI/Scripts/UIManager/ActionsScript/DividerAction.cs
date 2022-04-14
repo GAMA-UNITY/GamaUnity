@@ -30,7 +30,7 @@ namespace MaterialUI
 
 		}
 
-		public void SetDivider(string _dividerId, Vector3 _position, float _heigth, float _width, RGBColor _color, float _size, int _state)
+		public void SetDivider(string _dividerId, Vector3 _position, RGBColor _color, float _heigth, float _width, float _size, int _state)
 		{
 			this.color = _color;
 			SetDivider(_dividerId, _position, _heigth, _width, _size, _state);		

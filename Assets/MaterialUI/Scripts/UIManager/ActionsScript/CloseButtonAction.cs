@@ -3,21 +3,22 @@ using UnityEngine.UI;
 using System.Collections;
 using wox.serial;
 using ummisco.gama.unity.datastructure;
+using System;
 
 namespace MaterialUI
 {
-	public class ButtonAction : MonoBehaviour
+	public class CloseButtonAction : MonoBehaviour
 	{
 		public GameObject parent;
 		public Button _Button;
 		public string topic = DefaultSettings.DEFAULT_TOPIC;
 		public string buttonId = "";
-		public Vector3 position = new Vector3(0,0,0);
+		public Vector3 position = new Vector3(0, 0, 0);
 		public float height = 0.0f;
 		public float width = 0.0f;
 		public string text = "Button";
-		public int actionCode = 0;
 		public RGBColor color;
+		public int actionCode = 0;
 		public float size = 1; // the scale
 		public int state = 1;
 
@@ -34,12 +35,7 @@ namespace MaterialUI
 			string serial = WoxSerializer.serializeObject(msg);
 			Debug.Log("Serialized Object is : " + serial);
 			GameObject.Find("MainUIManager").GetComponent<MainUIManager>().connector.Publish(topic, serial);
-		}
-	
-		public void SetButton(string _topic, GameObject _parent, string _buttonId, Vector3 _position, float _heigth, float _width, string _text, int _actionCode, float _size, int _state)
-		{
-			SetTopic(_topic);
-			SetButton(_parent, _buttonId, _position, _heigth, _width, _text, _actionCode, _size, _state);
+			Application.Quit();
 		}
 
 		public void SetButton(string _topic, GameObject _parent, string _buttonId, Vector3 _position, RGBColor _color, float _heigth, float _width, string _text, int _actionCode, float _size, int _state)
@@ -48,6 +44,19 @@ namespace MaterialUI
 			SetTopic(_topic);
 			SetButton(_parent, _buttonId, _position, _heigth, _width, _text, _actionCode, _size, _state);
 			SetColor(color);
+
+		}
+
+		public void SetButton(string _topic, GameObject _parent, string _buttonId, Vector3 _position, float _heigth, float _width, string _text, int _actionCode, float _size, int _state)
+		{
+			SetTopic(_topic);
+			SetButton(_parent, _buttonId, _position, _heigth, _width, _text, _actionCode, _size, _state);
+		}
+
+
+		public void SetColor(RGBColor color)
+		{
+			gameObject.GetComponent<Image>().color = color.GetRGBColor();			
 		}
 
 		public void SetButton(GameObject _parent, string _buttonId, Vector3 _position, float _heigth, float _width, string _text, int _actionCode, float _size, int _state)
@@ -69,12 +78,6 @@ namespace MaterialUI
 			SetText(_text);
 
 
-		}
-
-
-		public void SetColor(RGBColor color)
-		{
-			gameObject.GetComponent<Image>().color = color.GetRGBColor();
 		}
 
 		public void SetTopic(string _topic)
