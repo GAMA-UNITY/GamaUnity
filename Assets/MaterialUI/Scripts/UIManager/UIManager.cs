@@ -53,6 +53,7 @@ namespace MaterialUI
 
 		public GameObject CloseButton;
 		public GameObject CloseXButton;
+		public GameObject Logo;
 		//public GameObject List_Item_Double_Avatar;
 		//public GameObject List_Item_Double_Icon_Avatar;
 		//public GameObject List_Item_Double_Icon;
@@ -87,6 +88,7 @@ namespace MaterialUI
 		private const string UITextInput = "TextInput";
 		private const string UICloseButton = "CloseButton";
 		private const string UICloseXButton = "CloseXButton";
+		private const string UILogo = "Logo";
 
 		private bool isTest = false;
 
@@ -143,6 +145,8 @@ namespace MaterialUI
 			UIList.Add("TextInput", TextInput);
 			UIList.Add("CloseButton", CloseButton);
 			UIList.Add("CloseXButton", CloseXButton);
+			UIList.Add("Logo", Logo);
+		
 		}
 
 		// Update is called once per frame

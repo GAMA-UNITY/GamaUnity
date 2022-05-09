@@ -31,8 +31,7 @@ namespace MaterialUI
 		}
 
 		public void SetText(string _textId, Vector3 _position, float _heigth, float _width, string _text_content, int _actionCode, float _size, int _state)
-		{
-			
+		{			
 			this.textId = _textId;
 			this.position = _position;
 			this.height = _heigth;
@@ -48,8 +47,6 @@ namespace MaterialUI
 			//SetWidth(_width);
 			SetWidthHeigth(_width, _heigth);
 			SetText(text_content);
-
-
 		}
 		
 		public void SetId(string _textId)
