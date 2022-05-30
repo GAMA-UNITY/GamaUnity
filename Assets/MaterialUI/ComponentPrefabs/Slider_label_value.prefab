@@ -676,9 +676,9 @@ MonoBehaviour:
   m_HandleRect: {fileID: 22441084}
   m_Direction: 0
   m_MinValue: 0
-  m_MaxValue: 1
-  m_WholeNumbers: 0
-  m_Value: 1
+  m_MaxValue: 100
+  m_WholeNumbers: 1
+  m_Value: 0
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
@@ -741,14 +741,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   parent: {fileID: 0}
-  checkText: {fileID: 0}
-  checkBoxToggle: {fileID: 0}
-  checkBoxId: 
+  topic: 
+  sliderId: 
   position: {x: 0, y: 0, z: 0}
   height: 0
   width: 0
   text_label: Slider Label
-  actionCode: 0
+  actionCode: 1
   size: 1
   state: 1
 --- !u!1 &190068

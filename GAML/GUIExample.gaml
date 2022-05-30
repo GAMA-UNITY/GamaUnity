@@ -17,8 +17,6 @@ model GUIExample
 * Tags: 
 */
 
-
-
 /* Insert your model definition here */
 
 global skills: [unity]
@@ -27,7 +25,6 @@ global skills: [unity]
 		create CheckingAgent number: 1;
 	  }
 }
-
 
 species CheckingAgent skills: [unity]{
 	//rgb color;	
@@ -41,7 +38,11 @@ species CheckingAgent skills: [unity]{
 	string UISwitch <- "Switch";
 	string UIText <- "Text";
 	string UITextInput <- "TextInput";
+	string UICloseButton <- "CloseButton";
+	string UICloseXButton <- "CloseXButton";
+	string UILogo <- "Logo";
 		
+	string  text_title_1 <- "UIText_title_1";
 	string selectionBox_color_1 <- "UISelectionBox_color_1";
 	string button_stop_move_1 <- "ButtonStopMove_1";
 	string checkbox_1 <- "UICheckbox_1";
@@ -53,6 +54,12 @@ species CheckingAgent skills: [unity]{
 	string slider_speed_1 <-"UISlider_Speed_1";
 	string random_move_switch_1 <- "UIRandomMoveSwitch_1";
 	string text_input_display_1 <- "UITextInput_Display_1";	
+	
+	string closeButton_1 <- "CloseButton_1";
+	string closeXButton_1 <- "CloseXButton_1";
+	string logoIRD <- "LogoIRD";
+	string logoUMMISCO <- "LogoUMMISCO";
+	
 
 	string playerName <- "Object1";
 	bool isStopSimulation <- false;
@@ -74,20 +81,24 @@ species CheckingAgent skills: [unity]{
 		map<string,string>  option_action ;
 		   
 		// UIText
-		 do unityRemoteUI topic: "UITopic" uiType: UIText parent:"Panel" uiId:"UIText_title_1" location: {675,-100,0} label:"Example of a GAMA-Unity control interface" color: #red height: 30 width:160 size:2 state:1;		
-	 
+		 do unityRemoteUI topic: "UITopic" uiType: UIText parent:"Panel" uiId:text_title_1 location: {675,-100,0} label:"Example of a GAMA-Unity control interface" color: #red height: 30 width:300 size:2 state:1;		
+	 	 			 		 	
 		// UIDivider
 		 do unityRemoteUI topic: "UITopic" uiType: UIDivider parent:"Panel" uiId:"UIDivider_top_1" location: {640,-37,0} height: 80 width:1280 color: rgb(8,127,140) size:1 state:1;				
 	     do unityRemoteUI topic: "UITopic" uiType: UIDivider parent:"Panel" uiId:"UIDivider_title_1" location: {640,-132,0} height: 10 width:1280 color: rgb(9,82,86) content_text:"content_textGama" size:1 state:1;		
 		 do unityRemoteUI topic: "UITopic" uiType: UIDivider parent:"Panel" uiId:"UIDivider_bottom_1" location: {640,-668,0} height: 100 width:1280 color: rgb(90,170,147) content_text:"content_textGama" size:1 state:1;		
 	
+	
+		 // UILogo
+	 	  do unityRemoteUI topic: "UITopic" uiType: UILogo parent:"Panel" uiId:logoIRD location: {-612,-22,0}  height: 66 width:135  content_text:"logo/logo IRD"  size:1 state:1;			
+	
 		// UISelectionBox
-		 option_action <- ["0"::"Red", "1"::"Blue", "2"::"Green", "3"::"Black"];
-		 do unityRemoteUI topic: "UITopic" uiType: UISelectionBox parent:"Panel" uiId:selectionBox_color_1 location: {315,-245,0} label:"Select Color" height: 98 width:200 option_action: option_action size:1 state:1;		
+		 option_action <- ["0"::"Red", "1"::"Blue", "2"::"Green", "3"::"Black", "4"::"Yellow"];
+		 do unityRemoteUI topic: "UITopic" uiType: UISelectionBox parent:"Panel" uiId:selectionBox_color_1 location: {315,-245,0} label:"Select Color" color: rgb(33,146,241)  height: 98 width:200 option_action: option_action size:1 state:1;		
 		 do unityRemoteUI topic: "UITopic" uiType: UIText parent:"Panel" uiId:"UIText_color_select_1" location: {160,-245,0} label:"Please select a color : " height: 30 width:160 size:1 state:1;		
 		
 		 // UIButtonRaised
-		 do unityRemoteUI topic: "UITopic" uiType: UIButtonRaised parent:"Panel" uiId:button_stop_move_1 location: {175,-343,0} label:"Stop moving for 10 cycles" height: 66 width:135   size:1 state:1;		
+		 do unityRemoteUI topic: "UITopic" uiType: UIButtonRaised parent:"Panel" uiId:button_stop_move_1 location: {175,-343,0} label:"Stop moving for 10 cycles" color: rgb(33,146,241)  height: 66 width:135   size:1 state:1;		
 		
 		// UICheckbox
 	 	 option_action <- ["0"::"Color Change Off", "1"::"Color Change On"];
@@ -107,13 +118,19 @@ species CheckingAgent skills: [unity]{
 		 do unityRemoteUI topic: "UITopic" uiType: UISwitch parent:"Panel" uiId:random_move_switch_1 location: {125,-500,0} height: 140 width:140 option_action: option_action size:1 state:1;		
 	      
 		//  UITextInput
-		 do unityRemoteUI topic: "UITopic" uiType: UITextInput parent:"Panel" uiId:text_input_display_1 location: {194,-595,0} label:"The number of cycles to display the dialog box" height: 54 width:232  size:1 state:1;		
+		 do unityRemoteUI topic: "UITopic" uiType: UITextInput parent:"Panel" uiId:text_input_display_1 location: {229,-580,0} label:"The number of cycles to display the dialog box" height: 54 width:320  size:1 state:1;		
 			
-		 }
+		  // UICloseButton
+	 	  do unityRemoteUI topic: "UITopic" uiType: UICloseButton parent:"Panel" uiId:closeButton_1 location: {1214,-680,0} label:"Close App" color: rgb(128,0,0)  height: 66 width:135   size:1 state:1;
+	 	  
+	 	  // UICloseXButton
+	 	  do unityRemoteUI topic: "UITopic" uiType: UICloseButton parent:"Panel" uiId:closeXButton_1 location: {1245,-22,0} label:"X" color: rgb(128,0,0)  height: 66 width:135   size:1 state:1;			
+	}
 	
 reflex stop_simulation when:isStopSimulation {
   ask world {do pause;}
 }
+
 reflex isCanMove when: not canMove and not isDialogOn{
 	if(cycle = startCycle + 10){
 		canMove <- true;
@@ -147,18 +164,15 @@ reflex check_new_message when: has_next_message(){
 		
 		switch m["elementId"] {
 			match selectionBox_color_1 {
-				//write " selectionBox_color_1 ";
 				if(isChangeColor){
 					do changeColor(int(m["actionCode"]));
 				}
 			} 
 			match button_stop_move_1 {
-						//write " button_stop_move_1 ";
 						canMove <- false;
 						startCycle <- cycle;
 			}
 			match checkbox_1 {
-				//write "checkbox_1 ";
 					if(int(m["actionCode"])=1){
 						  isChangeColor <- true;
 					}else{
@@ -166,33 +180,27 @@ reflex check_new_message when: has_next_message(){
 					}
 			}			
 			match dialogBox_stop_simulation_1 {
-				//write "dialogBox_stop_simulation_1";
 				isDialogOn <- false;
 					if(int(m["actionCode"])=1){
 						  ask world {do pause;}
 					}
 			}
 			match roundButton_increase_speed_1{
-				//write "roundButton_increase_speed_1";
 				agentSpeed <- agentSpeed * 2;
 			}
 			match roundButton_increase_speed_2{
-				//write "roundButton_increase_speed_2";
 				agentSpeed <- agentSpeed * 4;
 			}
 			match roundButton_pause_1 {
-				//write "roundButton_pause_1";
 				isStopSimulation <- true;	
 			}			
 			match roundButton_play_1{
 				//write "roundButton_play_1";
 			}
 			match slider_speed_1 {
-				//write "slider_speed_1";
 				agentSpeed <-  float(m["actionCode"]);
 			}
 			match random_move_switch_1{
-				//write "random_move_switch_1";
 				if(int(m["actionCode"])=0){
 					isRandomMoving <- false;
 					isLinearMoving <- true;
@@ -202,11 +210,9 @@ reflex check_new_message when: has_next_message(){
 				}
 			}
 			match text_input_display_1{
-				//write "text_input_display_1"; m["content"]
 				cyclesForDialog <-  int(m["content"]);
 			}
 	}	
-	
 
 		write " 	topic : " + m["topic"];	
 		write " 	messageTime : " + int(m["messageTime"]);	
@@ -229,6 +235,9 @@ reflex check_new_message when: has_next_message(){
 					}
 					match 3 {
 						color <- #black;
+					}
+					match 4 {
+						color <- #yellow;
 					}
 				}
 	}
